@@ -1,0 +1,77 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:list";
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+#home-container {
+  @include flex-column;
+  height: 100%;
+  width: 100%;
+
+  .name-title-1 {
+    position: absolute;
+    font-family: $font-family-title-1;
+    font-size: 10em;
+    color: $primary-color;
+    font-weight: 700;
+    width: 100%;
+    height: fit-content;
+    top: 20vh;
+    text-align: center;
+    filter: drop-shadow(0 0 10px #242424a1);
+
+    &::after {
+      content: "Asselin";
+      position: absolute;
+      transform: translateX(-70%) translateY(-10%) rotate(-3deg);
+      font-family: $font-family-title-2;
+      font-size: 3em;
+      color: $text-light;
+      margin-bottom: $spacing-xl;
+      font-weight: 700;
+    }
+  }
+
+  .home-button-div {
+    margin-top: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $spacing-base;
+
+    .home-button {
+      width: 100%;
+      font-size: 2em;
+      width: fit-content;
+      background-color: $primary-color;
+      border: 6px solid $primary-color;
+      border-radius: $border-radius-full;
+      padding: $spacing-base $spacing-xxl;
+      font-family: $font-family-title-1;
+      color: $text-light;
+      transition: all $transition-base;
+      opacity: 0.8;
+
+      &:hover {
+        filter: blur(0);
+        transform: scale(1.05);
+        transition: all $transition-base;
+        filter: blur(0) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
+      }
+    }
+
+    .contact-button {
+      width: 100%;
+      font-size: 2em;
+      background-color: transparent;
+      border: 6px solid $white;
+      filter: blur(2px);
+
+      &:hover {
+        filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+        box-shadow: none;
+      }
+    }
+  }
+}

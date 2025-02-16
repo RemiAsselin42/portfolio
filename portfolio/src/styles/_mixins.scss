@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-base {
+  padding: $spacing-base $spacing-xl;
+  background-color: $primary-color;
+  color: $text-light;
+  border: none;
+  border-radius: $border-radius-full;
+  cursor: pointer;
+  transition: background-color $transition-base;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
+@mixin responsive-grid($columns: 2) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  max-width: $max-width-container;
+  max-height: 100vh;
+  gap: $spacing-base;
+}

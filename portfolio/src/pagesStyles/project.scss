@@ -1,0 +1,127 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:list";
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+// Projects
+.project-container {
+  .project-info {
+    font-size: 1.5rem;
+    color: color.adjust($text-light, $alpha: -0.4);
+    margin-bottom: $spacing-base;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .project-layout {
+    @include responsive-grid(2);
+
+    .project-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      transition: all $transition-base;
+      width: 100%;
+      height: auto;
+      grid-row: 1 / span 3;
+
+      .image-click {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+
+        img {
+          width: 90px;
+          height: auto;
+          transform: rotate(-0deg);
+        }
+
+        p {
+          transform: rotate(0deg) translate(-50px, -10px);
+          font-size: 3em;
+          color: $text-light;
+          font-family: $font-family-title-2;
+        }
+      }
+    }
+
+    .image-presentation {
+      opacity: 0.8;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05);
+        transition: all $transition-base;
+      }
+    }
+
+    .project-text {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-lg;
+
+      .project-title {
+        font-size: 5em;
+        color: $text-light;
+        text-align: center;
+      }
+
+      .project-description {
+        font-size: $font-size-lg;
+        line-height: 1.6;
+        color: color.adjust($text-light, $alpha: -0.2);
+        text-align: justify;
+
+        br {
+          margin-bottom: $spacing-base;
+        }
+
+        ul {
+          margin-left: 20px;
+          margin-top: $spacing-base;
+
+          li {
+            margin-bottom: $spacing-base;
+          }
+        }
+      }
+
+      .project-tech {
+        font-size: $font-size-lg;
+        color: color.adjust($text-light, $alpha: -0.4);
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .project-button {
+        display: flex;
+        justify-content: center;
+
+        .next-button {
+          font-size: 2em;
+          align-self: center;
+          width: fit-content;
+          background-color: transparent;
+          border: 6px solid $white;
+          border-radius: $border-radius-full;
+          padding: $spacing-base $spacing-xxl;
+          font-family: $font-family-title-1;
+          color: $text-light;
+          transition: all $transition-base;
+          opacity: 0.8;
+
+          &:hover {
+            filter: blur(0);
+            transform: scale(1.05);
+            transition: all $transition-base;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+          }
+        }
+      }
+    }
+  }
+}

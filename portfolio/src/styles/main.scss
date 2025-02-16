@@ -1,0 +1,197 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:list";
+@use "variables" as *;
+@use "mixins" as *;
+
+:root {
+  font-family: $font-family-base;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: $text-light;
+  background-color: $background-dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-optical-sizing: auto;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: $font-family-base !important;
+}
+
+body {
+  @include flex-column;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.page-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+// Define warm colors array
+$warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
+
+// Function to get random warm color
+@function random-warm-color() {
+  @return nth($warm-colors, random(length($warm-colors)));
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: #1f1a1a;
+}
+
+.noise-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.noise-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0.7;
+}
+
+.shapes-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: url(#blur);
+  mix-blend-mode: screen;
+  opacity: 0.2;
+
+  .static-shape {
+    background-color: #242424;
+    width: 70vw;
+    height: 70vh;
+    position: relative;
+    pointer-events: none;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.9;
+    z-index: 9999;
+  }
+
+  .shape {
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: url(#noise);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+// État initial : hors écran à droite
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform-style: preserve-3d;
+}
+
+// Animations de transition droite vers gauche
+
+.reset-position {
+  transform: translateX(100%) scale(1.5) rotateY(-0.2turn);
+  opacity: 0;
+  transition: none;
+}
+
+.fade-in {
+  transform: translateX(0) scale(1) rotateY(0deg);
+  opacity: 1;
+  transition: transform $transition-fade, opacity $transition-fade;
+}
+
+.fade-out {
+  transform: translateX(-100%) scale(1.5) rotateY(0.2turn);
+  opacity: 0;
+  transition: transform $transition-fade, opacity $transition-fade;
+}
+
+// Animation de transition gauche vers droite
+
+.left-reset-position {
+  transform: translateX(-100%) scale(1.5) rotateY(0.2turn);
+  opacity: 0;
+  transition: none;
+}
+
+.left-fade-in {
+  transform: translateX(0) scale(1) rotateY(0deg);
+  opacity: 1;
+  transition: transform $transition-fade, opacity $transition-fade;
+}
+
+.left-fade-out {
+  transform: translateX(100%) scale(1.5) rotateY(-0.2turn);
+  opacity: 0;
+  transition: transform $transition-fade, opacity $transition-fade;
+}
+
+// Typography
+h1 {
+  font-size: $font-size-xxl;
+  line-height: 1.1;
+}
+
+// Cursor pointer
+
+button,
+a {
+  cursor: pointer;
+}
