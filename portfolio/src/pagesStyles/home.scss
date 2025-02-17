@@ -10,16 +10,15 @@
   width: 100%;
 
   .name-title-1 {
-    position: absolute;
-    font-family: $font-family-title-1;
+    position: relative;
+    font-family: "Tilt Warp", serif;
     font-size: 10em;
-    color: $primary-color;
+    color: #f77851;
     font-weight: 700;
     width: 100%;
-    height: fit-content;
-    top: 20vh;
+    margin-top: 15vh;
     text-align: center;
-    filter: drop-shadow(0 0 10px #242424a1);
+    filter: drop-shadow(0 0 10px rgba(36, 36, 36, 0.631372549));
 
     &::after {
       content: "Asselin";
@@ -34,7 +33,7 @@
   }
 
   .home-button-div {
-    margin-top: 50vh;
+    margin-top: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

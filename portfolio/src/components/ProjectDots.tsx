@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProjectDots.scss";
 
 interface ProjectDotsProps {
@@ -12,8 +12,19 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
   currentProject,
   onSelect,
 }) => {
+  useEffect(() => {
+    const footer = document.querySelector(".project-dots-div");
+    if (footer) {
+      const footerHeight = footer.clientHeight;
+      document.documentElement.style.setProperty(
+        "--footer-height",
+        `${footerHeight}px`
+      );
+    }
+  }, []);
+
   return (
-    <div className="project-dots-div">
+    <footer className="project-dots-div">
       <div className="project-dots">
         {projectPages.map((page, index) => (
           <span
@@ -25,6 +36,6 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
           />
         ))}
       </div>
-    </div>
+    </footer>
   );
 };

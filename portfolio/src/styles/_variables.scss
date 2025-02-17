@@ -16,19 +16,16 @@ $primary-color: #f77851;
 $secondary-color: #ff853e;
 $primary-hover: #b4461a;
 $background-dark: #242424;
-$background-light: #ffffff;
+$background-light: #cccccc96;
 $text-light: rgba(255, 255, 255, 0.87);
 $text-dark: #213547;
 $input-bg: #2a2a2a;
-$input-border: #3a3a3a;
+$input-border: #727272;
 $white: #ffffff;
 $black: #000000;
 $box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 
 // Typography
-$font-family-base: "Lexend", serif;
-$font-family-title-1: "Tilt Warp", serif;
-$font-family-title-2: "Caveat", serif;
 $font-size-base: 1rem;
 $font-size-lg: 1.1rem;
 $font-size-xl: 2.5rem;
@@ -51,6 +48,7 @@ $transition-base: 0.3s ease;
 $transition-fade: 1s ease-in-out;
 
 // Border radius
-$border-radius-base: 4px;
-$border-radius-lg: 8px;
+$border-radius-base: 5px;
+$border-radius-lg: 10px;
+$border-radius-xl: 20px;
 $border-radius-full: 500px;

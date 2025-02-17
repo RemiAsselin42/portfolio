@@ -32,7 +32,7 @@
       width: 100%;
       padding: $spacing-base;
       background-color: rgba($input-bg, 0.5);
-      border: none;
+      border: 2px solid $input-border;
       border-radius: $border-radius-base;
       color: $text-light;
       transition: border-color $transition-base;
