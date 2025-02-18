@@ -17,21 +17,15 @@
   z-index: 9999;
 }
 
-#page-1 .modal-content {
-  max-width: 10vw !important;
-  width: 10vw !important;
-  max-height: 80vh;
-}
-
 .modal-content {
   background-color: $background-dark;
   color: $text-light;
   padding: $spacing-xl;
   border-radius: $border-radius-lg;
   min-width: 80vw;
-  min-height: 80vh;
+  min-height: 70vh;
   max-width: 90%;
-  max-height: 90%;
+  max-height: 100%;
   overflow-y: auto;
   position: relative;
   animation: modalIn 0.3s forwards;

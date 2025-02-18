@@ -57,7 +57,18 @@ function App() {
   };
 
   useEffect(() => {
-    const shapesCount = 5;
+    const calculateShapesCount = () => {
+      const width = window.innerWidth;
+      if (width >= 3440) {
+        return 10;
+      } else if (width >= 1920) {
+        return Math.round(3 + (width - 1920) * (7 / (3440 - 1920)));
+      } else {
+        return Math.max(3, Math.round(3 * (width / 1920)));
+      }
+    };
+
+    const shapesCount = calculateShapesCount();
     const shapes = Array.from({ length: shapesCount }, () =>
       generateRandomShape()
     );

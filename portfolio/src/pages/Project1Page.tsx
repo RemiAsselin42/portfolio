@@ -28,7 +28,7 @@ export const Project1Page = ({ onNextPage }: PageProps) => {
           <h2 className="project-title">Bonjour !</h2>
           <p className="project-description">
             <strong>Bienvenue</strong> sur mon portfolio ! Je m'appelle Rémi et
-            je suis designer web et développeur web. J'adore imagnier, concevoir
+            je suis designer web et développeur web. J'adore imaginer, concevoir
             et coder des sites web et des applications. Je suis actuellement en
             bachelor Information Communication et Design Digital à Télécom
             Saint-Etienne et je suis à la recherche d'un master en web design
