@@ -30,7 +30,7 @@ function App() {
         }, 20);
       }, 1000);
     } else {
-      // Transition droite vers gauche habituelle pour avancer
+      // Transition droite vers gauche pour avancer
       setAnimationStage("fade-out");
       setTimeout(() => {
         setAnimationStage("reset-position");
@@ -206,14 +206,14 @@ function App() {
           onHomePage={handleHomePage}
           onContactPage={handleContactPage}
         />
+        {isProjectPage && (
+          <ProjectDots
+            projectPages={projectPages}
+            currentProject={currentPage}
+            onSelect={(page) => handlePageTransition(page)}
+          />
+        )}
       </div>
-      {isProjectPage && (
-        <ProjectDots
-          projectPages={projectPages}
-          currentProject={currentPage}
-          onSelect={(page) => handlePageTransition(page)}
-        />
-      )}
     </div>
   );
 }

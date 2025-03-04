@@ -39,7 +39,7 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
         <div className="contact-layout">
           <h3 className="thank-you-message">Merci !</h3>
           <p className="thank-you-message">
-            Je vous recontacterais dès que possible !
+            Je vous recontacterai dès que possible.
           </p>
           <div className="contact-btn-div">
             <button
@@ -72,7 +72,7 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
             <input
               name="subject"
               type="text"
-              placeholder="Object du message"
+              placeholder="Objet du message"
               className="contact-input object-input"
               required
             />

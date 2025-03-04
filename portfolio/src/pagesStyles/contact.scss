@@ -9,6 +9,7 @@
   height: 100%;
   width: 100%;
   max-width: $max-width-form;
+  margin: 0 auto;
 
   // Contact Form
   .contact-layout {
@@ -24,6 +25,8 @@
     color: $text-light;
     text-align: center;
     margin-bottom: $spacing-xl;
+    text-decoration: underline $primary-color 3px;
+    text-underline-offset: 5px;
   }
 
   form {
@@ -76,12 +79,13 @@
   .contact-btn-div {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-evenly;
-    gap: calc($max-width-form - 270px - 300px);
+    justify-content: space-between;
     margin-top: $spacing-xl;
+    width: 100%;
 
     .submit-button {
-      font-size: 2em;
+      font-size: clamp(1.5rem, 2rem, 2.5em);
+
       align-self: center;
       width: fit-content;
       background-color: $primary-color;
@@ -94,7 +98,6 @@
       opacity: 0.8;
 
       &:hover {
-        filter: blur(0);
         transform: scale(1.05);
         transition: all $transition-base;
         filter: blur(0) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
@@ -102,7 +105,7 @@
     }
 
     .home-button:not(.message-sent) {
-      font-size: 2em;
+      font-size: clamp(1.5rem, 2rem, 2.5em);
       background-color: transparent;
       border: 6px solid $white;
       filter: blur(2px);

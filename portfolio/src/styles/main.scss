@@ -32,7 +32,6 @@ html,
 body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   font-family: $font-family-base !important;
 }
 
@@ -47,14 +46,12 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 .page-container {
   width: 100vw;
   height: 100vh;
   position: relative;
-  overflow: hidden;
   perspective: 1000px;
 }
 
@@ -95,8 +92,9 @@ $warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
 
 .shapes-container {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   filter: url(#blur);
   mix-blend-mode: screen;
   opacity: 0.2;
@@ -134,12 +132,13 @@ $warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
 
 // État initial : hors écran à droite
 .page-wrapper {
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
   transform-style: preserve-3d;
+  height: 100vh;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 // Animations de transition droite vers gauche
@@ -193,4 +192,32 @@ h1 {
 button,
 a {
   cursor: pointer;
+}
+
+.project-container {
+  perspective: 1000px;
+
+  .project-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  &.flipped .project-inner {
+    transform: rotateY(180deg);
+  }
+
+  .project-front,
+  .project-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .project-back {
+    transform: rotateY(180deg);
+  }
 }

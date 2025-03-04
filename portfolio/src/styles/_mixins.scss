@@ -25,6 +25,5 @@
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
   max-width: $max-width-container;
-  max-height: 100vh;
   gap: $spacing-base;
 }

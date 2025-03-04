@@ -12,11 +12,10 @@
   .name-title-1 {
     position: relative;
     font-family: "Tilt Warp", serif;
-    font-size: 10em;
+    font-size: clamp(5em, 10em, 20em);
     color: #f77851;
     font-weight: 700;
     width: 100%;
-    margin-top: 15vh;
     text-align: center;
     filter: drop-shadow(0 0 10px rgba(36, 36, 36, 0.631372549));
 
@@ -41,7 +40,7 @@
 
     .home-button {
       width: 100%;
-      font-size: 2em;
+      font-size: clamp(1rem, 3rem, 2em);
       width: fit-content;
       background-color: $primary-color;
       border: 6px solid $primary-color;
@@ -62,7 +61,7 @@
 
     .contact-button {
       width: 100%;
-      font-size: 2em;
+      font-size: clamp(1rem, 1.5rem, 2em);
       background-color: transparent;
       border: 6px solid $white;
       filter: blur(2px);
