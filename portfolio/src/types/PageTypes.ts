@@ -14,4 +14,5 @@ export interface PageProps {
   onNextPage: () => void;
   onHomePage: () => void;
   onContactPage: () => void;
+  enSavoirPlus: () => void;
 }

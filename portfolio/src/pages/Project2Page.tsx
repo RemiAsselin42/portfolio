@@ -1,4 +1,3 @@
-// src/pages/Project2Page.tsx
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
 

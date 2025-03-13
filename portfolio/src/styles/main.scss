@@ -24,7 +24,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-optical-sizing: auto;
 }
 
@@ -53,6 +52,7 @@ body {
   height: 100vh;
   position: relative;
   perspective: 1000px;
+  overflow: hidden;
 }
 
 // Define warm colors array
@@ -181,27 +181,31 @@ $warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
   transition: transform $transition-fade, opacity $transition-fade;
 }
 
-// Typography
 h1 {
   font-size: $font-size-xxl;
   line-height: 1.1;
 }
-
-// Cursor pointer
 
 button,
 a {
   cursor: pointer;
 }
 
-.project-container {
+.project-container,
+.project-details-container {
   perspective: 1000px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  min-height: 86.5vh;
+  overflow: auto;
+  backface-visibility: hidden;
+  will-change: transform;
 
   .project-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
+    transition: transform 0.5s;
     transform-style: preserve-3d;
   }
 
@@ -219,5 +223,47 @@ a {
 
   .project-back {
     transform: rotateY(180deg);
+  }
+
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+
+  &.flipping-out {
+    animation: flip-out 0.5s forwards;
+  }
+
+  &.flipping-in {
+    animation: flip-in 0.5s forwards;
+  }
+}
+
+.project-flip-container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1000px;
+}
+
+@keyframes flip-out {
+  0% {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flip-in {
+  0% {
+    transform: rotateY(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateY(0deg);
+    opacity: 1;
   }
 }

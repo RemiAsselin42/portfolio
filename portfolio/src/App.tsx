@@ -48,6 +48,13 @@ function App() {
     }
   };
 
+  const handleKnowMore = () => {
+    const projectContainer = document.querySelector(".project-container");
+    if (projectContainer) {
+      projectContainer.setAttribute("style", "display: none;");
+    }
+  };
+
   const handleHomePage = () => {
     handlePageTransition(0);
   };
@@ -205,6 +212,7 @@ function App() {
           onNextPage={handleNextPage}
           onHomePage={handleHomePage}
           onContactPage={handleContactPage}
+          enSavoirPlus={handleKnowMore}
         />
         {isProjectPage && (
           <ProjectDots

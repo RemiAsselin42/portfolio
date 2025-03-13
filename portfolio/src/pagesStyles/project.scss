@@ -13,7 +13,6 @@
     color: color.adjust($text-light, $alpha: -0.4);
     text-align: center;
     height: fit-content;
-    margin-top: 20px;
   }
 
   .project-layout {
@@ -27,7 +26,6 @@
       transition: all $transition-base;
       width: 100%;
       height: auto;
-      grid-row: 1 / span 3;
     }
 
     .image-presentation {
@@ -44,8 +42,6 @@
     .project-text {
       display: grid;
       grid-template-rows: repeat(3, auto);
-      gap: $spacing-lg;
-      max-height: calc(100vh - 130px);
 
       .project-title {
         font-size: clamp(2rem, 3.5rem, 5em);
@@ -59,11 +55,12 @@
         font-size: $font-size-lg;
         line-height: 1.6;
         color: color.adjust($text-light, $alpha: -0.2);
-        text-align: justify;
+        text-align: left;
         transition: height 0.3s ease;
 
-        br {
-          margin-bottom: $spacing-base;
+        hr {
+          margin-top: $spacing-base;
+          opacity: 0;
         }
 
         ul {
@@ -78,6 +75,16 @@
         strong {
           color: $primary-color;
         }
+
+        .btn-contact-text {
+          border: none;
+          background-color: transparent;
+          color: $primary-color;
+          cursor: pointer;
+          font-family: $font-family-base;
+          font-size: $font-size-lg;
+          border-bottom: 2px solid $primary-color;
+        }
       }
 
       .project-tech {
@@ -90,16 +97,17 @@
 
       .project-button {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
 
-        .next-button {
-          font-size: clamp(1rem, 1.5rem, 2.5em);
+        .next-button,
+        .en-savoir-plus {
+          font-size: clamp(0.8rem, 1.8rem, 2em);
           align-self: center;
           width: fit-content;
           background-color: transparent;
           border: 6px solid $white;
           border-radius: $border-radius-full;
-          padding: $spacing-base $spacing-xxl;
+          padding: $spacing-md $spacing-lg;
           font-family: $font-family-title-1;
           color: $text-light;
           transition: all $transition-base;
@@ -112,6 +120,117 @@
             filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
           }
         }
+      }
+    }
+  }
+}
+
+.project-details-container {
+  margin: 0 auto;
+
+  .modale-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: $spacing-xl;
+  }
+
+  .modale-description {
+    text-align: justify;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: color.adjust($text-light, $alpha: -0.2);
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  hr {
+    margin: $spacing-xl;
+  }
+
+  .modale-section-logos {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: $spacing-xl;
+    gap: $spacing-base;
+
+    img {
+      width: auto;
+      height: 10rem;
+    }
+
+    .tech-icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin: $spacing-base;
+
+      .modale-logo {
+        width: auto;
+        height: 10rem;
+        transition: transform $transition-base;
+      }
+
+      .tech-name {
+        position: absolute;
+        bottom: -30px;
+        color: $text-light;
+        font-family: $font-family-title-1;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all $transition-base;
+        text-align: center;
+      }
+
+      &:hover {
+        .modale-logo {
+          transform: translateY(-10px);
+        }
+
+        .tech-name {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .modale-section-rgpd {
+    margin-top: $spacing-xxl;
+
+    p {
+      font-size: 0.8rem;
+      text-align: center;
+      opacity: 0.8;
+    }
+  }
+
+  .back-to-project {
+    display: flex;
+    justify-content: center;
+    margin-top: $spacing-xl;
+
+    .next-button {
+      font-size: clamp(1rem, 1.5rem, 2.5em);
+      align-self: center;
+      width: fit-content;
+      background-color: transparent;
+      border: 6px solid $white;
+      border-radius: $border-radius-full;
+      padding: $spacing-base $spacing-xxl;
+      font-family: $font-family-title-1;
+      color: $text-light;
+      transition: all $transition-base;
+      opacity: 0.8;
+
+      &:hover {
+        filter: blur(0);
+        transform: scale(1.05);
+        transition: all $transition-base;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
       }
     }
   }
