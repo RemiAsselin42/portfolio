@@ -36,7 +36,7 @@ export const ProjectTemplate = ({
   projectDescription,
   projectTech,
   nextButtonText = "Suivant",
-  knowMoreText = "En savoir plus",
+  knowMoreText = "En savoir +",
   onNextPage,
   modalContent,
 }: ProjectTemplateProps) => {

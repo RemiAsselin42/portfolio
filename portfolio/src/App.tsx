@@ -204,6 +204,7 @@ function App() {
           <rect width="100%" height="100%" filter="url(#noise)" />
         </svg>
       </div>
+
       <div
         className={`page-wrapper ${animationStage}`}
         id={`page-${currentPage}`}
@@ -214,14 +215,16 @@ function App() {
           onContactPage={handleContactPage}
           enSavoirPlus={handleKnowMore}
         />
-        {isProjectPage && (
-          <ProjectDots
-            projectPages={projectPages}
-            currentProject={currentPage}
-            onSelect={(page) => handlePageTransition(page)}
-          />
-        )}
       </div>
+
+      {/* Dots de navigation en dehors du page-wrapper */}
+      {isProjectPage && (
+        <ProjectDots
+          projectPages={projectPages}
+          currentProject={currentPage}
+          onSelect={(page) => handlePageTransition(page)}
+        />
+      )}
     </div>
   );
 }

@@ -10,9 +10,11 @@
 
   .project-info {
     font-size: 1.5rem;
-    color: color.adjust($text-light, $alpha: -0.4);
+    color: color.adjust($text-light, $alpha: -0.6);
+    filter: blur(1px);
     text-align: center;
     height: fit-content;
+    margin-bottom: $spacing-lg;
   }
 
   .project-layout {
@@ -127,6 +129,7 @@
 
 .project-details-container {
   margin: 0 auto;
+  height: 100%;
 
   .modale-title {
     text-align: center;
@@ -152,7 +155,7 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-evenly;
-    margin-top: $spacing-xl;
+    margin-top: $spacing-md;
     gap: $spacing-base;
 
     img {
@@ -199,7 +202,7 @@
   }
 
   .modale-section-rgpd {
-    margin-top: $spacing-xxl;
+    margin-top: $spacing-xl;
 
     p {
       font-size: 0.8rem;
@@ -211,7 +214,7 @@
   .back-to-project {
     display: flex;
     justify-content: center;
-    margin-top: $spacing-xl;
+    margin-top: $spacing-md;
 
     .next-button {
       font-size: clamp(1rem, 1.5rem, 2.5em);

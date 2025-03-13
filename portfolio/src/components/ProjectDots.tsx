@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./ProjectDots.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 interface ProjectDotsProps {
   projectPages: number[];
@@ -12,20 +14,13 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
   currentProject,
   onSelect,
 }) => {
-  useEffect(() => {
-    const footer = document.querySelector(".project-dots-div");
-    if (footer) {
-      const footerHeight = footer.clientHeight;
-      document.documentElement.style.setProperty(
-        "--footer-height",
-        `${footerHeight}px`
-      );
-    }
-  }, []);
-
   return (
     <footer className="project-dots-div">
       <div className="project-dots">
+        <span className="dot-home" onClick={() => onSelect(0)}>
+          <FontAwesomeIcon icon={faHome} />
+        </span>
+
         {projectPages.map((page, index) => (
           <span
             key={index}
@@ -35,6 +30,13 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
             onClick={() => onSelect(page)}
           />
         ))}
+
+        <span
+          className="dot-contact"
+          onClick={() => onSelect(projectPages.length + 1)}
+        >
+          <FontAwesomeIcon icon={faPaperPlane} />
+        </span>
       </div>
     </footer>
   );
