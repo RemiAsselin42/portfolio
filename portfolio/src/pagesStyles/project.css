@@ -16,7 +16,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   max-width: 70vw;
-  gap: 0.8rem;
+  margin: 0 auto;
 }
 .project-container .project-layout .project-image {
   position: relative;

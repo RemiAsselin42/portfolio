@@ -15,7 +15,7 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
   onSelect,
 }) => {
   return (
-    <footer className="project-dots-div">
+    <div className="project-dots-div">
       <div className="project-dots">
         <span className="dot-home" onClick={() => onSelect(0)}>
           <FontAwesomeIcon icon={faHome} />
@@ -38,6 +38,6 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
           <FontAwesomeIcon icon={faPaperPlane} />
         </span>
       </div>
-    </footer>
+    </div>
   );
 };

@@ -33,9 +33,10 @@ export const Project1Page = (props: PageProps) => (
         <strong>gestion entrepreneuriale</strong>
         .
         <hr />
-        Je maîtrise divers outils et technologies :{" "}
+        J'utilise divers outils et technologies :{" "}
         <strong>
-          Suite Adobe, Figma, HTML, SCSS, JS, React, PHP, SQL, Python, GitHub.
+          Suite Adobe, Figma, HTML, SCSS, JS, React, PHP, SQL, WampServer,
+          GitHub, Docker.
         </strong>
         <hr />
         J’ai également une expérience en <strong>vidéo et photographie</strong>.
@@ -48,7 +49,6 @@ export const Project1Page = (props: PageProps) => (
       </>
     }
     projectTech=""
-    nextButtonText="Suivant"
     modalContent={{
       title: "Détails du projet",
       description:
