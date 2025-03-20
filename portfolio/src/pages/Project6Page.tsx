@@ -5,42 +5,44 @@ export const Project6Page = (props: PageProps) => (
   <ProjectTemplate
     {...props}
     projectId={6}
-    projectInfo="Projet de cours : Workshop avec le département de la Loire"
+    projectInfo="Projet de cours : Application web dynamique en PHP"
     projectImage={{
-      src: "/mockup-hirogo.png",
-      alt: "Mockup La Grimpette",
+      src: "/hyxe.png",
+      alt: "Mockup Hyxe - Clone de Twitter",
     }}
-    projectTitle="La Grimpette"
+    projectTitle="Hyxe"
     projectDescription={
       <>
-        <strong>La Grimpette</strong> est un projet de cours autour du PHP et du
-        SQL. Il s'agit du site d'un club d'escalade fictif. Ce projet comprend
-        deux volets essentiels :
-        <br />• <strong>Un site front</strong> qui présente le club, ses
-        activités et événements avec la posibilité de s'y inscrire.
-        <br />• <strong>Un site backoffice</strong> dédié à la gestion des
-        inscriptions et des activités. On peut par exemple y ajouter des
-        activités, les modifier, les supprimer, valdier les inscriptions, les
-        refuser, et voir les activités et inscriptions passées.
+        <strong>Hyxe</strong> est un projet de cours réalisé en duo, centré sur
+        l'apprentissage du PHP et la création d'applications dynamiques. Il
+        s'agit d'une réplique simplifiée de Twitter avec :
+        <br />• <strong>Publication de messages</strong> similaires aux tweets.
+        <br />• <strong>Système de réponses</strong> permettant d'interagir avec
+        les publications d'autres utilisateurs.
+        <br />• <strong>Fonctionnalité de likes</strong> pour les publications
+        (en cours de développement).
+        <br />• <strong>Système d'inscription et connexion</strong> pour gérer
+        les utilisateurs (en cours de développement).
         <br />
-        Le design du site a été fait au préalable sur Figma.
+        Ce projet nous a permis d'appliquer nos connaissances en PHP en créant
+        une application web entièrement fonctionnelle avec gestion de base de
+        données.
       </>
     }
-    projectTech="Figma, HTML, CSS, SCSS, JavaScript, React (Vite), JSON, PHP, SQL, WAMP, GitHub"
+    projectTech="PHP, CSS, SQL, MySQL, HTML, Git"
     modalContent={{
       title: "Détails du projet",
       description:
         "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
-      aboutProjectTitle: "À propos de ce site",
+      aboutProjectTitle: "À propos de Hyxe",
       aboutProject:
-        "J'ai réalisé ce site web entièrement par moi-même, en utilisant React (vite.js), le TypeScript, le SCSS, et le tout hébergé sur GitHub.",
+        "L'objectif principal de ce projet était d'apprendre à développer une application web dynamique avec PHP et SQL. Nous avons choisi de reproduire l'interface et les fonctionnalités de base de Twitter pour relever un défi technique intéressant tout en travaillant sur une plateforme connue. Ce projet m'a permis de développer mes compétences en PHP et en gestion de bases de données relationnelles.",
       portfolioTechnologies: [
-        { name: "React", icon: "/react.png" },
-        { name: "Vite", icon: "/vite.png" },
-        { name: "TypeScript", icon: "/typescript.png" },
-        { name: "SCSS", icon: "/sass.png" },
+        { name: "PHP", icon: "/php.png" },
+        { name: "SQL", icon: "/sql.png" },
         { name: "CSS", icon: "/css.png" },
-        { name: "GitHub", icon: "/github.png" },
+        { name: "HTML", icon: "/html.png" },
+        { name: "Git", icon: "/git.png" },
       ],
     }}
   />

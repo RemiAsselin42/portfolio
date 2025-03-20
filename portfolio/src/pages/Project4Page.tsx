@@ -5,42 +5,44 @@ export const Project4Page = (props: PageProps) => (
   <ProjectTemplate
     {...props}
     projectId={4}
-    projectInfo="Projet de cours : Workshop avec le département de la Loire"
+    projectInfo="Projet de stage : Refonte de charte graphique"
     projectImage={{
-      src: "/mockup-hirogo.png",
-      alt: "Mockup La Grimpette",
+      src: "/yan-archi.png",
+      alt: "Refonte charte graphique Yan Archi",
     }}
-    projectTitle="La Grimpette"
+    projectTitle="Yan Archi"
     projectDescription={
       <>
-        <strong>La Grimpette</strong> est un projet de cours autour du PHP et du
-        SQL. Il s'agit du site d'un club d'escalade fictif. Ce projet comprend
-        deux volets essentiels :
-        <br />• <strong>Un site front</strong> qui présente le club, ses
-        activités et événements avec la posibilité de s'y inscrire.
-        <br />• <strong>Un site backoffice</strong> dédié à la gestion des
-        inscriptions et des activités. On peut par exemple y ajouter des
-        activités, les modifier, les supprimer, valdier les inscriptions, les
-        refuser, et voir les activités et inscriptions passées.
+        Pendant mon <strong>stage</strong> chez Yan Archi, architecte urbaniste
+        à Saint-Etienne, j'ai réalisé une{" "}
+        <strong>refonte complète de l'identité visuelle</strong> de son cabinet.
+        Ce projet a englobé :
+        <br />• <strong>Création d'un nouveau logo</strong> alliant modernité et
+        élégance, reflétant les valeurs du cabinet.
+        <br />• <strong>Design des planches projets</strong> pour présenter
+        efficacement les réalisations architecturales.
+        <br />• <strong>Templates de communication</strong> incluant designs de
+        mails professionnels et courriers officiels.
+        <br />• <strong>Harmonisation des supports visuels</strong> pour
+        garantir une cohérence sur l'ensemble des communications.
         <br />
-        Le design du site a été fait au préalable sur Figma.
+        L'objectif était de créer une identité visuelle distinctive et
+        professionnelle pour renforcer la présence du cabinet sur le marché
+        local.
       </>
     }
-    projectTech="Figma, HTML, CSS, SCSS, JavaScript, React (Vite), JSON, PHP, SQL, WAMP, GitHub"
+    projectTech="Adobe InDesign, Adobe Illustrator, Adobe Photoshop, Figma"
     modalContent={{
-      title: "Détails du projet",
-      description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
-      aboutProjectTitle: "À propos de ce site",
+      title: "",
+      description: "",
+      aboutProjectTitle: "À propos de ce projet",
       aboutProject:
-        "J'ai réalisé ce site web entièrement par moi-même, en utilisant React (vite.js), le TypeScript, le SCSS, et le tout hébergé sur GitHub.",
+        "Cette refonte a permis à Yan Archi de moderniser son image tout en conservant l'essence de son expertise. J'ai travaillé en étroite collaboration avec l'architecte pour comprendre sa vision et traduire ses valeurs en éléments visuels cohérents et impactants.",
       portfolioTechnologies: [
-        { name: "React", icon: "/react.png" },
-        { name: "Vite", icon: "/vite.png" },
-        { name: "TypeScript", icon: "/typescript.png" },
-        { name: "SCSS", icon: "/sass.png" },
-        { name: "CSS", icon: "/css.png" },
-        { name: "GitHub", icon: "/github.png" },
+        { name: "Illustrator", icon: "/illustrator.png" },
+        { name: "InDesign", icon: "/indesign.png" },
+        { name: "Photoshop", icon: "/photoshop.png" },
+        { name: "Figma", icon: "/figma.png" },
       ],
     }}
   />

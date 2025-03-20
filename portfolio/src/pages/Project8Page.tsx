@@ -5,42 +5,43 @@ export const Project8Page = (props: PageProps) => (
   <ProjectTemplate
     {...props}
     projectId={8}
-    projectInfo="Projet de cours : Workshop avec le département de la Loire"
+    projectInfo="Projet de cours : Design graphique - Charte graphique"
     projectImage={{
-      src: "/mockup-hirogo.png",
-      alt: "Mockup La Grimpette",
+      src: "/bbv-olsberg.png",
+      alt: "Mockup BBV Olsberg - Club de basket allemand",
     }}
-    projectTitle="La Grimpette"
+    projectTitle="BBV Olsberg"
     projectDescription={
       <>
-        <strong>La Grimpette</strong> est un projet de cours autour du PHP et du
-        SQL. Il s'agit du site d'un club d'escalade fictif. Ce projet comprend
-        deux volets essentiels :
-        <br />• <strong>Un site front</strong> qui présente le club, ses
-        activités et événements avec la posibilité de s'y inscrire.
-        <br />• <strong>Un site backoffice</strong> dédié à la gestion des
-        inscriptions et des activités. On peut par exemple y ajouter des
-        activités, les modifier, les supprimer, valdier les inscriptions, les
-        refuser, et voir les activités et inscriptions passées.
+        <strong>BBV Olsberg</strong> est un projet de design graphique réalisé
+        dans le cadre de mes cours. L'objectif était de créer une charte
+        graphique complète à partir de deux contraintes tirées au sort :
+        <br />• <strong>Brief</strong> : Un club de basket allemand fictif.
+        <br />• <strong>Thème</strong> : Style rétro/néon.
         <br />
-        Le design du site a été fait au préalable sur Figma.
+        <br />
+        J'ai développé une identité visuelle complète comprenant :
+        <br />• <strong>Logo</strong> représentant l'identité du club.
+        <br />• <strong>Palette de couleurs</strong> inspirée des ambiances néon
+        des années 80/90.
+        <br />• <strong>Typographies</strong> sélectionnées pour renforcer
+        l'aspect rétro.
+        <br />• <strong>Éléments graphiques</strong> rappelant l'univers du
+        basket tout en conservant l'esthétique rétro/néon.
       </>
     }
-    projectTech="Figma, HTML, CSS, SCSS, JavaScript, React (Vite), JSON, PHP, SQL, WAMP, GitHub"
+    projectTech="Adobe Illustrator, Adobe InDesign, Adobe Photoshop, Design graphique, Charte graphique"
     modalContent={{
       title: "Détails du projet",
       description:
         "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
-      aboutProjectTitle: "À propos de ce site",
+      aboutProjectTitle: "À propos de cette charte graphique",
       aboutProject:
-        "J'ai réalisé ce site web entièrement par moi-même, en utilisant React (vite.js), le TypeScript, le SCSS, et le tout hébergé sur GitHub.",
+        "Ce projet m'a permis d'explorer l'univers visuel des années 80/90 tout en l'adaptant à un club sportif contemporain. J'ai recherché des références historiques du design de cette époque pour m'imprégner de ses codes visuels caractéristiques : couleurs vives, effets néon, typographies marquées et compositions géométriques. La difficulté était de créer une identité qui soit à la fois nostalgique et fonctionnelle pour un club de basket moderne.",
       portfolioTechnologies: [
-        { name: "React", icon: "/react.png" },
-        { name: "Vite", icon: "/vite.png" },
-        { name: "TypeScript", icon: "/typescript.png" },
-        { name: "SCSS", icon: "/sass.png" },
-        { name: "CSS", icon: "/css.png" },
-        { name: "GitHub", icon: "/github.png" },
+        { name: "Illustrator", icon: "/illustrator.png" },
+        { name: "InDesign", icon: "/indesign.png" },
+        { name: "Photoshop", icon: "/photoshop.png" },
       ],
     }}
   />

@@ -5,10 +5,11 @@ import { PageProps } from "../types/PageTypes";
 interface ProjectTemplateProps extends PageProps {
   projectId: number;
   projectInfo: string;
-  projectImage: {
+  projectImage?: {
     src: string;
     alt: string;
   };
+  customMedia?: React.ReactNode;
   projectTitle: string;
   projectDescription: React.ReactNode;
   projectTech: string;
@@ -32,6 +33,7 @@ export const ProjectTemplate = ({
   projectId,
   projectInfo,
   projectImage,
+  customMedia,
   projectTitle,
   projectDescription,
   projectTech,
@@ -103,7 +105,11 @@ export const ProjectTemplate = ({
         <section className="modale-section-logos">
           {modalContent.portfolioTechnologies.map((tech, index) => (
             <div key={index} className="tech-icon-container">
-              <img src={tech.icon} alt={tech.name} className="modale-logo" />
+              <img
+                src={`/portfolio/${tech.icon}`}
+                alt={tech.name}
+                className="modale-logo"
+              />
               <span className="tech-name">{tech.name}</span>
             </div>
           ))}
@@ -155,11 +161,15 @@ export const ProjectTemplate = ({
           <h3 className="project-info">{projectInfo}</h3>
           <div className="project-layout">
             <div className="project-image" id={`project-${projectId}-image`}>
-              <img
-                src={projectImage.src}
-                alt={projectImage.alt}
-                className="project-image"
-              />
+              {customMedia
+                ? customMedia
+                : projectImage && (
+                    <img
+                      src={`/portfolio${projectImage.src}`}
+                      alt={projectImage.alt}
+                      className="project-image"
+                    />
+                  )}
             </div>
             <div className="project-text" id={`project-${projectId}-text`}>
               <h2 className="project-title">{projectTitle}</h2>

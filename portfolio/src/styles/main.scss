@@ -3,6 +3,7 @@
 @use "sass:list";
 @use "variables" as *;
 @use "mixins" as *;
+@use "responsive";
 
 :root {
   font-family: $font-family-base;
@@ -189,4 +190,15 @@ h1 {
 button,
 a {
   cursor: pointer;
+}
+
+// Ajout à la fin du fichier _responsive.scss
+.force-display {
+  display: block !important;
+}
+
+.mobile-warning {
+  .force-hidden {
+    display: none !important;
+  }
 }

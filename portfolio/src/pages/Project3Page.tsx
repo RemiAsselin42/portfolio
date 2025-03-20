@@ -5,9 +5,9 @@ export const Project3Page = (props: PageProps) => (
   <ProjectTemplate
     {...props}
     projectId={3}
-    projectInfo="Projet de cours : Workshop avec le département de la Loire"
+    projectInfo="Projet de cours autour du PHP et des bases de données"
     projectImage={{
-      src: "/mockup-hirogo.png",
+      src: "/la-grimpette.png",
       alt: "Mockup La Grimpette",
     }}
     projectTitle="La Grimpette"

@@ -5,6 +5,7 @@ import "./pagesStyles/contact.scss";
 import "./pagesStyles/project.scss";
 import { pages } from "./pages";
 import { ProjectDots } from "./components/ProjectDots";
+import { MobileWarning } from "./components/MobileWarning";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -17,6 +18,20 @@ function App() {
     | "left-fade-in"
   >("fade-in");
   const [shapesStyles, setShapesStyles] = useState<React.CSSProperties[]>([]);
+  const [bypassMobileWarning, setBypassMobileWarning] =
+    useState<boolean>(false);
+  const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
+  const [isPortrait, setIsPortrait] = useState<boolean>(false);
+
+  // Fonction pour détecter si l'appareil est mobile et en mode portrait
+  const checkMobileAndOrientation = () => {
+    const mobileBreakpoint = 768; // Correspond à la valeur $breakpoint-md de _responsive.scss
+    const isMobile = window.innerWidth < mobileBreakpoint;
+    const isPort = window.innerHeight > window.innerWidth;
+
+    setIsMobileDevice(isMobile);
+    setIsPortrait(isPort);
+  };
 
   const handlePageTransition = (newPage: number) => {
     if (newPage < currentPage) {
@@ -63,7 +78,21 @@ function App() {
     handlePageTransition(pages.length - 1);
   };
 
+  const handleContinueAnyway = () => {
+    setBypassMobileWarning(true);
+    localStorage.setItem("bypassMobileWarning", "true");
+  };
+
   useEffect(() => {
+    // Vérifier si l'utilisateur a déjà choisi de contourner l'avertissement mobile
+    const savedBypass = localStorage.getItem("bypassMobileWarning");
+    if (savedBypass === "true") {
+      setBypassMobileWarning(true);
+    }
+
+    // Vérifier initialement si l'appareil est mobile
+    checkMobileAndOrientation();
+
     const calculateShapesCount = () => {
       const width = window.innerWidth;
       if (width >= 3440) {
@@ -80,10 +109,33 @@ function App() {
       generateRandomShape()
     );
     setShapesStyles(shapes);
+
+    // Gestionnaire d'événement pour l'orientation
+    const handleOrientationChange = () => {
+      if (window.orientation === 90 || window.orientation === -90) {
+        setBypassMobileWarning(true);
+      }
+      // Mettre à jour l'état du mode portrait
+      checkMobileAndOrientation();
+    };
+
+    // Gestionnaire d'événement pour le redimensionnement de la fenêtre
+    const handleResize = () => {
+      checkMobileAndOrientation();
+    };
+
+    window.addEventListener("orientationchange", handleOrientationChange);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("orientationchange", handleOrientationChange);
+      window.removeEventListener("resize", handleResize);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const generateRandomShape = () => {
+    // Code existant inchangé
     const size = Math.floor(Math.random() * 300 + 500);
     const top = Math.random() * 100;
     const left = Math.random() * 100;
@@ -140,6 +192,7 @@ function App() {
   };
 
   const generateRandomPolygon = () => {
+    // Code existant inchangé
     const points = Math.floor(Math.random() * 8) + 5;
     return Array.from({ length: points }, (_, i) => {
       const baseAngle = (i / points) * 2 * Math.PI;
@@ -164,68 +217,83 @@ function App() {
     (_, i) => i + 1
   );
 
-  return (
-    <div className="page-container">
-      <div className="bg">
-        <svg className="noise-filter">
-          <defs>
-            <filter id="noise" x="0" y="0" width="100%" height="100%">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.65"
-                numOctaves="3"
-                stitchTiles="stitch"
-                result="noise"
-              />
-              <feColorMatrix
-                type="saturate"
-                values="0"
-                in="noise"
-                result="grayscaleNoise"
-              />
-              <feComponentTransfer>
-                <feFuncA type="linear" slope="2" />
-              </feComponentTransfer>
-            </filter>
-            <filter id="blur">
-              <feGaussianBlur stdDeviation="100" />
-              <feColorMatrix type="saturate" values="1" />
-            </filter>
-          </defs>
-        </svg>
+  // Condition d'affichage de l'avertissement mobile : appareil mobile + mode portrait
+  const shouldDisplayMobileWarning =
+    isMobileDevice && isPortrait && !bypassMobileWarning;
 
-        <div className="shapes-container">
-          <div className="static-shape" />
-          {shapesStyles.map((style, index) => (
-            <div key={index} className="shape" style={style} />
-          ))}
-        </div>
-        <svg className="noise-svg" width="100%" height="100%">
-          <rect width="100%" height="100%" filter="url(#noise)" />
-        </svg>
-      </div>
+  return (
+    <>
+      {/* Afficher l'avertissement mobile uniquement si nécessaire */}
+      {shouldDisplayMobileWarning && (
+        <MobileWarning onContinueAnyway={handleContinueAnyway} />
+      )}
 
       <div
-        className={`page-wrapper ${animationStage}`}
-        id={`page-${currentPage}`}
+        className={`page-container ${
+          shouldDisplayMobileWarning ? "hidden-on-mobile" : ""
+        } ${bypassMobileWarning ? "force-display" : ""}`}
       >
-        <CurrentPage
-          onNextPage={handleNextPage}
-          onHomePage={handleHomePage}
-          onContactPage={handleContactPage}
-          enSavoirPlus={handleKnowMore}
-        />
-      </div>
+        <div className="bg">
+          <svg className="noise-filter">
+            <defs>
+              <filter id="noise" x="0" y="0" width="100%" height="100%">
+                <feTurbulence
+                  type="fractalNoise"
+                  baseFrequency="0.65"
+                  numOctaves="3"
+                  stitchTiles="stitch"
+                  result="noise"
+                />
+                <feColorMatrix
+                  type="saturate"
+                  values="0"
+                  in="noise"
+                  result="grayscaleNoise"
+                />
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="2" />
+                </feComponentTransfer>
+              </filter>
+              <filter id="blur">
+                <feGaussianBlur stdDeviation="100" />
+                <feColorMatrix type="saturate" values="1" />
+              </filter>
+            </defs>
+          </svg>
 
-      {/* Dots de navigation en dehors du page-wrapper */}
-      {isProjectPage && (
-        <ProjectDots
-          projectPages={projectPages}
-          currentProject={currentPage}
-          onSelect={(page) => handlePageTransition(page)}
-        />
-      )}
-    </div>
+          <div className="shapes-container">
+            <div className="static-shape" />
+            {shapesStyles.map((style, index) => (
+              <div key={index} className="shape" style={style} />
+            ))}
+          </div>
+          <svg className="noise-svg" width="100%" height="100%">
+            <rect width="100%" height="100%" filter="url(#noise)" />
+          </svg>
+        </div>
+
+        <div
+          className={`page-wrapper ${animationStage}`}
+          id={`page-${currentPage}`}
+        >
+          <CurrentPage
+            onNextPage={handleNextPage}
+            onHomePage={handleHomePage}
+            onContactPage={handleContactPage}
+            enSavoirPlus={handleKnowMore}
+          />
+        </div>
+
+        {/* Dots de navigation en dehors du page-wrapper */}
+        {isProjectPage && (
+          <ProjectDots
+            projectPages={projectPages}
+            currentProject={currentPage}
+            onSelect={(page) => handlePageTransition(page)}
+          />
+        )}
+      </div>
+    </>
   );
 }
 

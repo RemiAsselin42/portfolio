@@ -63,6 +63,7 @@
         transform: scale(1.5);
         transition: all $transition-base;
         filter: blur(0.5px);
+        pointer-events: none;
       }
 
       &:hover {
