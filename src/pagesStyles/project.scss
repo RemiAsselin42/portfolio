@@ -28,6 +28,11 @@
       transition: all $transition-base;
       width: 100%;
       height: auto;
+
+      .fade-in-image {
+        width: 100%;
+        height: auto;
+      }
     }
 
     .image-presentation {

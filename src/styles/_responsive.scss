@@ -4,7 +4,6 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-// Breakpoints
 $breakpoint-xs: 320px;
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
@@ -12,7 +11,6 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 
-// Mixins pour faciliter l'écriture des media queries
 @mixin respond-to($breakpoint) {
   @if $breakpoint == xs {
     @media (max-width: #{$breakpoint-sm - 1}) {
@@ -123,7 +121,6 @@ $breakpoint-xxl: 1400px;
   }
 }
 
-// Afficher l'écran mobile uniquement sur les petits écrans en mode portrait
 @include respond-to(mobile) {
   @include respond-to(portrait) {
     .mobile-warning {
@@ -136,16 +133,44 @@ $breakpoint-xxl: 1400px;
   }
 }
 
-// Ajustements responsives
+@include respond-to(xs) {
+  #home-container {
+    .name-title-1 {
+      font-size: 4em !important;
+      margin-top: 2rem;
+
+      &::after {
+        font-size: 1.8em;
+        transform: translateX(-50%) translateY(-5%) rotate(-3deg);
+        top: 80%;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .home-button-div {
+      margin-top: 10vh;
+    }
+  }
+}
+
+@include respond-to(sm) {
+  #home-container {
+    .name-title-1 {
+      font-size: 5em !important;
+
+      &::after {
+        font-size: 2em;
+        transform: translateX(-60%) translateY(-5%) rotate(-3deg);
+      }
+    }
+  }
+}
+
 @include respond-to(mobile) {
   .project-layout {
     grid-template-columns: 1fr !important;
     max-width: 95vw !important;
-  }
-
-  .project-image {
-    max-width: 100%;
-    margin-bottom: $spacing-lg;
   }
 
   .project-text {
@@ -161,14 +186,14 @@ $breakpoint-xxl: 1400px;
     }
   }
 
-  // Styles pour la page d'accueil en mode mobile
   #home-container {
     .name-title-1 {
-      font-size: 5em !important;
+      font-size: 6em !important;
 
       &::after {
-        font-size: 2em;
-        transform: translateX(-50%) translateY(0) rotate(-3deg);
+        font-size: 2.2em;
+        transform: translateX(-60%) translateY(-5%) rotate(-3deg);
+        width: max-content;
       }
     }
 
@@ -183,14 +208,12 @@ $breakpoint-xxl: 1400px;
     }
   }
 
-  // Styles pour les images et videos en mode mobile
   .project-video,
   .tiktok-embed-container {
     max-width: 100%;
     margin: 0 auto;
   }
 
-  // Ajustements pour les points de navigation
   .project-dots-div {
     bottom: 10px;
 
@@ -216,7 +239,12 @@ $breakpoint-xxl: 1400px;
 
   #home-container {
     .name-title-1 {
-      font-size: 8em;
+      font-size: 8em !important;
+
+      &::after {
+        font-size: 2.5em;
+        transform: translateX(-65%) translateY(-5%) rotate(-3deg);
+      }
     }
   }
 }
@@ -254,7 +282,6 @@ $breakpoint-xxl: 1400px;
     }
   }
 
-  // Ajustements du portfolio en mode paysage
   .project-layout {
     display: flex;
     flex-direction: column;
@@ -275,14 +302,56 @@ $breakpoint-xxl: 1400px;
       font-size: $font-size-base !important;
     }
   }
-}
 
-// Ajouter à la fin du fichier
+  #home-container {
+    .name-title-1 {
+      font-size: 4em !important;
+      margin-top: 0;
+
+      &::after {
+        font-size: 2em;
+        transform: translateX(-50%) translateY(-5%) rotate(-3deg);
+        top: 70%;
+      }
+    }
+
+    .home-button-div {
+      margin-top: 5vh;
+      flex-direction: row;
+      gap: $spacing-md;
+
+      .home-button,
+      .contact-button {
+        padding: $spacing-small $spacing-base;
+      }
+    }
+  }
+}
 
 .hidden-on-mobile {
   @include respond-to(mobile) {
     @include respond-to(portrait) {
       display: none;
+    }
+  }
+}
+
+@include respond-to(desktop) {
+  #home-container {
+    .name-title-1 {
+      &::after {
+        transform: translateX(-70%) translateY(-50%) rotate(-3deg);
+      }
+    }
+  }
+}
+
+@include respond-to(tablet) {
+  #home-container {
+    .name-title-1 {
+      &::after {
+        transform: translateX(-70%) translateY(-100%) rotate(-3deg);
+      }
     }
   }
 }

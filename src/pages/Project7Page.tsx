@@ -9,8 +9,8 @@ export const Project7Page = (props: PageProps) => (
     projectInfo="Projet de cours : Production audiovisuelle pour réseaux sociaux"
     customMedia={
       <VideoPlayer
-        src="/hopecore-tiktok.mp4"
-        poster="/images/hopecore-poster.jpg"
+        src="hopecore-tiktok.mp4"
+        poster="/hopecore-poster.png"
         className="project-video"
       />
     }

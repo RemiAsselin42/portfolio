@@ -23,9 +23,8 @@ function App() {
   const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
   const [isPortrait, setIsPortrait] = useState<boolean>(false);
 
-  // Fonction pour détecter si l'appareil est mobile et en mode portrait
   const checkMobileAndOrientation = () => {
-    const mobileBreakpoint = 768; // Correspond à la valeur $breakpoint-md de _responsive.scss
+    const mobileBreakpoint = 768;
     const isMobile = window.innerWidth < mobileBreakpoint;
     const isPort = window.innerHeight > window.innerWidth;
 
@@ -35,7 +34,6 @@ function App() {
 
   const handlePageTransition = (newPage: number) => {
     if (newPage < currentPage) {
-      // Transition de la gauche vers la droite pour revenir en arrière
       setAnimationStage("left-fade-out");
       setTimeout(() => {
         setAnimationStage("left-reset-position");
@@ -45,7 +43,6 @@ function App() {
         }, 20);
       }, 1000);
     } else {
-      // Transition droite vers gauche pour avancer
       setAnimationStage("fade-out");
       setTimeout(() => {
         setAnimationStage("reset-position");
@@ -110,9 +107,10 @@ function App() {
     );
     setShapesStyles(shapes);
 
-    // Gestionnaire d'événement pour l'orientation
+    // Utiliser matchMedia à la place de l'orientation dépréciée
     const handleOrientationChange = () => {
-      if (window.orientation === 90 || window.orientation === -90) {
+      const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+      if (isLandscape) {
         setBypassMobileWarning(true);
       }
       // Mettre à jour l'état du mode portrait
@@ -124,18 +122,73 @@ function App() {
       checkMobileAndOrientation();
     };
 
-    window.addEventListener("orientationchange", handleOrientationChange);
+    const landscapeMedia = window.matchMedia("(orientation: landscape)");
+    landscapeMedia.addEventListener("change", handleOrientationChange);
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("orientationchange", handleOrientationChange);
-      window.removeEventListener("resize", handleResize);
+      landscapeMedia.removeEventListener("change", handleOrientationChange);
+      window.addEventListener("resize", handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    // Précharger toutes les images de projet
+    const imagesToPreload = [
+      "/remi-pixel-art.png",
+      "/mockup-hirogo.png",
+      "/la-grimpette.png",
+      "/yan-archi.png",
+      "/geopostcodes.png",
+      "/hyxe.png",
+      "/bbv-olsberg.png",
+      "/react.png",
+      "/vite.png",
+      "/typescript.png",
+      "/sass.png",
+      "/css.png",
+      "/github.png",
+      "/hopecore-poster.png",
+    ];
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    // Ne pas précharger les vidéos ici, elles seront chargées au clic
+  }, []);
+
+  // Préchargement de l'image de la page suivante - correction de l'approche
+  useEffect(() => {
+    if (currentPage < pages.length - 1) {
+      // Au lieu d'accéder directement à projectImage qui n'existe pas
+      // Préchargez les images en fonction du numéro de page suivante
+      const nextPageIndex = currentPage + 1;
+
+      // Tableau d'images associées aux numéros de page
+      const pageImageMap: Record<number, string[]> = {
+        1: ["/remi-pixel-art.png"],
+        2: ["/mockup-hirogo.png"],
+        3: ["/la-grimpette.png"],
+        4: ["/yan-archi.png"],
+        5: ["/geopostcodes.png"],
+        6: ["/hyxe.png"],
+        7: ["/hopecode-tiktok.mp4"],
+        8: ["/bbv-olsberg.png"],
+      };
+
+      if (pageImageMap[nextPageIndex]) {
+        pageImageMap[nextPageIndex].forEach((imageSrc) => {
+          const img = new Image();
+          img.src = imageSrc;
+        });
+      }
+    }
+  }, [currentPage]);
+
   const generateRandomShape = () => {
-    // Code existant inchangé
     const size = Math.floor(Math.random() * 300 + 500);
     const top = Math.random() * 100;
     const left = Math.random() * 100;
@@ -192,7 +245,6 @@ function App() {
   };
 
   const generateRandomPolygon = () => {
-    // Code existant inchangé
     const points = Math.floor(Math.random() * 8) + 5;
     return Array.from({ length: points }, (_, i) => {
       const baseAngle = (i / points) * 2 * Math.PI;
@@ -217,13 +269,11 @@ function App() {
     (_, i) => i + 1
   );
 
-  // Condition d'affichage de l'avertissement mobile : appareil mobile + mode portrait
   const shouldDisplayMobileWarning =
     isMobileDevice && isPortrait && !bypassMobileWarning;
 
   return (
     <>
-      {/* Afficher l'avertissement mobile uniquement si nécessaire */}
       {shouldDisplayMobileWarning && (
         <MobileWarning onContinueAnyway={handleContinueAnyway} />
       )}
@@ -284,7 +334,6 @@ function App() {
           />
         </div>
 
-        {/* Dots de navigation en dehors du page-wrapper */}
         {isProjectPage && (
           <ProjectDots
             projectPages={projectPages}

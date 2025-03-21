@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./VideoPlayer.css";
 
 interface VideoPlayerProps {
@@ -14,48 +14,82 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
+  const [posterLoaded, setPosterLoaded] = useState(false);
+  const [posterImage, setPosterImage] = useState<string | undefined>(undefined);
+  const [videoInitialized, setVideoInitialized] = useState(false);
+
+  // Préchargement de l'image poster
+  useEffect(() => {
+    if (poster) {
+      const img = new Image();
+      img.src = poster;
+      img.onload = () => {
+        setPosterImage(poster);
+        setPosterLoaded(true);
+      };
+      return () => {
+        img.onload = null;
+      };
+    } else {
+      setPosterLoaded(true);
+    }
+  }, [poster]);
+
+  const handleFirstClick = () => {
+    setVideoInitialized(true);
+
+    setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.addEventListener(
+          "canplay",
+          () => {
+            playVideo();
+          },
+          { once: true }
+        );
+
+        videoRef.current.load();
+      }
+    }, 0);
+  };
+
+  const playVideo = () => {
+    if (videoRef.current) {
+      videoRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => console.error("Erreur de lecture:", err));
+    }
+  };
 
   const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
+    if (!videoRef.current) return;
+
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    } else {
+      playVideo();
     }
   };
 
   return (
-    <div
-      className={`video-player-container ${className}`}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      <video
-        ref={videoRef}
-        className="video-player"
-        src={`/${src}`}
-        poster={poster}
-        loop
-        playsInline
-        onClick={togglePlay}
-      />
-      {isHovering && (
-        <div className="video-controls" onClick={togglePlay}>
-          <button className="play-pause-button">
-            {isPlaying ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width="48"
-                height="48"
-              >
-                <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-              </svg>
-            ) : (
+    <div className={`video-player-container ${className}`}>
+      {!posterLoaded && (
+        <div className="video-placeholder">
+          <div className="video-loading-spinner"></div>
+        </div>
+      )}
+
+      {posterLoaded && !videoInitialized && (
+        <div className="video-poster" onClick={handleFirstClick}>
+          <img
+            src={posterImage}
+            alt="Miniature vidéo"
+            className="poster-image"
+          />
+          <div className="play-button-overlay">
+            <button className="play-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -65,9 +99,22 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
               >
                 <path d="M8 5v14l11-7z" />
               </svg>
-            )}
-          </button>
+            </button>
+          </div>
         </div>
+      )}
+
+      {videoInitialized && (
+        <video
+          ref={videoRef}
+          className="video-player"
+          src={`/${src}`}
+          poster={posterImage}
+          loop
+          playsInline
+          onClick={togglePlay}
+          preload="auto"
+        />
       )}
     </div>
   );

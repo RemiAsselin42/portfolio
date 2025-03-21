@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { PageProps } from "../types/PageTypes";
+import { OptimizedImage } from "../components/OptimizedImage";
 
 interface ProjectTemplateProps extends PageProps {
   projectId: number;
@@ -106,7 +107,7 @@ export const ProjectTemplate = ({
           {modalContent.portfolioTechnologies.map((tech, index) => (
             <div key={index} className="tech-icon-container">
               <img
-                src={`/${tech.icon}`}
+                src={`${tech.icon}`}
                 alt={tech.name}
                 className="modale-logo"
               />
@@ -164,7 +165,7 @@ export const ProjectTemplate = ({
               {customMedia
                 ? customMedia
                 : projectImage && (
-                    <img
+                    <OptimizedImage
                       src={`${projectImage.src}`}
                       alt={projectImage.alt}
                       className="project-image"
