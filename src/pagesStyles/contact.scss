@@ -27,42 +27,40 @@
     padding: $spacing-xl;
     width: 100%;
 
-    form {
-      input,
-      textarea {
-        width: 100%;
-        padding: $spacing-base;
-        background-color: rgba($input-bg, 0.5);
-        border: 2px solid $input-border;
-        border-radius: $border-radius-base;
-        color: $text-light;
-        transition: border-color $transition-base;
+    input,
+    textarea {
+      width: 100%;
+      padding: $spacing-base;
+      background-color: rgba($input-bg, 0.5);
+      border: 2px solid $input-border;
+      border-radius: $border-radius-base;
+      color: $text-light;
+      transition: border-color $transition-base;
+      font-size: $font-size-lg;
+      font-family: $font-family-base;
+      resize: none;
+
+      &::placeholder {
         font-size: $font-size-lg;
         font-family: $font-family-base;
-        resize: none;
-
-        &::placeholder {
-          font-size: $font-size-lg;
-          font-family: $font-family-base;
-        }
-
-        &:focus {
-          border-color: $primary-color;
-          outline: none;
-        }
       }
 
-      .object-input {
-        margin-top: $spacing-xl;
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
       }
+    }
 
-      .thank-you-message {
-        font-size: $font-size-xl;
-        color: $text-light;
-        text-align: center;
-        margin-bottom: $spacing-xl;
-        font-family: $font-family-title-1;
-      }
+    .object-input {
+      margin-top: $spacing-xl;
+    }
+
+    .thank-you-message {
+      font-size: $font-size-xl;
+      color: $text-light;
+      text-align: center;
+      margin-bottom: $spacing-xl;
+      font-family: $font-family-title-1;
     }
 
     h3.thank-you-message {
