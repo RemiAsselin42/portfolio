@@ -11,15 +11,6 @@
   max-width: $max-width-form;
   margin: 0 auto;
 
-  // Contact Form
-  .contact-layout {
-    @include flex-column;
-    gap: $spacing-base;
-    margin: 0 auto;
-    padding: $spacing-xl;
-    width: 100%;
-  }
-
   .contact-title {
     font-size: $font-size-xl;
     color: $text-light;
@@ -29,91 +20,105 @@
     text-underline-offset: 5px;
   }
 
-  form {
-    input,
-    textarea {
-      width: 100%;
-      padding: $spacing-base;
-      background-color: rgba($input-bg, 0.5);
-      border: 2px solid $input-border;
-      border-radius: $border-radius-base;
-      color: $text-light;
-      transition: border-color $transition-base;
-      font-size: $font-size-lg;
-      font-family: $font-family-base;
-      resize: none;
-
-      &::placeholder {
-        font-size: $font-size-lg;
-        font-family: $font-family-base;
-      }
-
-      &:focus {
-        border-color: $primary-color;
-        outline: none;
-      }
-    }
-
-    .object-input {
-      margin-top: $spacing-xl;
-    }
-
-    .thank-you-message {
-      font-size: $font-size-xl;
-      color: $text-light;
-      text-align: center;
-      margin-bottom: $spacing-xl;
-      font-family: $font-family-title-1;
-    }
-  }
-
-  h3.thank-you-message {
-    font-size: 8em;
-  }
-
-  p.thank-you-message {
-    font-size: 2em;
-    margin-top: -20px;
-  }
-
-  .contact-btn-div {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    margin-top: $spacing-xl;
+  .contact-layout {
+    @include flex-column;
+    gap: $spacing-base;
+    margin: 0 auto;
+    padding: $spacing-xl;
     width: 100%;
 
-    .submit-button {
-      font-size: clamp(1.5rem, 2rem, 2.5em);
+    form {
+      input,
+      textarea {
+        width: 100%;
+        padding: $spacing-base;
+        background-color: rgba($input-bg, 0.5);
+        border: 2px solid $input-border;
+        border-radius: $border-radius-base;
+        color: $text-light;
+        transition: border-color $transition-base;
+        font-size: $font-size-lg;
+        font-family: $font-family-base;
+        resize: none;
 
-      align-self: center;
-      width: fit-content;
-      background-color: $primary-color;
-      border: 6px solid $primary-color;
-      border-radius: $border-radius-full;
-      padding: $spacing-base $spacing-xl;
-      font-family: $font-family-title-1;
-      color: $text-light;
-      transition: all $transition-base;
-      opacity: 0.8;
+        &::placeholder {
+          font-size: $font-size-lg;
+          font-family: $font-family-base;
+        }
 
-      &:hover {
-        transform: scale(1.05);
-        transition: all $transition-base;
-        filter: blur(0) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
+        &:focus {
+          border-color: $primary-color;
+          outline: none;
+        }
+      }
+
+      .object-input {
+        margin-top: $spacing-xl;
+      }
+
+      .thank-you-message {
+        font-size: $font-size-xl;
+        color: $text-light;
+        text-align: center;
+        margin-bottom: $spacing-xl;
+        font-family: $font-family-title-1;
       }
     }
 
-    .home-button:not(.message-sent) {
-      font-size: clamp(1.5rem, 2rem, 2.5em);
-      background-color: transparent;
-      border: 6px solid $white;
-      filter: blur(2px);
+    h3.thank-you-message {
+      font-size: 8em;
+    }
 
-      &:hover {
-        filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
-        box-shadow: none;
+    p.thank-you-message {
+      font-size: 2em;
+      margin-top: -20px;
+    }
+
+    .contact-btn-div {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin-top: $spacing-xl;
+      width: 100%;
+
+      .submit-button {
+        font-size: clamp(1.5rem, 2rem, 2.5em);
+
+        align-self: center;
+        width: fit-content;
+        background-color: $primary-color;
+        border: 6px solid $primary-color;
+        border-radius: $border-radius-full;
+        padding: $spacing-base $spacing-xl;
+        font-family: $font-family-title-1;
+        color: $text-light;
+        transition: all $transition-base;
+        opacity: 0.8;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: all $transition-base;
+          filter: blur(0) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
+        }
       }
+
+      .home-button:not(.message-sent) {
+        font-size: clamp(1.5rem, 2rem, 2.5em);
+        background-color: transparent;
+        border: 6px solid $white;
+        filter: blur(2px);
+
+        &:hover {
+          filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .contact-layout-success {
+    .contact-btn-div {
+      flex-direction: column;
     }
   }
 }
