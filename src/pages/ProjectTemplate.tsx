@@ -57,13 +57,11 @@ export const ProjectTemplate = ({
     setFlipDirection("to-details");
     setIsFlipping(true);
 
-    // Animation de sortie puis changement d'état
     setTimeout(() => {
       setProjectContainerVisible(false);
       setDetailsContainerVisible(true);
       setShowDetails(true);
 
-      // Animation d'entrée de la nouvelle vue
       setTimeout(() => {
         setIsFlipping(false);
       }, 500);
@@ -76,13 +74,11 @@ export const ProjectTemplate = ({
     setFlipDirection("to-project");
     setIsFlipping(true);
 
-    // Animation de sortie puis changement d'état
     setTimeout(() => {
       setDetailsContainerVisible(false);
       setProjectContainerVisible(true);
       setShowDetails(false);
 
-      // Animation d'entrée de la nouvelle vue
       setTimeout(() => {
         setIsFlipping(false);
       }, 500);
@@ -90,39 +86,42 @@ export const ProjectTemplate = ({
   };
 
   const renderModalContent = () => (
-    <div className="project-details-content">
-      <h2 className="modale-title">{modalContent.title}</h2>
-      <p className="modale-description">{modalContent.description}</p>
+    <div className="project-details">
+      <div className="project-details-content">
+        <h2 className="modale-title">{modalContent.title}</h2>
+        <p className="modale-description">{modalContent.description}</p>
 
-      {modalContent.aboutProject && (
-        <>
-          <hr />
-          <h2 className="modale-title">{modalContent.aboutProjectTitle}</h2>
-          <div className="modale-description">{modalContent.aboutProject}</div>
-        </>
-      )}
-
-      {modalContent.portfolioTechnologies && (
-        <section className="modale-section-logos">
-          {modalContent.portfolioTechnologies.map((tech, index) => (
-            <div key={index} className="tech-icon-container">
-              <img
-                src={`${tech.icon}`}
-                alt={tech.name}
-                className="modale-logo"
-              />
-              <span className="tech-name">{tech.name}</span>
+        {modalContent.aboutProject && (
+          <>
+            <hr />
+            <h2 className="modale-title">{modalContent.aboutProjectTitle}</h2>
+            <div className="modale-description">
+              {modalContent.aboutProject}
             </div>
-          ))}
+          </>
+        )}
+
+        {modalContent.portfolioTechnologies && (
+          <section className="modale-section-logos">
+            {modalContent.portfolioTechnologies.map((tech, index) => (
+              <div key={index} className="tech-icon-container">
+                <img
+                  src={`${tech.icon}`}
+                  alt={tech.name}
+                  className="modale-logo"
+                />
+                <span className="tech-name">{tech.name}</span>
+              </div>
+            ))}
+          </section>
+        )}
+
+        <section className="modale-section-rgpd">
+          <p className="modale-description">
+            Site réalisé par Rémi ASSELIN - {new Date().getFullYear()}
+          </p>
         </section>
-      )}
-
-      <section className="modale-section-rgpd">
-        <p className="modale-description">
-          Site réalisé par Rémi ASSELIN - {new Date().getFullYear()}
-        </p>
-      </section>
-
+      </div>
       <div className="back-to-project">
         <button className="next-button" onClick={handleBackToProject}>
           Retour au projet

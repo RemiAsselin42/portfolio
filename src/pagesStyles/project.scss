@@ -60,10 +60,10 @@
         position: relative;
         overflow: auto;
         font-size: $font-size-lg;
-        line-height: 1.6;
         color: color.adjust($text-light, $alpha: -0.2);
         text-align: left;
         transition: height 0.3s ease;
+        max-height: 50vh;
 
         hr {
           margin-top: $spacing-base;
@@ -227,6 +227,14 @@
   }
 }
 
+.project-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .project-details-container {
   .modale-title {
     text-align: center;
@@ -237,7 +245,6 @@
   .modale-description {
     text-align: justify;
     font-size: 1.5rem;
-    line-height: 1.6;
     color: color.adjust($text-light, $alpha: -0.2);
     width: 80%;
     margin: 0 auto;
@@ -308,31 +315,31 @@
       opacity: 0.8;
     }
   }
+}
 
-  .back-to-project {
-    display: flex;
-    justify-content: center;
-    margin-top: $spacing-md;
+.back-to-project {
+  display: flex;
+  justify-content: center;
+  margin-top: $spacing-md;
 
-    .next-button {
-      font-size: clamp(1rem, 1.5rem, 2.5em);
-      align-self: center;
-      width: fit-content;
-      background-color: transparent;
-      border: 6px solid $white;
-      border-radius: $border-radius-full;
-      padding: $spacing-base $spacing-xxl;
-      font-family: $font-family-title-1;
-      color: $text-light;
+  .next-button {
+    font-size: clamp(1rem, 1.5rem, 2.5em);
+    align-self: center;
+    width: fit-content;
+    background-color: transparent;
+    border: 6px solid $white;
+    border-radius: $border-radius-full;
+    padding: $spacing-base $spacing-xxl;
+    font-family: $font-family-title-1;
+    color: $text-light;
+    transition: all $transition-base;
+    opacity: 0.8;
+
+    &:hover {
+      filter: blur(0);
+      transform: scale(1.05);
       transition: all $transition-base;
-      opacity: 0.8;
-
-      &:hover {
-        filter: blur(0);
-        transform: scale(1.05);
-        transition: all $transition-base;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-      }
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
     }
   }
 }
