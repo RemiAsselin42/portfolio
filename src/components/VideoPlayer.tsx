@@ -36,7 +36,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       <video
         ref={videoRef}
         className="video-player"
-        src={`/portfolio/${src}`}
+        src={`/${src}`}
         poster={poster}
         loop
         playsInline

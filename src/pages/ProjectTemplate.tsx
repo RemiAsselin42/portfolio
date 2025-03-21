@@ -106,7 +106,7 @@ export const ProjectTemplate = ({
           {modalContent.portfolioTechnologies.map((tech, index) => (
             <div key={index} className="tech-icon-container">
               <img
-                src={`/portfolio/${tech.icon}`}
+                src={`/${tech.icon}`}
                 alt={tech.name}
                 className="modale-logo"
               />
@@ -165,7 +165,7 @@ export const ProjectTemplate = ({
                 ? customMedia
                 : projectImage && (
                     <img
-                      src={`/portfolio${projectImage.src}`}
+                      src={`${projectImage.src}`}
                       alt={projectImage.alt}
                       className="project-image"
                     />
