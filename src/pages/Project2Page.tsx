@@ -49,8 +49,7 @@ export const Project2Page = (props: PageProps) => (
       description:
         "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
       aboutProjectTitle: "À propos de ce site",
-      aboutProject:
-        "J'ai réalisé ce site web entièrement par moi-même, en utilisant React (vite.js), le TypeScript, le SCSS, et le tout hébergé sur GitHub.",
+      aboutProject: "Captures d'écran du projet HiroGo",
       portfolioTechnologies: [
         { name: "React", icon: "/react.png" },
         { name: "Vite", icon: "/vite.png" },
