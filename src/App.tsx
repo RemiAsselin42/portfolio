@@ -5,7 +5,6 @@ import "./pagesStyles/contact.scss";
 import "./pagesStyles/project.scss";
 import { pages } from "./pages";
 import { ProjectDots } from "./components/ProjectDots";
-import { MobileWarning } from "./components/MobileWarning";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -18,19 +17,6 @@ function App() {
     | "left-fade-in"
   >("fade-in");
   const [shapesStyles, setShapesStyles] = useState<React.CSSProperties[]>([]);
-  const [bypassMobileWarning, setBypassMobileWarning] =
-    useState<boolean>(false);
-  const [isMobileDevice, setIsMobileDevice] = useState<boolean>(false);
-  const [isPortrait, setIsPortrait] = useState<boolean>(false);
-
-  const checkMobileAndOrientation = () => {
-    const mobileBreakpoint = 768;
-    const isMobile = window.innerWidth < mobileBreakpoint;
-    const isPort = window.innerHeight > window.innerWidth;
-
-    setIsMobileDevice(isMobile);
-    setIsPortrait(isPort);
-  };
 
   const handlePageTransition = (newPage: number) => {
     if (newPage < currentPage) {
@@ -75,21 +61,7 @@ function App() {
     handlePageTransition(pages.length - 1);
   };
 
-  const handleContinueAnyway = () => {
-    setBypassMobileWarning(true);
-    localStorage.setItem("bypassMobileWarning", "true");
-  };
-
   useEffect(() => {
-    // Vérifier si l'utilisateur a déjà choisi de contourner l'avertissement mobile
-    const savedBypass = localStorage.getItem("bypassMobileWarning");
-    if (savedBypass === "true") {
-      setBypassMobileWarning(true);
-    }
-
-    // Vérifier initialement si l'appareil est mobile
-    checkMobileAndOrientation();
-
     const calculateShapesCount = () => {
       const width = window.innerWidth;
       if (width >= 3440) {
@@ -107,34 +79,23 @@ function App() {
     );
     setShapesStyles(shapes);
 
-    // Utiliser matchMedia à la place de l'orientation dépréciée
-    const handleOrientationChange = () => {
-      const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-      if (isLandscape) {
-        setBypassMobileWarning(true);
-      }
-      // Mettre à jour l'état du mode portrait
-      checkMobileAndOrientation();
-    };
-
-    // Gestionnaire d'événement pour le redimensionnement de la fenêtre
     const handleResize = () => {
-      checkMobileAndOrientation();
+      const newShapesCount = calculateShapesCount();
+      const newShapes = Array.from({ length: newShapesCount }, () =>
+        generateRandomShape()
+      );
+      setShapesStyles(newShapes);
     };
 
-    const landscapeMedia = window.matchMedia("(orientation: landscape)");
-    landscapeMedia.addEventListener("change", handleOrientationChange);
     window.addEventListener("resize", handleResize);
 
     return () => {
-      landscapeMedia.removeEventListener("change", handleOrientationChange);
-      window.addEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    // Précharger toutes les images de projet
     const imagesToPreload = [
       "/remi-pixel-art.png",
       "/mockup-hirogo.png",
@@ -156,18 +117,12 @@ function App() {
       const img = new Image();
       img.src = src;
     });
-
-    // Ne pas précharger les vidéos ici, elles seront chargées au clic
   }, []);
 
-  // Préchargement de l'image de la page suivante - correction de l'approche
   useEffect(() => {
     if (currentPage < pages.length - 1) {
-      // Au lieu d'accéder directement à projectImage qui n'existe pas
-      // Préchargez les images en fonction du numéro de page suivante
       const nextPageIndex = currentPage + 1;
 
-      // Tableau d'images associées aux numéros de page
       const pageImageMap: Record<number, string[]> = {
         1: ["/remi-pixel-art.png"],
         2: ["/mockup-hirogo.png"],
@@ -269,41 +224,12 @@ function App() {
     (_, i) => i + 1
   );
 
-  const shouldDisplayMobileWarning =
-    isMobileDevice && isPortrait && !bypassMobileWarning;
-
   return (
     <>
-      {shouldDisplayMobileWarning && (
-        <MobileWarning onContinueAnyway={handleContinueAnyway} />
-      )}
-
-      <div
-        className={`page-container ${
-          shouldDisplayMobileWarning ? "hidden-on-mobile" : ""
-        } ${bypassMobileWarning ? "force-display" : ""}`}
-      >
+      <div className="page-container">
         <div className="bg">
           <svg className="noise-filter">
             <defs>
-              {/* <filter id="noise" x="0" y="0" width="100%" height="100%">
-                <feTurbulence
-                  type="fractalNoise"
-                  baseFrequency="0.65"
-                  numOctaves="3"
-                  stitchTiles="stitch"
-                  result="noise"
-                />
-                <feColorMatrix
-                  type="saturate"
-                  values="0"
-                  in="noise"
-                  result="grayscaleNoise"
-                />
-                <feComponentTransfer>
-                  <feFuncA type="linear" slope="2" />
-                </feComponentTransfer>
-              </filter> */}
               <filter id="blur">
                 <feGaussianBlur stdDeviation="100" />
                 <feColorMatrix type="saturate" values="1" />
@@ -317,9 +243,6 @@ function App() {
               <div key={index} className="shape" style={style} />
             ))}
           </div>
-          {/* <svg className="noise-svg" width="100%" height="100%">
-            <rect width="100%" height="100%" filter="url(#noise)" />
-          </svg> */}
         </div>
 
         <div
