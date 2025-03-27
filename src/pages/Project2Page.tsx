@@ -8,7 +8,7 @@ export const Project2Page = (props: PageProps) => (
     projectInfo="Projet de cours : Workshop avec le département de la Loire"
     projectImage={{
       src: "/mockup-hirogo.png",
-      alt: "IMAGE",
+      alt: "Mockup de l'application HiroGo",
     }}
     projectTitle="HiroGo"
     projectDescription={
@@ -40,25 +40,165 @@ export const Project2Page = (props: PageProps) => (
         permettant aux jeunes de participer à des événements organisés par les
         institutions publiques locales, comme les collèges ou les centres de
         loisirs.
-        {/* ... reste de la description ... */}
       </>
     }
     projectTech="HTML, CSS, JavaScript, MapBox API, OpenStreetMap API, OpenWeatherMap API, GitHub"
-    modalContent={{
-      title: "Détails du projet",
-      description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
-      aboutProjectTitle: "À propos de ce site",
-      aboutProject: "Captures d'écran du projet HiroGo",
-      portfolioTechnologies: [
-        { name: "React", icon: "/react.png" },
-        { name: "Vite", icon: "/vite.png" },
-        { name: "TypeScript", icon: "/typescript.png" },
-        { name: "SCSS", icon: "/sass.png" },
-        { name: "CSS", icon: "/css.png" },
-        { name: "GitHub", icon: "/github.png" },
-      ],
-    }}
+    modalContent={
+      <div className="hirogo-modal-content">
+        <h1>Projet HiroGo</h1>
+
+        <section className="modal-section">
+          <h2>Le Workshop</h2>
+          <p>
+            Ce projet a été réalisé dans le cadre d'un workshop intensif d'une
+            semaines organisé par Télécom Saint-Étienne en collaboration avec le
+            département de la Loire. L'objectif était de concevoir une solution
+            numérique encourageant la mobilité douce auprès des jeunes du
+            département.
+          </p>
+          <p>
+            Notre équipe pluridisciplinaire était composée de 7 étudiants, dont
+            5 étudiant en communication digitale, et 2 data-ingénieurs Ensemble,
+            nous avons imaginé le projet, réalisé une charte graphique, un logo,
+            conçu toute la communication autour du projet, pensé l'application
+            et développé un prototype fonctionnel.
+          </p>
+          <p>
+            J'ai moi-même été en charge du développement front-end de
+            l'application, en utilisant les technologies HTML, CSS et
+            JavaScript. J'ai du concevoir et développer l'application en
+            seulement 3 jours.
+          </p>
+        </section>
+
+        <section className="modal-section">
+          <h2>Notre équipe</h2>
+          <div className="team-images">
+            <img
+              src="/hirogo-presentation.jpg"
+              alt="Présentation finale devant le jury"
+            />
+          </div>
+        </section>
+
+        <section className="modal-section">
+          <h2>Fonctionnalités clés</h2>
+          <ul className="features-list">
+            <li>
+              <strong>Itinéraires adaptés</strong> : Cartographie spécialement
+              conçue pour privilégier les pistes cyclables, voies vertes et
+              routes peu fréquentées
+            </li>
+            <li>
+              <strong>Système de récompenses</strong> : Des points et badges
+              sont attribués aux utilisateurs selon la distance parcourue et les
+              défis relevés
+            </li>
+            <li>
+              <strong>Quêtes journalières</strong> : Des missions quotidiennes
+              motivent les jeunes à utiliser régulièrement l'application
+            </li>
+            <li>
+              <strong>Météo intégrée</strong> : Prévisions précises pour
+              planifier ses déplacements en connaissance de cause
+            </li>
+            <li>
+              <strong>Points d'intérêt</strong> : Découverte de lieux
+              remarquables, d'attractions et de commodités (fontaines,
+              toilettes, etc.)
+            </li>
+            <li>
+              <strong>Événements locaux</strong> : Agenda des activités
+              organisées par les institutions locales accessibles à vélo
+            </li>
+          </ul>
+        </section>
+
+        {/* <section className="modal-section">
+          <h2>Captures d'écran</h2>
+          <div className="screenshots-grid">
+            <img src="/hirogo-screen1.png" alt="Écran d'accueil HiroGo" />
+            <img src="/hirogo-screen2.png" alt="Carte interactive HiroGo" />
+            <img src="/hirogo-screen3.png" alt="Menu des quêtes HiroGo" />
+            <img src="/hirogo-screen4.png" alt="Profil utilisateur HiroGo" />
+          </div>
+        </section> */}
+
+        <section className="modal-section">
+          <h2>Démonstration du projet</h2>
+          <p>Testez l'application HiroGo directement ci-dessous :</p>
+          <div className="iframe-container">
+            <iframe
+              src="https://remiasselin42.github.io/HiroGo/"
+              title="HiroGo Application"
+              className="hirogo-iframe"
+              width="393"
+              height="673"
+              loading="lazy"
+              allow="geolocation"
+            />
+          </div>
+          <p className="iframe-note">
+            Cette version est une démonstration avec des fonctionnalités
+            limitées, les données sont statiques, hormis pour la météo et le
+            calcul des itinéraires, qui se font grace aux API de MapBox,
+            OpenStreetMap et OpenWeatherMap.
+          </p>
+        </section>
+
+        <section className="modal-section">
+          <h2>Technologies utilisées</h2>
+          <div className="tech-stack">
+            <div className="tech-item">
+              <img src="/html.webp" alt="HTML" />
+              <span>HTML5</span>
+            </div>
+            <div className="tech-item">
+              <img src="/css.png" alt="CSS" />
+              <span>CSS3</span>
+            </div>
+            <div className="tech-item">
+              <img src="/javascript.png" alt="JavaScript" />
+              <span>JavaScript</span>
+            </div>
+            <div className="tech-item">
+              <img src="/mapbox.png" alt="MapBox API" />
+              <span>MapBox API</span>
+            </div>
+            <div className="tech-item">
+              <img src="/openweather.png" alt="OpenWeather API" />
+              <span>OpenWeather API</span>
+            </div>
+            <div className="tech-item">
+              <img src="/openstreetmap.png" alt="OpenStreetMap API" />
+              <span>OpenStreetMap API</span>
+            </div>
+            <div className="tech-item">
+              <img src="/github.png" alt="GitHub" />
+              <span>GitHub</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="modal-section">
+          <h2>Conclusion</h2>
+          <p>
+            Ce projet a été un véritable défi créatif et technique qui nous a
+            permis d'explorer les problématiques de mobilité durable tout en
+            développant une solution concrète et ludique. Notre application
+            HiroGo a été très bien reçue par le jury composé de représentants du
+            département de la Loire et de professionnels du numérique, puisque
+            nous avons terminé premier du podium.
+          </p>
+          <p>
+            Au-delà de l'aspect technique, cette expérience m'a permis de
+            développer des compétences en gestion de projet, en collaboration
+            pluridisciplinaire et en présentation devant un public
+            professionnel.
+          </p>
+        </section>
+      </div>
+    }
   />
 );
 

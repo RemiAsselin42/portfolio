@@ -3,6 +3,7 @@
 @use "sass:list";
 @use "../styles/variables" as *;
 @use "../styles/mixins" as *;
+@use "../styles/responsive" as *;
 
 #contact-section {
   @include flex-column;
@@ -10,6 +11,12 @@
   width: 100%;
   max-width: $max-width-form;
   margin: 0 auto;
+  padding: 0 $spacing-lg;
+
+  @include respond-to(mobile) {
+    padding: 0 $spacing-base;
+    width: auto;
+  }
 
   .contact-title {
     font-size: $font-size-xl;
@@ -18,14 +25,21 @@
     margin-bottom: $spacing-xl;
     text-decoration: underline $primary-color 3px;
     text-underline-offset: 5px;
+
+    @include respond-to(mobile) {
+      margin-bottom: 0;
+    }
   }
 
   .contact-layout {
     @include flex-column;
     gap: $spacing-base;
-    margin: 0 auto;
     padding: $spacing-xl;
     width: 100%;
+
+    @include respond-to(mobile) {
+      padding: $spacing-lg $spacing-base;
+    }
 
     input,
     textarea {
@@ -40,9 +54,18 @@
       font-family: $font-family-base;
       resize: none;
 
+      @include respond-to(mobile) {
+        font-size: $font-size-md;
+        padding: $spacing-small;
+      }
+
       &::placeholder {
         font-size: $font-size-lg;
         font-family: $font-family-base;
+
+        @include respond-to(mobile) {
+          font-size: $font-size-md;
+        }
       }
 
       &:focus {
@@ -53,6 +76,10 @@
 
     .object-input {
       margin-top: $spacing-xl;
+
+      @include respond-to(mobile) {
+        margin-top: $spacing-lg;
+      }
     }
 
     .thank-you-message {
@@ -61,15 +88,37 @@
       text-align: center;
       margin-bottom: $spacing-xl;
       font-family: $font-family-title-1;
+
+      @include respond-to(mobile) {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-lg;
+      }
     }
 
     h3.thank-you-message {
       font-size: 8em;
+
+      @include respond-to(mobile) {
+        font-size: 4em;
+      }
+
+      @include respond-to(xxs) {
+        font-size: 3em;
+      }
     }
 
     p.thank-you-message {
       font-size: 2em;
       margin-top: -20px;
+
+      @include respond-to(mobile) {
+        font-size: 1.5em;
+        margin-top: -10px;
+      }
+
+      @include respond-to(xxs) {
+        font-size: 1.2em;
+      }
     }
 
     .contact-btn-div {
@@ -79,9 +128,14 @@
       margin-top: $spacing-xl;
       width: 100%;
 
+      @include respond-to(mobile) {
+        margin-top: $spacing-lg;
+        flex-direction: column;
+        gap: $spacing-base;
+      }
+
       .submit-button {
         font-size: clamp(1.5rem, 2rem, 2.5em);
-
         align-self: center;
         width: fit-content;
         background-color: $primary-color;
@@ -92,6 +146,14 @@
         color: $text-light;
         transition: all $transition-base;
         opacity: 0.8;
+
+        @include respond-to(mobile) {
+          width: 100%;
+          font-size: 1.2rem;
+          padding: $spacing-base $spacing-base;
+          border-width: 3px;
+          filter: blur(0);
+        }
 
         &:hover {
           transform: scale(1.05);
@@ -106,6 +168,14 @@
         border: 6px solid $white;
         filter: blur(2px);
 
+        @include respond-to(mobile) {
+          width: 100%;
+          font-size: 1.2rem;
+          padding: $spacing-base $spacing-base;
+          border-width: 3px;
+          filter: blur(0);
+        }
+
         &:hover {
           filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
           box-shadow: none;
@@ -117,6 +187,46 @@
   .contact-layout-success {
     .contact-btn-div {
       flex-direction: column;
+      align-items: center;
+      gap: $spacing-lg;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    @include respond-to(mobile) {
+      gap: $spacing-base;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      transition: all $transition-base;
+
+      &:hover {
+        color: $primary-color;
+      }
+
+      img {
+        width: auto;
+        height: 75px;
+        border-radius: 500px;
+        transition: all $transition-base;
+
+        &:hover {
+          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+          transform: scale(1.05);
+        }
+
+        @include respond-to(mobile) {
+          width: auto;
+          height: 55px;
+        }
+      }
     }
   }
 }

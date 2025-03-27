@@ -286,7 +286,7 @@ function App() {
         <div className="bg">
           <svg className="noise-filter">
             <defs>
-              <filter id="noise" x="0" y="0" width="100%" height="100%">
+              {/* <filter id="noise" x="0" y="0" width="100%" height="100%">
                 <feTurbulence
                   type="fractalNoise"
                   baseFrequency="0.65"
@@ -303,7 +303,7 @@ function App() {
                 <feComponentTransfer>
                   <feFuncA type="linear" slope="2" />
                 </feComponentTransfer>
-              </filter>
+              </filter> */}
               <filter id="blur">
                 <feGaussianBlur stdDeviation="100" />
                 <feColorMatrix type="saturate" values="1" />
@@ -317,9 +317,9 @@ function App() {
               <div key={index} className="shape" style={style} />
             ))}
           </div>
-          <svg className="noise-svg" width="100%" height="100%">
+          {/* <svg className="noise-svg" width="100%" height="100%">
             <rect width="100%" height="100%" filter="url(#noise)" />
-          </svg>
+          </svg> */}
         </div>
 
         <div

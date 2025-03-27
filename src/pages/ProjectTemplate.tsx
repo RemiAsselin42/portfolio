@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { PageProps } from "../types/PageTypes";
 import { OptimizedImage } from "../components/OptimizedImage";
@@ -16,9 +16,11 @@ interface ProjectTemplateProps extends PageProps {
   projectTech: string;
   nextButtonText?: string;
   knowMoreText?: string;
-  modalContent: ModalContent;
+  modalContent: React.ReactNode | ModalContent;
+  customModalFooter?: React.ReactNode;
 }
 
+// Keeping the old interface for backward compatibility
 interface ModalContent {
   title: string;
   description: string;
@@ -50,6 +52,39 @@ export const ProjectTemplate = ({
   >("to-details");
   const [projectContainerVisible, setProjectContainerVisible] = useState(true);
   const [detailsContainerVisible, setDetailsContainerVisible] = useState(false);
+  const [nextButtonHover, setNextButtonHover] = useState(false);
+  const [moreButtonHover, setMoreButtonHover] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
+  const projectLayoutRef = useRef<HTMLDivElement>(null);
+
+  const checkIfMobile = () => {
+    const mobileBreakpoint = 768;
+    setIsMobile(window.innerWidth < mobileBreakpoint);
+  };
+
+  const handleScroll = () => {
+    if (!projectLayoutRef.current || !isMobile) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = projectLayoutRef.current;
+    const isScrolledToBottom = scrollTop + clientHeight >= scrollHeight - 50;
+
+    setShowButtons(isScrolledToBottom);
+  };
+
+  useEffect(() => {
+    checkIfMobile();
+
+    const handleResize = () => {
+      checkIfMobile();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleEnSavoirPlus = () => {
     if (isFlipping) return;
@@ -71,6 +106,9 @@ export const ProjectTemplate = ({
   const handleBackToProject = () => {
     if (isFlipping) return;
 
+    // Masquer les boutons lorsqu'on revient à la page de projet
+    setShowButtons(false);
+
     setFlipDirection("to-project");
     setIsFlipping(true);
 
@@ -81,29 +119,48 @@ export const ProjectTemplate = ({
 
       setTimeout(() => {
         setIsFlipping(false);
+
+        // Réinitialiser la position de scroll de la page de projet
+        if (projectLayoutRef.current) {
+          projectLayoutRef.current.scrollTop = 0;
+        }
       }, 500);
     }, 500);
   };
 
-  const renderModalContent = () => (
-    <div className="project-details">
-      <div className="project-details-content">
-        <h2 className="modale-title">{modalContent.title}</h2>
-        <p className="modale-description">{modalContent.description}</p>
+  const renderModalContent = () => {
+    if (
+      React.isValidElement(modalContent) ||
+      typeof modalContent === "string"
+    ) {
+      return (
+        <div className="project-details-content custom-modal-content">
+          {modalContent}
+        </div>
+      );
+    }
 
-        {modalContent.aboutProject && (
+    const oldFormatContent = modalContent as ModalContent;
+    return (
+      <div className="project-details-content">
+        <h2 className="modale-title">{oldFormatContent.title}</h2>
+        <p className="modale-description">{oldFormatContent.description}</p>
+
+        {oldFormatContent.aboutProject && (
           <>
             <hr />
-            <h2 className="modale-title">{modalContent.aboutProjectTitle}</h2>
+            <h2 className="modale-title">
+              {oldFormatContent.aboutProjectTitle}
+            </h2>
             <div className="modale-description">
-              {modalContent.aboutProject}
+              {oldFormatContent.aboutProject}
             </div>
           </>
         )}
 
-        {modalContent.portfolioTechnologies && (
+        {oldFormatContent.portfolioTechnologies && (
           <section className="modale-section-logos">
-            {modalContent.portfolioTechnologies.map((tech, index) => (
+            {oldFormatContent.portfolioTechnologies.map((tech, index) => (
               <div key={index} className="tech-icon-container">
                 <img
                   src={`${tech.icon}`}
@@ -115,20 +172,9 @@ export const ProjectTemplate = ({
             ))}
           </section>
         )}
-
-        <section className="modale-section-rgpd">
-          <p className="modale-description">
-            Site réalisé par Rémi ASSELIN - {new Date().getFullYear()}
-          </p>
-        </section>
       </div>
-      <div className="back-to-project">
-        <button className="next-button" onClick={handleBackToProject}>
-          Retour au projet
-        </button>
-      </div>
-    </div>
-  );
+    );
+  };
 
   const getContainerClass = () => {
     if (!isFlipping) return "";
@@ -159,7 +205,11 @@ export const ProjectTemplate = ({
           style={{ display: showDetails && !isFlipping ? "none" : "block" }}
         >
           <h3 className="project-info">{projectInfo}</h3>
-          <div className="project-layout">
+          <div
+            className="project-layout"
+            ref={projectLayoutRef}
+            onScroll={handleScroll}
+          >
             <div className="project-image" id={`project-${projectId}-image`}>
               {customMedia
                 ? customMedia
@@ -175,26 +225,57 @@ export const ProjectTemplate = ({
               <h2 className="project-title">{projectTitle}</h2>
               <div className="project-description">{projectDescription}</div>
               <p className="project-tech">{projectTech}</p>
-              <div className="project-button">
-                <button className="en-savoir-plus" onClick={handleEnSavoirPlus}>
-                  {knowMoreText}
-                </button>
-                <button className="next-button" onClick={onNextPage}>
-                  {nextButtonText}
-                </button>
-              </div>
+            </div>
+          </div>
+
+          <div
+            className={`project-button-container ${
+              showButtons ? "buttons-visible" : ""
+            }`}
+          >
+            <div className="project-button">
+              <button
+                className="en-savoir-plus"
+                onClick={handleEnSavoirPlus}
+                onMouseEnter={() => !isMobile && setMoreButtonHover(true)}
+                onMouseLeave={() => !isMobile && setMoreButtonHover(false)}
+              >
+                {!isMobile && (moreButtonHover ? " +" : knowMoreText)}
+              </button>
+              <button
+                className="next-button"
+                onClick={onNextPage}
+                onMouseEnter={() => !isMobile && setNextButtonHover(true)}
+                onMouseLeave={() => !isMobile && setNextButtonHover(false)}
+              >
+                {!isMobile && (nextButtonHover ? " >" : nextButtonText)}
+              </button>
             </div>
           </div>
         </div>
       )}
 
       {detailsContainerVisible && (
-        <div
-          className={`project-details-container ${getDetailsClass()}`}
-          style={{ display: !showDetails && !isFlipping ? "none" : "block" }}
-        >
-          {renderModalContent()}
-        </div>
+        <>
+          <div
+            className={`project-details-container ${getDetailsClass()}`}
+            style={{ display: !showDetails && !isFlipping ? "none" : "block" }}
+          >
+            <div className="project-details">
+              <div className="project-details-scrollable">
+                {renderModalContent()}
+              </div>
+            </div>
+          </div>
+
+          {showDetails && !isFlipping && (
+            <div className="back-to-project-fixed">
+              <button className="prev-button" onClick={handleBackToProject}>
+                Retour au projet
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

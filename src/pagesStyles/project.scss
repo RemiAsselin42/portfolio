@@ -3,22 +3,58 @@
 @use "sass:list";
 @use "../styles/variables" as *;
 @use "../styles/mixins" as *;
+@use "../styles/responsive" as *;
+
+@use "project1" as *;
+@use "project2" as *;
+
+// État initial : hors écran à droite
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform-style: preserve-3d;
+  max-width: 1500px;
+  margin: 0 auto;
+  height: 100vh;
+}
 
 // Projects
 .project-container {
-  margin: 0 auto;
-
   .project-info {
-    font-size: 1.5rem;
+    font-size: clamp(0.5rem, 1rem, 1.5em);
+
     color: color.adjust($text-light, $alpha: -0.6);
     filter: blur(1px);
     text-align: center;
     height: fit-content;
-    margin-bottom: $spacing-lg;
+    margin: $spacing-base $spacing-lg;
   }
 
   .project-layout {
     @include responsive-grid(2);
+    flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: $primary-color rgba($white, 0.2);
+    margin-bottom: 0;
+    position: relative;
+    top: 0;
+    max-height: calc(100lvh - 170px);
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba($white, 0.1);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $primary-color;
+      border-radius: 10px;
+    }
 
     .project-image {
       position: relative;
@@ -26,12 +62,15 @@
       justify-content: center;
       align-items: center;
       transition: all $transition-base;
-      width: 100%;
       height: auto;
+      padding: $spacing-base 0 5px;
+      margin: 0 $spacing-base;
 
       .fade-in-image {
         width: 100%;
         height: auto;
+        object-fit: contain;
+        max-height: 70vh;
       }
     }
 
@@ -47,23 +86,38 @@
     }
 
     .project-text {
-      display: grid;
-      grid-template-rows: repeat(3, auto);
-
       .project-title {
         font-size: clamp(2rem, 3.5rem, 5em);
         color: $text-light;
         text-align: center;
+        margin-bottom: $spacing-lg;
+        flex-shrink: 0;
       }
 
       .project-description {
         position: relative;
-        overflow: auto;
+        overflow-y: auto;
         font-size: $font-size-lg;
         color: color.adjust($text-light, $alpha: -0.2);
         text-align: left;
         transition: height 0.3s ease;
-        max-height: 50vh;
+        flex-grow: 1;
+        padding-right: $spacing-base;
+        scrollbar-width: thin;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: rgba($white, 0.1);
+          border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: $primary-color;
+          border-radius: 10px;
+        }
 
         hr {
           margin-top: $spacing-base;
@@ -99,53 +153,230 @@
         color: color.adjust($text-light, $alpha: -0.4);
         text-align: center;
         width: 80%;
-        margin: 0 auto;
+        margin: $spacing-lg auto;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+
+@include respond-to(mobile) {
+  .project-button-container {
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: transform 0.3s ease-out;
+    transform: translateY(200px);
+    &.buttons-visible {
+      transform: translateY(0);
+    }
+
+    .project-button {
+      gap: $spacing-base;
+      display: flex;
+      justify-content: center;
+
+      .next-button,
+      .en-savoir-plus {
+        font-size: 1.5em;
+        align-self: center;
+        width: fit-content;
+        min-width: 40%;
+        margin: 0;
+        background-color: $primary-color;
+        border: none;
+        border-radius: 50px;
+        padding: $spacing-base $spacing-lg;
+        font-family: $font-family-title-1;
+        color: $text-light;
+        transition: none;
+        opacity: 0.8;
+        filter: none;
+        position: relative;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+        &::before {
+          display: none;
+        }
       }
 
-      .project-button {
-        display: flex;
-        justify-content: flex-end;
+      .next-button {
+        &::after {
+          content: "Suivant >";
+        }
+      }
 
-        .next-button,
-        .en-savoir-plus {
-          font-size: clamp(4rem, 5rem, 6em);
-          align-self: center;
-          width: fit-content;
-          margin: 0 $spacing-lg;
-          background-color: transparent;
-          border: none;
-          font-family: $font-family-title-1;
-          color: $text-light;
+      .en-savoir-plus {
+        &::after {
+          content: "En savoir +";
+        }
+      }
+    }
+  }
+
+  .back-to-project-fixed {
+    .prev-button {
+      filter: blur(0px) !important;
+      opacity: 1 !important;
+    }
+  }
+}
+
+@include respond-to(tablet) {
+  .project-button-container {
+    position: relative;
+    z-index: 100;
+
+    .project-button {
+      display: flex;
+      justify-content: center;
+
+      .next-button,
+      .en-savoir-plus {
+        font-size: clamp(2.5rem, 4rem, 5em);
+        align-self: center;
+        width: max-content;
+        margin: 0 $spacing-lg;
+        background-color: transparent;
+        border: none;
+        font-family: $font-family-title-1;
+        color: $text-light;
+        transition: all $transition-base;
+        opacity: 0.8;
+        filter: blur(1px);
+        position: relative;
+
+        &:hover {
+          filter: blur(0);
+          transform: scale(1.05);
           transition: all $transition-base;
-          opacity: 0.6;
-          filter: blur(1px);
-
-          &:hover {
-            filter: blur(0);
-            transform: scale(1.05);
-            transition: all $transition-base;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-
-            &::before {
-              transition: all $transition-base;
-              transform: translateY(0px);
-              opacity: 1;
-            }
-          }
+          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+          color: $primary-color;
         }
 
-        .next-button::before {
-          content: "";
-          font-size: 1.5rem;
+        &::before {
+          font-size: clamp(1.5rem, 1.5rem, 2rem);
           opacity: 0;
-          transform: translateY(-100px);
+          position: absolute;
+          left: $spacing-base;
+          top: 25px;
+          transition: all $transition-base;
+          pointer-events: none;
+          text-wrap: nowrap;
+        }
+      }
+
+      .next-button {
+        transition: all 0.3s ease, width 0.3s ease;
+
+        &:hover {
+          padding: 0 0 0 85px;
         }
 
-        .en-savoir-plus::before {
-          content: "";
-          font-size: 1.5rem;
+        &::before {
+          content: "Suivant ";
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      .en-savoir-plus {
+        transition: all 0.3s ease, width 0.3s ease;
+
+        &:hover {
+          padding: 0 0 0 95px;
+        }
+
+        &::before {
+          content: "En savoir ";
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to(desktop) {
+  .project-button-container {
+    position: relative;
+    z-index: 1000;
+
+    .project-button {
+      display: flex;
+      justify-content: center;
+
+      .next-button,
+      .en-savoir-plus {
+        font-size: clamp(3rem, 5rem, 7em);
+        align-self: center;
+        width: max-content;
+        margin: 0 $spacing-lg;
+        background-color: transparent;
+        border: none;
+        font-family: $font-family-title-1;
+        color: $text-light;
+        transition: all $transition-base;
+        opacity: 0.8;
+        filter: blur(1px);
+        position: relative;
+
+        &:hover {
+          filter: blur(0);
+          transform: scale(1.05);
+          transition: all $transition-base;
+          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+          color: $primary-color;
+        }
+
+        &::before {
+          font-size: clamp(1.8rem, 2rem, 2.5rem);
           opacity: 0;
-          transform: translateY(-100px);
+          position: absolute;
+          left: $spacing-base;
+          top: 31px;
+          transition: all $transition-base;
+          pointer-events: none;
+          text-wrap: nowrap;
+        }
+      }
+
+      .next-button {
+        transition: all 0.3s ease, width 0.3s ease;
+
+        &:hover {
+          padding: 0 0 0 140px;
+        }
+
+        &::before {
+          content: "Suivant ";
+        }
+
+        &:hover::before {
+          opacity: 1;
+        }
+      }
+
+      .en-savoir-plus {
+        transition: all 0.3s ease, width 0.3s ease;
+
+        &:hover {
+          padding: 0 0 0 160px;
+        }
+
+        &::before {
+          content: "En savoir ";
+        }
+
+        &:hover::before {
+          opacity: 1;
         }
       }
     }
@@ -155,8 +386,6 @@
 .project-container,
 .project-details-container {
   perspective: 1000px;
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
   backface-visibility: hidden;
   will-change: transform;
 
@@ -197,9 +426,17 @@
   }
 }
 
+.project-details-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 1em 2em;
+  height: calc(100vh - 170px);
+}
+
 .project-flip-container {
   width: 100%;
-  height: auto;
+  height: 95vh;
   margin: 0 auto;
   position: relative;
   perspective: 1000px;
@@ -230,116 +467,110 @@
 .project-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
+  height: 100%;
+  max-height: calc(100vh - 170px);
 }
 
-.project-details-container {
-  .modale-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: $spacing-xl;
+.project-details-scrollable {
+  width: 100%;
+  overflow-y: auto;
+  padding: $spacing-lg;
+  scrollbar-width: thin;
+  scrollbar-color: $primary-color rgba($white, 0.2);
+
+  &::-webkit-scrollbar {
+    width: 8px;
   }
 
-  .modale-description {
-    text-align: justify;
-    font-size: 1.5rem;
-    color: color.adjust($text-light, $alpha: -0.2);
-    width: 80%;
-    margin: 0 auto;
+  &::-webkit-scrollbar-track {
+    background: rgba($white, 0.1);
+    border-radius: 10px;
   }
 
-  hr {
-    margin: $spacing-xl;
-    opacity: 0;
-  }
-
-  .modale-section-logos {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-evenly;
-    margin-top: $spacing-md;
-    gap: $spacing-base;
-
-    img {
-      width: auto;
-      height: 10rem;
-    }
-
-    .tech-icon-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      margin: $spacing-base;
-
-      .modale-logo {
-        width: auto;
-        height: 10rem;
-        transition: transform $transition-base;
-      }
-
-      .tech-name {
-        position: absolute;
-        bottom: -30px;
-        color: $text-light;
-        font-family: $font-family-title-1;
-        font-size: 1rem;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: all $transition-base;
-        text-align: center;
-      }
-
-      &:hover {
-        .modale-logo {
-          transform: translateY(-10px);
-        }
-
-        .tech-name {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
-  }
-
-  .modale-section-rgpd {
-    margin-top: $spacing-xl;
-
-    p {
-      font-size: 0.8rem;
-      text-align: center;
-      opacity: 0.8;
-    }
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+    border-radius: 10px;
   }
 }
 
-.back-to-project {
+.back-to-project-fixed {
+  position: fixed;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: $spacing-md;
+  align-items: center;
+  padding: $spacing-base 0;
+  z-index: 1001;
+  bottom: -5px;
 
-  .next-button {
+  .prev-button {
     font-size: clamp(1rem, 1.5rem, 2.5em);
     align-self: center;
     width: fit-content;
-    background-color: transparent;
-    border: 6px solid $white;
+    background-color: $primary-color;
+    border: 3px solid $primary-color;
     border-radius: $border-radius-full;
-    padding: $spacing-base $spacing-xxl;
+    padding: $spacing-small $spacing-lg;
     font-family: $font-family-title-1;
     color: $text-light;
     transition: all $transition-base;
-    opacity: 0.8;
+    filter: blur(2px);
+    opacity: 0.6;
 
     &:hover {
-      filter: blur(0);
+      filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
       transform: scale(1.05);
       transition: all $transition-base;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+      opacity: 1;
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-height: $breakpoint-md) {
+  .project-container {
+    .project-info {
+      margin-bottom: $spacing-small;
+      padding: 0 $spacing-base;
+    }
+
+    .project-layout {
+      padding: 0 $spacing-base;
+
+      .project-text {
+        .project-title {
+          font-size: 1.8rem;
+          margin-bottom: $spacing-small;
+        }
+
+        .project-description {
+          font-size: 0.9rem;
+        }
+
+        .project-tech {
+          font-size: 0.9rem;
+          margin: $spacing-small auto;
+        }
+      }
+    }
+
+    .project-button-container {
+      bottom: 30px;
+
+      .project-button {
+        .next-button,
+        .en-savoir-plus {
+          font-size: clamp(1.8rem, 2.5rem, 3em);
+
+          &::before {
+            font-size: 0.8rem;
+            top: 15px;
+          }
+        }
+      }
     }
   }
 }

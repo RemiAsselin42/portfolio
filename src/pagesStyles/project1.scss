@@ -1,0 +1,224 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:list";
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+@use "../styles/responsive" as *;
+
+.project-details-container {
+  .modale-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: $spacing-xl;
+  }
+
+  .modale-description {
+    text-align: justify;
+    font-size: 1.5rem;
+    color: color.adjust($text-light, $alpha: -0.2);
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  hr {
+    margin: $spacing-xl;
+    opacity: 0;
+  }
+
+  .modale-section-logos {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: $spacing-md;
+    gap: $spacing-base;
+
+    img {
+      width: auto;
+      height: 10rem;
+    }
+
+    .tech-icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin: $spacing-base;
+
+      .modale-logo {
+        width: auto;
+        height: 10rem;
+        transition: transform $transition-base;
+      }
+
+      .tech-name {
+        position: absolute;
+        bottom: -30px;
+        color: $text-light;
+        font-family: $font-family-title-1;
+        font-size: 1rem;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all $transition-base;
+        text-align: center;
+      }
+
+      &:hover {
+        .modale-logo {
+          transform: translateY(-10px);
+        }
+
+        .tech-name {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .modale-section-rgpd {
+    margin-top: $spacing-xl;
+
+    p {
+      font-size: 0.8rem;
+      text-align: center;
+      opacity: 0.8;
+    }
+  }
+}
+
+.portfolio-modal-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-base;
+
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: $spacing-xl;
+    color: $text-light;
+
+    @include respond-to(mobile) {
+      font-size: 2.2rem;
+      margin-bottom: $spacing-lg;
+    }
+  }
+
+  .modal-section {
+    margin-bottom: $spacing-xl;
+
+    @include respond-to(mobile) {
+      margin-bottom: $spacing-lg;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $primary-color;
+      margin-bottom: $spacing-base;
+      padding-bottom: $spacing-small;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: #f77851;
+        margin-top: 0.5rem;
+      }
+
+      @include respond-to(mobile) {
+        font-size: 1.6rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: $text-light;
+      margin-bottom: $spacing-base;
+      text-align: justify;
+
+      @include respond-to(mobile) {
+        font-size: 1rem;
+      }
+    }
+
+    .features-list {
+      list-style-type: none;
+      padding: 0;
+      margin: $spacing-base 0;
+
+      li {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: $spacing-base;
+        position: relative;
+        padding-left: $spacing-lg;
+
+        @include respond-to(mobile) {
+          font-size: 1rem;
+          padding-left: $spacing-base;
+        }
+
+        &::before {
+          content: "•";
+          color: $primary-color;
+          font-size: 1.5rem;
+          position: absolute;
+          left: 0;
+          top: -3px;
+        }
+
+        strong {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: $spacing-xl;
+      margin-top: $spacing-lg;
+
+      @include respond-to(mobile) {
+        gap: $spacing-base;
+      }
+
+      .tech-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform $transition-base;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        img {
+          width: auto;
+          height: 80px;
+          margin-bottom: $spacing-small;
+
+          @include respond-to(mobile) {
+            height: 60px;
+          }
+        }
+
+        span {
+          font-size: 1rem;
+          color: $text-light;
+          font-family: $font-family-base;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: $spacing-xl;
+    color: color.adjust($text-light, $alpha: -0.3);
+  }
+}

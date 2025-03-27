@@ -1,0 +1,167 @@
+@use "sass:color";
+@use "sass:math";
+@use "sass:list";
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+.hirogo-modal-content {
+  padding: 0 2rem;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: "Lexend", sans-serif;
+
+  h1 {
+    font-size: 2.5rem;
+    color: #f77851;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: "Tilt Warp", sans-serif;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    color: #f77851;
+    margin: 1.5rem 0 1rem;
+    font-family: "Tilt Warp", sans-serif;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background-color: #f77851;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .modal-section {
+    margin-bottom: 2rem;
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  .team-images {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    img {
+      width: calc(50% - 0.5rem);
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .features-list {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+
+      &::before {
+        content: "•";
+        color: #f77851;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: 0.3rem;
+      }
+
+      strong {
+        color: #f77851;
+      }
+    }
+  }
+
+  .screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+  .iframe-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+
+    .hirogo-iframe {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      background-color: #fff;
+    }
+  }
+
+  .iframe-note {
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    opacity: 0.8;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 0.5rem;
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+      }
+
+      span {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      &:hover img {
+        transform: translateY(-5px);
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+$breakpoint-xxs: 250px;
 $breakpoint-xs: 320px;
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
@@ -12,7 +13,11 @@ $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == xs {
+  @if $breakpoint == xxs {
+    @media (max-width: #{$breakpoint-xs - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == xs {
     @media (max-width: #{$breakpoint-sm - 1}) {
       @content;
     }
@@ -133,40 +138,6 @@ $breakpoint-xxl: 1400px;
   }
 }
 
-@include respond-to(xs) {
-  #home-container {
-    .name-title-1 {
-      font-size: 4em !important;
-      margin-top: 2rem;
-
-      &::after {
-        font-size: 1.8em;
-        transform: translateX(-50%) translateY(-5%) rotate(-3deg);
-        top: 80%;
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    .home-button-div {
-      margin-top: 10vh;
-    }
-  }
-}
-
-@include respond-to(sm) {
-  #home-container {
-    .name-title-1 {
-      font-size: 5em !important;
-
-      &::after {
-        font-size: 2em;
-        transform: translateX(-60%) translateY(-5%) rotate(-3deg);
-      }
-    }
-  }
-}
-
 @include respond-to(mobile) {
   .project-layout {
     grid-template-columns: 1fr !important;
@@ -183,28 +154,6 @@ $breakpoint-xxl: 1400px;
 
     .tech-icon-container {
       margin: $spacing-base 0;
-    }
-  }
-
-  #home-container {
-    .name-title-1 {
-      font-size: 6em !important;
-
-      &::after {
-        font-size: 2.2em;
-        transform: translateX(-60%) translateY(-5%) rotate(-3deg);
-        width: max-content;
-      }
-    }
-
-    .home-button-div {
-      margin-top: 15vh;
-
-      .home-button,
-      .contact-button {
-        font-size: 1.5rem;
-        padding: $spacing-base $spacing-lg;
-      }
     }
   }
 
@@ -232,23 +181,6 @@ $breakpoint-xxl: 1400px;
   }
 }
 
-@include respond-to(tablet) {
-  .project-layout {
-    max-width: 90vw !important;
-  }
-
-  #home-container {
-    .name-title-1 {
-      font-size: 8em !important;
-
-      &::after {
-        font-size: 2.5em;
-        transform: translateX(-65%) translateY(-5%) rotate(-3deg);
-      }
-    }
-  }
-}
-
 // Ajout de classes auxiliaires pour forcer l'affichage ou le masquage
 .force-display {
   display: block !important;
@@ -267,7 +199,7 @@ $breakpoint-xxl: 1400px;
     }
 
     &__message {
-      font-size: $font-size-base;
+      font-size: $font-size-md;
       margin-bottom: $spacing-base;
     }
 
@@ -298,31 +230,7 @@ $breakpoint-xxl: 1400px;
     }
 
     .project-description {
-      font-size: $font-size-base !important;
-    }
-  }
-
-  #home-container {
-    .name-title-1 {
-      font-size: 4em !important;
-      margin-top: 0;
-
-      &::after {
-        font-size: 2em;
-        transform: translateX(-50%) translateY(-5%) rotate(-3deg);
-        top: 70%;
-      }
-    }
-
-    .home-button-div {
-      margin-top: 5vh;
-      flex-direction: row;
-      gap: $spacing-md;
-
-      .home-button,
-      .contact-button {
-        padding: $spacing-small $spacing-base;
-      }
+      font-size: $font-size-md !important;
     }
   }
 }
@@ -331,26 +239,6 @@ $breakpoint-xxl: 1400px;
   @include respond-to(mobile) {
     @include respond-to(portrait) {
       display: none;
-    }
-  }
-}
-
-@include respond-to(desktop) {
-  #home-container {
-    .name-title-1 {
-      &::after {
-        transform: translateX(-70%) translateY(-50%) rotate(-3deg);
-      }
-    }
-  }
-}
-
-@include respond-to(tablet) {
-  #home-container {
-    .name-title-1 {
-      &::after {
-        transform: translateX(-70%) translateY(-100%) rotate(-3deg);
-      }
     }
   }
 }

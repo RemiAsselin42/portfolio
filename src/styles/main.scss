@@ -131,17 +131,6 @@ $warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
   pointer-events: none;
 }
 
-// État initial : hors écran à droite
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transform-style: preserve-3d;
-  height: 100vh;
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
 // Animations de transition droite vers gauche
 
 .reset-position {
@@ -192,7 +181,6 @@ a {
   cursor: pointer;
 }
 
-// Ajout à la fin du fichier _responsive.scss
 .force-display {
   display: block !important;
 }
