@@ -11,10 +11,16 @@
   width: 100%;
   max-width: $max-width-form;
   margin: 0 auto;
-  padding: 0 $spacing-lg;
+  padding: $spacing-lg;
+  overflow: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include respond-to(mobile) {
-    padding: 0 $spacing-base;
     width: auto;
   }
 
@@ -22,7 +28,7 @@
     font-size: $font-size-xl;
     color: $text-light;
     text-align: center;
-    margin-bottom: $spacing-xl;
+    margin-top: $spacing-base;
     text-decoration: underline $primary-color 3px;
     text-underline-offset: 5px;
 
@@ -43,7 +49,7 @@
 
     input,
     textarea {
-      width: 100%;
+      width: calc(100% - 2 * #{$spacing-base});
       padding: $spacing-base;
       background-color: rgba($input-bg, 0.5);
       border: 2px solid $input-border;
@@ -135,17 +141,18 @@
       }
 
       .submit-button {
-        font-size: clamp(1.5rem, 2rem, 2.5em);
+        font-size: 1.8em;
         align-self: center;
         width: fit-content;
         background-color: $primary-color;
         border: 6px solid $primary-color;
         border-radius: $border-radius-full;
-        padding: $spacing-base $spacing-xl;
+        padding: 10px 0;
         font-family: $font-family-title-1;
         color: $text-light;
         transition: all $transition-base;
         opacity: 0.8;
+        min-width: 35%;
 
         @include respond-to(mobile) {
           width: 100%;
@@ -163,7 +170,7 @@
       }
 
       .home-button:not(.message-sent) {
-        font-size: clamp(1.5rem, 2rem, 2.5em);
+        font-size: 1.8em;
         background-color: transparent;
         border: 6px solid $white;
         filter: blur(2px);

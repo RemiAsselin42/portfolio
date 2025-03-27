@@ -10,13 +10,13 @@ export const Project1Page = (props: PageProps) => (
       src: "/remi-pixel-art.png",
       alt: "Portrait pixel art de Rémi",
     }}
-    projectTitle="Bonjour !"
+    projectTitle="Bonjour&nbsp;!"
     projectDescription={
       <>
-        <strong>Bienvenue</strong> sur mon portfolio !
+        <strong>Bienvenue</strong> sur mon portfolio&nbsp;!
         <hr />
         Je suis Rémi, <strong>designer et développeur web</strong> à mon compte
-        !
+       &nbsp;!
         <hr />
         Actuellement en{" "}
         <strong>
@@ -45,7 +45,7 @@ export const Project1Page = (props: PageProps) => (
         <button className="btn-contact-text" onClick={props.onContactPage}>
           <strong>contactez-moi </strong>
         </button>{" "}
-        directement !
+        directement&nbsp;!
       </>
     }
     projectTech="React.js, Vite.js, TypeScript, SASS, GitHub"

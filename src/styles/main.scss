@@ -3,7 +3,7 @@
 @use "sass:list";
 @use "variables" as *;
 @use "mixins" as *;
-@use "responsive";
+@use "responsive" as *;
 
 :root {
   font-family: $font-family-base;
@@ -19,7 +19,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  --footer-height: 0px;
 }
 
 * {
@@ -57,7 +56,7 @@ body {
 }
 
 // Define warm colors array
-$warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
+$warm-colors: (#ff6b6b, #f0a500, #ff7300, #ff9564, #ff5733);
 
 // Function to get random warm color
 @function random-warm-color() {
@@ -71,7 +70,7 @@ $warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
   width: 100%;
   height: 100%;
   z-index: 0;
-  background-color: #1f1a1a;
+  background-color: #463a3a;
 }
 
 .noise-filter {
@@ -109,9 +108,13 @@ $warm-colors: (#ff6b6b, #f0a500, #ffa600, #ff9564, #ff5733);
     margin: 0 auto;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0.9;
+    opacity: 0.3;
     z-index: 9999;
     border-radius: $border-radius-full;
+
+    @include respond-to(mobile) {
+      opacity: 0;
+    }
   }
 
   .shape {

@@ -34,7 +34,7 @@ export const Project8Page = (props: PageProps) => (
     modalContent={{
       title: "Détails du projet",
       description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
+        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications &nbsp;!",
       aboutProjectTitle: "À propos de cette charte graphique",
       aboutProject:
         "Ce projet m'a permis d'explorer l'univers visuel des années 80/90 tout en l'adaptant à un club sportif contemporain. J'ai recherché des références historiques du design de cette époque pour m'imprégner de ses codes visuels caractéristiques : couleurs vives, effets néon, typographies marquées et compositions géométriques. La difficulté était de créer une identité qui soit à la fois nostalgique et fonctionnelle pour un club de basket moderne.",

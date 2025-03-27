@@ -33,7 +33,7 @@ export const Project6Page = (props: PageProps) => (
     modalContent={{
       title: "Détails du projet",
       description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
+        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications &nbsp;!",
       aboutProjectTitle: "À propos de Hyxe",
       aboutProject:
         "L'objectif principal de ce projet était d'apprendre à développer une application web dynamique avec PHP et SQL. Nous avons choisi de reproduire l'interface et les fonctionnalités de base de Twitter pour relever un défi technique intéressant tout en travaillant sur une plateforme connue. Ce projet m'a permis de développer mes compétences en PHP et en gestion de bases de données relationnelles.",

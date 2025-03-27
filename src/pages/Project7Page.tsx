@@ -41,7 +41,7 @@ export const Project7Page = (props: PageProps) => (
     modalContent={{
       title: "Détails du projet",
       description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
+        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications &nbsp;!",
       aboutProjectTitle: "À propos de ce projet vidéo",
       aboutProject:
         "L'esthétique 'hopecore' se caractérise par un montage dynamique, des transitions rapides et une ambiance visuelle particulière. Ce projet m'a demandé environ 6 heures de post-production pour transformer 1h30 de rush en une vidéo de 45 secondes qui respecte les codes de ce style très populaire sur TikTok. J'ai géré l'ensemble du processus créatif, du storyboard à l'exportation finale en passant par la colorimétrie et le choix musical.",

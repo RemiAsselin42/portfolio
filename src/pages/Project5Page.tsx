@@ -36,7 +36,7 @@ export const Project5Page = (props: PageProps) => (
     modalContent={{
       title: "Détails du stage",
       description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications !",
+        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications &nbsp;!",
       aboutProjectTitle: "À propos de ce stage",
       aboutProject:
         "GeoPostcodes est une entreprise spécialisée dans les données géographiques et postales. Mon rôle a été d'améliorer l'expérience utilisateur de leur plateforme et de développer de nouvelles fonctionnalités interactives pour faciliter l'accès à leurs données. J'ai notamment conçu une carte interactive permettant aux utilisateurs de visualiser et d'interroger facilement les données géographiques.",
