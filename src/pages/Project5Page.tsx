@@ -33,22 +33,137 @@ export const Project5Page = (props: PageProps) => (
       </>
     }
     projectTech="WordPress, Elementor, React.js, TypeScript, Figma, MapBox, HTML, CSS, SEO"
-    modalContent={{
-      title: "Détails du stage",
-      description:
-        "Tout au long de ce portfolio vous pourrez cliquer sur les images de présentation des différents projets pour en savoir plus, et même tester certaines applications &nbsp;!",
-      aboutProjectTitle: "À propos de ce stage",
-      aboutProject:
-        "GeoPostcodes est une entreprise spécialisée dans les données géographiques et postales. Mon rôle a été d'améliorer l'expérience utilisateur de leur plateforme et de développer de nouvelles fonctionnalités interactives pour faciliter l'accès à leurs données. J'ai notamment conçu une carte interactive permettant aux utilisateurs de visualiser et d'interroger facilement les données géographiques.",
-      portfolioTechnologies: [
-        { name: "WordPress", icon: "/wordpress.png" },
-        { name: "React", icon: "/react.png" },
-        { name: "TypeScript", icon: "/typescript.png" },
-        { name: "Figma", icon: "/figma.png" },
-        { name: "MapBox", icon: "/mapbox.png" },
-        { name: "SEO", icon: "/seo.png" },
-      ],
-    }}
+    modalContent={
+      <div className="geopostcodes-modal-content">
+        <h1>Stage GeoPostcodes</h1>
+
+        <section className="modal-section">
+          <h2>Présentation de l'entreprise</h2>
+          <p>
+            GeoPostcodes est une entreprise spécialisée dans les données géographiques et 
+            postales à l'échelle internationale. Elle fournit des bases de données précises 
+            et à jour concernant les codes postaux, divisions administratives et informations 
+            géographiques pour plus de 250 pays et territoires.
+          </p>
+          <p>
+            La plateforme web de GeoPostcodes permet aux entreprises et aux organisations 
+            d'accéder à ces données et de les utiliser pour améliorer leur logistique, 
+            leur analyse de marché et leurs stratégies de marketing géolocalisé.
+          </p>
+        </section>
+
+        <section className="modal-section">
+          <h2>Missions principales</h2>
+          <ul className="features-list">
+            <li>
+              <strong>Refonte de pages existantes</strong> : Amélioration du design et de 
+              l'expérience utilisateur des pages principales du site avec WordPress et Elementor
+            </li>
+            <li>
+              <strong>Optimisation SEO</strong> : Analyse et amélioration du référencement 
+              naturel, optimisation des méta-données et de la structure des pages
+            </li>
+            <li>
+              <strong>Développement d'une carte interactive</strong> : Création d'une 
+              application cartographique permettant la visualisation des données postales
+            </li>
+            <li>
+              <strong>Outil de recherche avancée</strong> : Développement d'un "Zip Code Looker" 
+              pour faciliter l'accès aux données de l'entreprise
+            </li>
+          </ul>
+        </section>
+
+        <section className="modal-section">
+          <h2>Développement et compétences acquises</h2>
+          <p>
+            Ce stage m'a permis de développer des compétences variées, allant de la gestion 
+            de CMS comme WordPress à l'utilisation de frameworks modernes comme React.js. 
+            J'ai également approfondi mes connaissances en SEO et en UX/UI design.
+          </p>
+          <p>
+            La création de l'application cartographique avec MapBox a été particulièrement 
+            enrichissante, car elle m'a permis de combiner mes compétences en design (Figma) 
+            et en développement (React, TypeScript) pour créer un outil interactif et intuitif.
+          </p>
+        </section>
+
+        <section className="modal-section">
+          <h2>Technologies utilisées</h2>
+          <div className="tech-stack">
+            <div className="tech-item">
+              <img src="/wordpress.png" alt="WordPress" />
+              <span>WordPress</span>
+            </div>
+            <div className="tech-item">
+              <img src="/elementor.png" alt="Elementor" />
+              <span>Elementor</span>
+            </div>
+            <div className="tech-item">
+              <img src="/react.png" alt="React" />
+              <span>React</span>
+            </div>
+            <div className="tech-item">
+              <img src="/typescript.png" alt="TypeScript" />
+              <span>TypeScript</span>
+            </div>
+            <div className="tech-item">
+              <img src="/mapbox.png" alt="MapBox" />
+              <span>MapBox</span>
+            </div>
+            <div className="tech-item">
+              <img src="/figma.png" alt="Figma" />
+              <span>Figma</span>
+            </div>
+            <div className="tech-item">
+              <img src="/seo.png" alt="SEO" />
+              <span>SEO</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="modal-section">
+          <h2>Réalisations</h2>
+          <p>
+            Voici quelques-unes des réalisations effectuées lors de ce stage :
+          </p>
+          <div className="project-gallery">
+            <div className="gallery-item">
+              <img src="/geopostcodes-map.png" alt="Carte interactive GeoPostcodes" />
+              <span>Carte interactive des codes postaux</span>
+            </div>
+            <div className="gallery-item">
+              <img src="/geopostcodes-zipcode.png" alt="Outil de recherche de codes postaux" />
+              <span>Zip Code Looker</span>
+            </div>
+            <div className="gallery-item">
+              <img src="/geopostcodes-homepage.png" alt="Refonte de la page d'accueil" />
+              <span>Refonte de la page d'accueil</span>
+            </div>
+            <div className="gallery-item">
+              <img src="/geopostcodes-dashboard.png" alt="Dashboard utilisateur" />
+              <span>Interface du tableau de bord</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="modal-section">
+          <h2>Impact et résultats</h2>
+          <p>
+            Les améliorations apportées au site web ont contribué à une augmentation 
+            significative du trafic organique (+23%) et à une meilleure rétention des 
+            utilisateurs. La carte interactive a particulièrement été appréciée par les 
+            clients, facilitant leur compréhension et utilisation des données géographiques.
+          </p>
+          <p>
+            Ce stage m'a permis de développer des compétences techniques très recherchées 
+            et de comprendre comment elles s'intègrent dans un environnement professionnel réel. 
+            J'ai également eu l'opportunité de travailler dans un contexte international, 
+            GeoPostcodes servant des clients dans le monde entier.
+          </p>
+        </section>
+      </div>
+    }
   />
 );
 
