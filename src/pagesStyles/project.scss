@@ -177,6 +177,11 @@
 }
 
 @include respond-to(mobile) {
+
+  #project-1 .buttons-visible {
+    transform: translateY(0px);
+  }
+
   .project-button-container {
     position: fixed;
     bottom: 0;
@@ -186,7 +191,7 @@
     transition: transform 0.3s ease-out;
     transform: translateY(200px);
     &.buttons-visible {
-      transform: translateY(42px);
+      transform: translateY(10px);
     }
 
     .project-button {
@@ -194,8 +199,7 @@
       display: flex;
       justify-content: center;
 
-      .next-button,
-      .en-savoir-plus {
+      .next-button {
         font-size: 1.5em;
         align-self: center;
         width: fit-content;
@@ -204,7 +208,7 @@
         background-color: $primary-color;
         border: none;
         border-radius: 50px;
-        padding: $spacing-base $spacing-lg;
+        padding: 7px 10px;
         font-family: $font-family-title-1;
         color: $text-light;
         transition: none;
@@ -213,6 +217,30 @@
         position: relative;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+        &::before {
+          display: none;
+        }
+      }
+
+      .en-savoir-plus {
+        font-size: 1.5em;
+        align-self: center;
+        width: fit-content;
+        min-width: 40%;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: inset 0 0 0 3.5px $white, 0 0 5px rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+        padding: 7px 10px;
+        font-family: $font-family-title-1;
+        color: $text-light;
+        transition: none;
+        opacity: 0.8;
+        filter: none;
+        position: relative;
+        text-align: center;
 
         &::before {
           display: none;
