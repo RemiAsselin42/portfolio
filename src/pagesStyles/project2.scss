@@ -5,11 +5,18 @@
 @use "../styles/mixins" as *;
 
 .hirogo-modal-content {
+  max-width: 1200px;
+
+  section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   h1 {
     font-size: 2.5rem;
     color: #f77851;
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 2rem;
     font-family: "Tilt Warp", sans-serif;
   }
 
@@ -155,10 +162,6 @@
       span {
         font-size: 0.9rem;
         text-align: center;
-      }
-
-      &:hover img {
-        transform: translateY(-5px);
       }
     }
   }

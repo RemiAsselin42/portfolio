@@ -7,14 +7,18 @@
 
 .portfolio-modal-content {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: $spacing-base;
+
+  section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    color: #f77851;
     text-align: center;
-    margin-bottom: $spacing-xl;
-    color: $text-light;
+    margin: 2rem;
+    font-family: "Tilt Warp", sans-serif;
 
     @include respond-to(mobile) {
       font-size: 2.2rem;

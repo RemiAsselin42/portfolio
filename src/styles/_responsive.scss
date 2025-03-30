@@ -12,6 +12,8 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
 
+$breakpoint-max-height: 800px;
+
 @mixin respond-to($breakpoint) {
   @if $breakpoint == xxs {
     @media (max-width: #{$breakpoint-xs - 1}) {
@@ -51,6 +53,10 @@ $breakpoint-xxl: 1400px;
     }
   } @else if $breakpoint == desktop {
     @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $breakpoint == macbook {
+    @media (max-height: #{$breakpoint-max-height - 1}) and (min-width: #{$breakpoint-md}) {
       @content;
     }
   } @else if $breakpoint == landscape {
@@ -102,39 +108,45 @@ $breakpoint-xxl: 1400px;
   }
 }
 
-// Ajout de classes auxiliaires pour forcer l'affichage ou le masquage
-.force-display {
-  display: block !important;
-}
+@include respond-to(tablet) {
+  .project-layout {
+    grid-template-columns: 1fr !important;
+    max-width: 95vw !important;
+  }
 
-.force-hidden {
-  display: none !important;
-}
+  .project-text {
+    padding: 0 $spacing-base;
+  }
 
-// Adaptations pour l'orientation paysage sur mobile
-@include respond-to(landscape) {
-  .mobile-warning {
-    &__title {
-      font-size: $font-size-lg;
-      margin-bottom: $spacing-base;
-    }
+  .modale-section-logos {
+    flex-direction: column;
+    align-items: center;
 
-    &__message {
-      font-size: $font-size-md;
-      margin-bottom: $spacing-base;
-    }
-
-    &__image {
-      width: 100px;
-      margin: $spacing-base auto;
-    }
-
-    &__button {
-      padding: $spacing-small $spacing-base;
-      font-size: 0.9rem;
+    .tech-icon-container {
+      margin: $spacing-base 0;
     }
   }
 
+  .project-video,
+  .tiktok-embed-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .project-dots-div {
+    bottom: 10px;
+
+    .project-dots {
+      .dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+@include respond-to(landscape) {
   .project-layout {
     display: flex;
     flex-direction: column;
@@ -152,14 +164,6 @@ $breakpoint-xxl: 1400px;
 
     .project-description {
       font-size: $font-size-md !important;
-    }
-  }
-}
-
-.hidden-on-mobile {
-  @include respond-to(mobile) {
-    @include respond-to(portrait) {
-      display: none;
     }
   }
 }

@@ -14,29 +14,46 @@
 @use "project7" as *;
 @use "project8" as *;
 
-// État initial : hors écran à droite
 .page-wrapper {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   transform-style: preserve-3d;
   max-width: 1500px;
   margin: 0 auto;
+
+  @include respond-to(mobile) {
+    padding: 0 $spacing-lg;
+    height: 100vh;
+  }
+
+  @include respond-to(tablet) {
+    padding: 0 $spacing-lg;
+    height: 100vh;
+  }
+}
+
+#page-0 {
   height: 100vh;
 }
 
 // Projects
 .project-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
   .project-info {
     font-size: 1.5em;
     color: color.adjust($text-light, $alpha: -0.6);
     filter: blur(1px);
     text-align: center;
     height: fit-content;
-    margin: $spacing-lg;
+    margin-top: 1em;
 
     @include respond-to(mobile) {
       font-size: 1.2em;
-      margin: $spacing-base;
+      margin: $spacing-base 0;
     }
   }
 
@@ -45,7 +62,7 @@
     flex-grow: 1;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: $primary-color rgba($white, 0.2);
+    scrollbar-color: $primary-color transparent;
     margin-bottom: 0;
     position: relative;
     top: 0;
@@ -56,7 +73,7 @@
     }
 
     &::-webkit-scrollbar-track {
-      background: rgba($white, 0.1);
+      background: transparent;
       border-radius: 10px;
     }
 
@@ -68,7 +85,7 @@
     @include respond-to(mobile) {
       scrollbar-width: none;
       &::-webkit-scrollbar {
-        display: none ;
+        display: none;
       }
     }
 
@@ -106,7 +123,7 @@
         font-size: 3em;
         color: $text-light;
         text-align: center;
-        margin-bottom: $spacing-lg;
+        margin: $spacing-lg 0;
         line-height: 1;
       }
 
@@ -121,12 +138,16 @@
         padding-right: $spacing-base;
         scrollbar-width: thin;
 
+        @include respond-to(macbook) {
+          max-height: calc(100lvh - 410px);
+        }
+
         &::-webkit-scrollbar {
           width: 6px;
         }
 
         &::-webkit-scrollbar-track {
-          background: rgba($white, 0.1);
+          background: transparent;
           border-radius: 10px;
         }
 
@@ -171,17 +192,20 @@
         width: 80%;
         margin: $spacing-lg auto;
         flex-shrink: 0;
+
+        @include respond-to(mobile) {
+          padding-bottom: 45px;
+        }
+
+        @include respond-to(tablet) {
+          padding-bottom: 20px;
+        }
       }
     }
   }
 }
 
 @include respond-to(mobile) {
-
-  #project-1 .buttons-visible {
-    transform: translateY(0px);
-  }
-
   .project-button-container {
     position: fixed;
     bottom: 0;
@@ -191,7 +215,7 @@
     transition: transform 0.3s ease-out;
     transform: translateY(200px);
     &.buttons-visible {
-      transform: translateY(10px);
+      transform: translateY(-34px);
     }
 
     .project-button {
@@ -279,7 +303,7 @@
     transition: transform 0.3s ease-out;
     transform: translateY(200px);
     &.buttons-visible {
-      transform: translateY(42px);
+      transform: translateY(-30px);
     }
 
     .project-button {
@@ -287,8 +311,21 @@
       display: flex;
       justify-content: center;
 
+      @include respond-to(mobile) {
+        gap: $spacing-base;
+      }
+      @include respond-to(tablet) {
+        gap: 50px;
+      }
+
       .next-button,
       .en-savoir-plus {
+        @include respond-to(tablet) {
+          min-width: 30% !important;
+        }
+      }
+
+      .next-button {
         font-size: 1.5em;
         align-self: center;
         width: fit-content;
@@ -297,7 +334,7 @@
         background-color: $primary-color;
         border: none;
         border-radius: 50px;
-        padding: $spacing-base $spacing-lg;
+        padding: 7px 10px;
         font-family: $font-family-title-1;
         color: $text-light;
         transition: none;
@@ -306,6 +343,30 @@
         position: relative;
         text-align: center;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+        &::before {
+          display: none;
+        }
+      }
+
+      .en-savoir-plus {
+        font-size: 1.5em;
+        align-self: center;
+        width: fit-content;
+        min-width: 40%;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: inset 0 0 0 3.5px $white, 0 0 5px rgba(0, 0, 0, 0.3);
+        border-radius: 50px;
+        padding: 7px 10px;
+        font-family: $font-family-title-1;
+        color: $text-light;
+        transition: none;
+        opacity: 0.8;
+        filter: none;
+        position: relative;
+        text-align: center;
 
         &::before {
           display: none;
@@ -414,35 +475,86 @@
   }
 }
 
+// .project-container {
+// }
+// .project-details-container {
+//   // max-height: calc(100lvh - 170px);
+//   // padding-bottom: 60px;
+
+//   .project-container {
+//     // align-self: center;
+//     perspective: 1000px;
+//     backface-visibility: hidden;
+//     will-change: transform;
+//     transform-style: preserve-3d;
+//     transform-origin: center center;
+//     position: absolute;
+//     // margin: 0 auto;
+//     width: 100%;
+//     // height: 80%;
+//     // margin: 0 0 110px;
+
+//     @include respond-to(mobile) {
+//       height: 100lvh;
+//     }
+
+//     &.flipping-out {
+//       animation: flip-out 0.5s forwards;
+//       z-index: 10;
+//     }
+
+//     &.flipping-in {
+//       animation: flip-in 0.5s forwards;
+//       z-index: 5;
+//     }
+//   }
+// }
+
 .project-container,
 .project-details-container {
   perspective: 1000px;
   backface-visibility: hidden;
   will-change: transform;
-  
+
   transform-style: preserve-3d;
   transform-origin: center center;
-  position: absolute; // Add this to ensure proper positioning
-  width: 100%; // Make sure both containers take full width
-  height: 100%; // Make sure both containers take full height
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
   &.flipping-out {
     animation: flip-out 0.5s forwards;
-    z-index: 10; // Higher z-index for the outgoing element
+    z-index: 10;
   }
 
   &.flipping-in {
     animation: flip-in 0.5s forwards;
-    z-index: 5; // Lower z-index for the incoming element initially
+    z-index: 5;
   }
 }
 
+.project-details-container {
+  justify-content: center;
+}
+
 .project-flip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   height: calc(100lvh - 65px);
   margin: 0 auto;
   position: relative;
   perspective: 1000px;
+
+  @include respond-to(macbook) {
+    height: 100vh;
+  }
+
+  @include respond-to(desktop) {
+    height: 100vh;
+  }
 }
 
 @keyframes flip-out {
@@ -463,47 +575,67 @@
   }
   50% {
     opacity: 0.5;
-    z-index: 15; // Increase z-index mid-animation to ensure it comes to front
+    z-index: 15;
   }
   100% {
     transform: rotateY(0deg);
     opacity: 1;
-    z-index: 20; // Higher z-index at the end to ensure it's on top
+    z-index: 20;
   }
 }
 
 .project-details {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  max-height: calc(100vh - 170px);
+
+  @include respond-to(mobile) {
+    height: calc(100lvh - 150px);
+  }
+
+  @include respond-to(tablet) {
+    height: calc(100lvh - 170px);
+  }
+
+  @include respond-to(macbook) {
+    height: calc(100lvh - 125px);
+  }
+
+  @include respond-to(desktop) {
+    height: calc(100lvh - 125px);
+  }
 }
-
-
-.project-details-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 2em 1em 0;
-  height: calc(100vh - 170px);
-}
-
 
 .project-details-scrollable {
-  width: 100%;
+  width: fit-content;
   overflow-y: auto;
-  padding: 0 $spacing-lg;
   scrollbar-width: thin;
   scrollbar-color: $primary-color transparent;
+  scroll-behavior: smooth;
+
+  scrollbar-gutter: stable both-edges;
 
   @include respond-to(mobile) {
     scrollbar-width: none;
     &::-webkit-scrollbar {
-      display: none ;
+      display: none;
     }
+  }
+
+  @include respond-to(tablet) {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @include respond-to(macbook) {
+    margin-top: 20px;
+  }
+
+  @include respond-to(desktop) {
+    margin-top: 35px;
   }
 
   &::-webkit-scrollbar {
@@ -511,13 +643,20 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: rgba($white, 0.1);
+    background: transparent;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: $primary-color;
     border-radius: 10px;
+  }
+}
+
+.project-details-content {
+  @include respond-to(macbook) {
+    max-width: 1000px;
+    margin: 0 50px;
   }
 }
 
@@ -531,7 +670,23 @@
   padding: $spacing-base 0;
   z-index: 1001;
   bottom: 0;
-  transform: translateY(10px);
+  transform: translateY(-0px);
+
+  @include respond-to(mobile) {
+    transform: translateY(-10px);
+  }
+
+  @include respond-to(tablet) {
+    transform: translateY(-25px);
+  }
+
+  @include respond-to(macbook) {
+    transform: translateY(-50px);
+  }
+
+  @include respond-to(desktop) {
+    transform: translateY(-50px);
+  }
 
   .prev-button {
     font-size: clamp(1rem, 1.5rem, 2.5em);
@@ -540,12 +695,14 @@
     background-color: $primary-color;
     border: 3px solid $primary-color;
     border-radius: $border-radius-full;
-    padding: $spacing-small $spacing-lg;
+    padding: 5px $spacing-lg;
     font-family: $font-family-title-1;
     color: $text-light;
     transition: all $transition-base;
     filter: blur(2px);
     opacity: 0.6;
+
+    filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
 
     &:hover {
       filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
@@ -555,4 +712,3 @@
     }
   }
 }
-

@@ -59,7 +59,7 @@ export const ProjectTemplate = ({
   const projectLayoutRef = useRef<HTMLDivElement>(null);
 
   const checkIfMobile = () => {
-    const mobileBreakpoint = 768;
+    const mobileBreakpoint = 992;
     setIsMobile(window.innerWidth < mobileBreakpoint);
   };
 
@@ -202,7 +202,7 @@ export const ProjectTemplate = ({
         <div
           className={`project-container ${getContainerClass()}`}
           id={`project-${projectId}`}
-          style={{ display: showDetails && !isFlipping ? "none" : "block" }}
+          style={{ display: showDetails && !isFlipping ? "none" : "flex" }}
         >
           <h3 className="project-info">{projectInfo}</h3>
           <div
@@ -259,7 +259,7 @@ export const ProjectTemplate = ({
         <>
           <div
             className={`project-details-container ${getDetailsClass()}`}
-            style={{ display: !showDetails && !isFlipping ? "none" : "block" }}
+            style={{ display: !showDetails && !isFlipping ? "none" : "flex" }}
           >
             <div className="project-details">
               <div className="project-details-scrollable">
