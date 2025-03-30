@@ -15,13 +15,14 @@
   overflow: auto;
 
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
   }
 
   @include respond-to(mobile) {
     width: auto;
+    margin: 0;
   }
 
   .contact-title {

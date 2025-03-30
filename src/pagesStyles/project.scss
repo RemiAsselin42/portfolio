@@ -67,6 +67,15 @@
     position: relative;
     top: 0;
     max-height: calc(100lvh - 170px);
+    align-items: center;
+
+    @include respond-to(macbook) {
+      gap: 50px;
+    }
+
+    @include respond-to(desktop) {
+      gap: 50px;
+    }
 
     &::-webkit-scrollbar {
       width: 8px;
@@ -83,6 +92,13 @@
     }
 
     @include respond-to(mobile) {
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @include respond-to(tablet) {
       scrollbar-width: none;
       &::-webkit-scrollbar {
         display: none;
@@ -657,6 +673,10 @@
   @include respond-to(macbook) {
     max-width: 1000px;
     margin: 0 50px;
+  }
+
+  @include respond-to(desktop) {
+    margin: 0 100px;
   }
 }
 
