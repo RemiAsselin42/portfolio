@@ -5,7 +5,7 @@ export const Project2Page = (props: PageProps) => (
   <ProjectTemplate
     {...props}
     projectId={2}
-    projectInfo="Projet de cours : Workshop avec le département de la Loire"
+    projectInfo="Projet de cours&nbsp;:&nbsp;Workshop avec le département de la Loire"
     projectImage={{
       src: "/mockup-hirogo.png",
       alt: "Mockup de l'application HiroGo",
@@ -13,10 +13,11 @@ export const Project2Page = (props: PageProps) => (
     projectTitle="HiroGo"
     projectDescription={
       <>
-        <strong>HiroGo</strong> est une application que j'ai développée et en
-        partie designée lors d'un Workshop de groupe en partenariat avec le
+        <strong>HiroGo</strong> est une application que j'ai développé et en
+        partie designé lors d'un Workshop de groupe en partenariat avec le
         département de la Loire. L'objectif de ce projet était de promouvoir les
-        mobilités douces auprès des jeunes.
+        mobilités douces auprès des jeunes. Notre groupe a décidé de concevoir
+        une application pour aider et accompagner les jeunes à faire du vélo.
         <br />
         Avec HiroGo, les utilisateurs peuvent :
         <ul>
@@ -58,10 +59,11 @@ export const Project2Page = (props: PageProps) => (
           </p>
           <p>
             Notre équipe pluridisciplinaire était composée de 7 étudiants, dont
-            5 étudiant en communication digitale, et 2 data-ingénieurs Ensemble,
-            nous avons imaginé le projet, réalisé une charte graphique, un logo,
-            conçu toute la communication autour du projet, pensé l'application
-            et développé un prototype fonctionnel.
+            5 étudiant en communication digitale, et 2 data-ingénieurs.
+            Ensemble, nous avons imaginé le projet, réalisé une charte
+            graphique, un logo, conçu toute la communication autour du projet,
+            pensé l'application et développé un prototype fonctionnel, en 1
+            semaine.
           </p>
           <p>
             J'ai moi-même été en charge du développement front-end de
@@ -85,31 +87,33 @@ export const Project2Page = (props: PageProps) => (
           <h2>Fonctionnalités clés</h2>
           <ul className="features-list">
             <li>
-              <strong>Itinéraires adaptés</strong> : Cartographie spécialement
-              conçue pour privilégier les pistes cyclables, voies vertes et
-              routes peu fréquentées
+              <strong>Itinéraires adaptés</strong>&nbsp;:&nbsp;Cartographie
+              spécialement conçue pour privilégier les pistes cyclables, voies
+              vertes et routes peu fréquentées
             </li>
             <li>
-              <strong>Système de récompenses</strong> : Des points et badges
-              sont attribués aux utilisateurs selon la distance parcourue et les
-              défis relevés
+              <strong>Système de récompenses</strong>&nbsp;:&nbsp;Des points et
+              badges sont attribués aux utilisateurs selon la distance parcourue
+              et les défis relevés
             </li>
             <li>
-              <strong>Quêtes journalières</strong> : Des missions quotidiennes
-              motivent les jeunes à utiliser régulièrement l'application
+              <strong>Quêtes journalières</strong>&nbsp;:&nbsp;Des missions
+              quotidiennes motivent les jeunes à utiliser régulièrement
+              l'application
             </li>
             <li>
-              <strong>Météo intégrée</strong> : Prévisions précises pour
-              planifier ses déplacements en connaissance de cause
+              <strong>Météo intégrée</strong>&nbsp;:&nbsp;Prévisions précises
+              pour planifier ses déplacements en connaissance de cause
             </li>
             <li>
-              <strong>Points d'intérêt</strong> : Découverte de lieux
+              <strong>Points d'intérêt</strong>&nbsp;:&nbsp;Découverte de lieux
               remarquables, d'attractions et de commodités (fontaines,
               toilettes, etc.)
             </li>
             <li>
-              <strong>Événements locaux</strong> : Agenda des activités
-              organisées par les institutions locales accessibles à vélo
+              <strong>Événements locaux</strong>&nbsp;:&nbsp;Agenda des
+              activités organisées par les institutions locales accessibles à
+              vélo
             </li>
           </ul>
         </section>
@@ -132,8 +136,7 @@ export const Project2Page = (props: PageProps) => (
               src="https://remiasselin42.github.io/HiroGo/"
               title="HiroGo Application"
               className="hirogo-iframe"
-              width="393"
-              height="673"
+              height="670"
               loading="lazy"
               allow="geolocation"
             />

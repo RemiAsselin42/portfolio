@@ -15,7 +15,7 @@
 
   h1 {
     font-size: 2.5rem;
-    color: #f77851;
+    color: $project1-color;
     text-align: center;
     margin: 2rem;
     font-family: "Tilt Warp", sans-serif;
@@ -44,7 +44,7 @@
         display: block;
         width: 50px;
         height: 3px;
-        background-color: #f77851;
+        background-color: $project1-color;
         margin-top: 0.5rem;
       }
 

@@ -14,7 +14,7 @@
 
   h1 {
     font-size: 2.5rem;
-    color: #f77851;
+    color: $project2-color;
     text-align: center;
     margin: 2rem;
     font-family: "Tilt Warp", sans-serif;
@@ -22,7 +22,7 @@
 
   h2 {
     font-size: 1.8rem;
-    color: #f77851;
+    color: $project2-color;
     margin: 1.5rem 0 1rem;
     font-family: "Tilt Warp", sans-serif;
     position: relative;
@@ -32,7 +32,7 @@
       display: block;
       width: 50px;
       height: 3px;
-      background-color: #f77851;
+      background-color: $project2-color;
       margin-top: 0.5rem;
     }
   }
@@ -81,7 +81,7 @@
 
       &::before {
         content: "•";
-        color: #f77851;
+        color: $project2-color;
         font-size: 1.5rem;
         position: absolute;
         left: 0;
@@ -89,7 +89,7 @@
       }
 
       strong {
-        color: #f77851;
+        color: $project2-color;
       }
     }
   }

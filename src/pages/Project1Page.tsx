@@ -12,41 +12,41 @@ export const Project1Page = (props: PageProps) => (
     }}
     projectTitle="Bonjour&nbsp;!"
     projectDescription={
-      <>
+      <p>
         <strong>Bienvenue</strong> sur mon portfolio&nbsp;!
         <hr />
         Je suis Rémi, <strong>designer et développeur web</strong> à mon compte
-       &nbsp;!
+        &nbsp;!
         <hr />
         Actuellement en{" "}
         <strong>
           bachelor Information Communication et Design Digital
-        </strong> à <strong>Télécom Saint-Étienne</strong>, je recherche un{" "}
-        <strong>master en web design</strong> pour septembre 2025.
+        </strong> à <strong>Télécom Saint-Étienne</strong>, je recherche un
+        <strong> master en web design</strong> pour septembre 2025.
         <hr />
         Découvrez ici mes <strong>projets web, print et audiovisuels</strong>,
         issus de travaux personnels et académiques.
         <hr />
         En parallèle, j'ai créé mon <strong>auto-entreprise</strong>,
         collaborant avec des <strong>associations du secteur social</strong>,
-        développant ainsi mes compétences en{" "}
-        <strong>gestion entrepreneuriale</strong>
+        développant ainsi mes compétences en
+        <strong> gestion entrepreneuriale</strong>
         .
         <hr />
-        J'utilise divers outils et technologies :{" "}
-        <strong>
-          Suite Adobe, Figma, HTML, SCSS, JS, React, PHP, SQL, WampServer,
-          GitHub, Docker.
-        </strong>
+        J'utilise divers outils et technologies&nbsp;:&nbsp;
+        <strong>Photoshop, Illustrator, InDesign, & Figma</strong> pour le
+        design,{" "}
+        <strong>HTML, SCSS, JS, React, PHP, SQL, Wordpress et GitHub </strong>
+        pour mes projets web, et<strong> Premiere Pro </strong>
+        pour le montage vidéo.
         <hr />
-        J'ai également une expérience en <strong>vidéo et photographie</strong>.
-        <hr />
-        Curieux d'en savoir plus ? Cliquez sur suivant ou{" "}
+        Curieux d'en savoir plus ? Cliquez sur <strong>+</strong> ou{" "}
+        <strong>{">"}</strong> ou{" "}
         <button className="btn-contact-text" onClick={props.onContactPage}>
-          <strong>contactez-moi </strong>
-        </button>{" "}
+          <strong> contactez-moi </strong>
+        </button>
         directement&nbsp;!
-      </>
+      </p>
     }
     projectTech="React.js, Vite.js, TypeScript, SASS, GitHub"
     modalContent={
@@ -58,7 +58,7 @@ export const Project1Page = (props: PageProps) => (
           <p>
             Ce portfolio est conçu comme une vitrine de mes compétences et
             réalisations en tant que designer et développeur web. J'ai voulu
-            créer une expérience immersive et interactive qui reflète ma
+            créer un portfolio plutôt atipique par sa forme, qui reflète ma
             personnalité et mon approche créative.
           </p>
           <p>
@@ -73,7 +73,8 @@ export const Project1Page = (props: PageProps) => (
           </p>
           <p>
             Vous pourrez naviguer à travers les différents projets en cliquant
-            sur le +, pour découvrir les détails de chaque réalisation.
+            sur le + et cliquer sur le {">"} pour découvrir les détails de
+            chaque réalisation.
           </p>
         </section>
 

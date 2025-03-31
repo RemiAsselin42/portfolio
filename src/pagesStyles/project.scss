@@ -31,6 +31,16 @@
     padding: 0 $spacing-lg;
     height: 100vh;
   }
+
+  @include respond-to(macbook) {
+    align-items: center;
+    height: 100vh;
+  }
+
+  @include respond-to(desktop) {
+    align-items: center;
+    height: 100vh;
+  }
 }
 
 #page-0 {
@@ -631,6 +641,8 @@
   scroll-behavior: smooth;
 
   scrollbar-gutter: stable both-edges;
+
+  height: calc(100vh - 300px);
 
   @include respond-to(mobile) {
     scrollbar-width: none;

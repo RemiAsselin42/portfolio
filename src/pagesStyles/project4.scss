@@ -11,7 +11,7 @@
 
   h1 {
     font-size: 2.5rem;
-    color: #f77851;
+    color: $project4-color;
     text-align: center;
     margin: 2rem 0;
     font-family: "Tilt Warp", sans-serif;
@@ -19,7 +19,7 @@
 
   h2 {
     font-size: 1.8rem;
-    color: #f77851;
+    color: $project4-color;
     margin: 1.5rem 0 1rem;
     font-family: "Tilt Warp", sans-serif;
     position: relative;
@@ -29,14 +29,14 @@
       display: block;
       width: 50px;
       height: 3px;
-      background-color: #f77851;
+      background-color: $project4-color;
       margin-top: 0.5rem;
     }
   }
 
   h3 {
     font-size: 1.3rem;
-    color: #f77851;
+    color: $project4-color;
     margin: 1rem 0 0.5rem;
     font-family: "Lexend", sans-serif;
     font-weight: 600;
@@ -62,7 +62,7 @@
 
       &::before {
         content: "•";
-        color: #f77851;
+        color: $project4-color;
         font-size: 1.5rem;
         position: absolute;
         left: 0;
@@ -70,7 +70,7 @@
       }
 
       strong {
-        color: #f77851;
+        color: $project4-color;
       }
     }
   }
@@ -132,7 +132,45 @@
         font-size: 0.95rem;
         text-align: center;
         font-weight: 500;
-        color: #f77851;
+        color: $project4-color;
+      }
+    }
+  }
+
+  .project-gallery-full {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    .gallery-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: rgba(247, 120, 81, 0.05);
+      border-radius: 10px;
+      padding: 1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 0.8rem;
+        object-fit: cover;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      span {
+        font-size: 0.95rem;
+        text-align: center;
+        font-weight: 500;
+        color: $project4-color;
       }
     }
   }

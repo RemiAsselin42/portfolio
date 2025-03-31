@@ -5,10 +5,10 @@ export const Project5Page = (props: PageProps) => (
   <ProjectTemplate
     {...props}
     projectId={5}
-    projectInfo="Stage professionnel : Web Design & Développement Front-end"
+    projectInfo="Stage professionnel&nbsp;:&nbsp;Web Design & Développement Front-end"
     projectImage={{
       src: "/geopostcodes.png",
-      alt: "Stage GeoPostcodes",
+      alt: "Stage chez GeoPostcodes",
     }}
     projectTitle="GeoPostcodes"
     projectDescription={
@@ -35,20 +35,22 @@ export const Project5Page = (props: PageProps) => (
     projectTech="WordPress, Elementor, React.js, TypeScript, Figma, MapBox, HTML, CSS, SEO"
     modalContent={
       <div className="geopostcodes-modal-content">
-        <h1>Stage GeoPostcodes</h1>
+        <h1>Stage chez GeoPostcodes</h1>
 
         <section className="modal-section">
           <h2>Présentation de l'entreprise</h2>
           <p>
-            GeoPostcodes est une entreprise spécialisée dans les données géographiques et 
-            postales à l'échelle internationale. Elle fournit des bases de données précises 
-            et à jour concernant les codes postaux, divisions administratives et informations 
-            géographiques pour plus de 250 pays et territoires.
+            GeoPostcodes est une entreprise spécialisée dans les données
+            géographiques et postales à l'échelle internationale. Elle fournit
+            des bases de données précises et à jour concernant les codes
+            postaux, divisions administratives et informations géographiques
+            pour 247 pays et territoires.
           </p>
           <p>
-            La plateforme web de GeoPostcodes permet aux entreprises et aux organisations 
-            d'accéder à ces données et de les utiliser pour améliorer leur logistique, 
-            leur analyse de marché et leurs stratégies de marketing géolocalisé.
+            La plateforme web de GeoPostcodes permet aux entreprises et aux
+            organisations d'accéder à ces données et de les utiliser pour
+            améliorer leur logistique, leur analyse de marché et leurs
+            stratégies de marketing géolocalisé.
           </p>
         </section>
 
@@ -56,20 +58,24 @@ export const Project5Page = (props: PageProps) => (
           <h2>Missions principales</h2>
           <ul className="features-list">
             <li>
-              <strong>Refonte de pages existantes</strong> : Amélioration du design et de 
-              l'expérience utilisateur des pages principales du site avec WordPress et Elementor
+              <strong>Refonte de pages existantes</strong>
+              &nbsp;:&nbsp;Amélioration du design et de l'expérience utilisateur
+              des pages principales du site avec WordPress et Elementor
             </li>
             <li>
-              <strong>Optimisation SEO</strong> : Analyse et amélioration du référencement 
-              naturel, optimisation des méta-données et de la structure des pages
+              <strong>Optimisation SEO</strong>&nbsp;:&nbsp;Analyse et
+              amélioration du référencement naturel et optimisation des
+              performances du site
             </li>
             <li>
-              <strong>Développement d'une carte interactive</strong> : Création d'une 
-              application cartographique permettant la visualisation des données postales
+              <strong>Développement d'une carte interactive</strong>
+              &nbsp;:&nbsp;Création d'une application cartographique permettant
+              la visualisation des données postales
             </li>
             <li>
-              <strong>Outil de recherche avancée</strong> : Développement d'un "Zip Code Looker" 
-              pour faciliter l'accès aux données de l'entreprise
+              <strong>Outil de recherche avancée</strong>
+              &nbsp;:&nbsp;Développement d'un "Zip Code Looker" pour faciliter
+              l'accès aux données de l'entreprise
             </li>
           </ul>
         </section>
@@ -77,14 +83,16 @@ export const Project5Page = (props: PageProps) => (
         <section className="modal-section">
           <h2>Développement et compétences acquises</h2>
           <p>
-            Ce stage m'a permis de développer des compétences variées, allant de la gestion 
-            de CMS comme WordPress à l'utilisation de frameworks modernes comme React.js. 
-            J'ai également approfondi mes connaissances en SEO et en UX/UI design.
+            Ce stage m'a permis de développer des compétences variées, allant de
+            la gestion de CMS comme WordPress à l'utilisation de frameworks
+            modernes comme React.js. J'ai également approfondi mes connaissances
+            en SEO et en UX/UI design.
           </p>
           <p>
-            La création de l'application cartographique avec MapBox a été particulièrement 
-            enrichissante, car elle m'a permis de combiner mes compétences en design (Figma) 
-            et en développement (React, TypeScript) pour créer un outil interactif et intuitif.
+            La création de l'application cartographique avec MapBox a été
+            particulièrement enrichissante, car elle m'a permis de combiner mes
+            compétences en design (Figma) et en développement (React,
+            TypeScript) pour créer un outil interactif et intuitif.
           </p>
         </section>
 
@@ -101,23 +109,31 @@ export const Project5Page = (props: PageProps) => (
             </div>
             <div className="tech-item">
               <img src="/react.png" alt="React" />
-              <span>React</span>
+              <span>React.js</span>
+            </div>
+            <div className="tech-item">
+              <img src="/vite.png" alt="vite" />
+              <span>Vite.js</span>
             </div>
             <div className="tech-item">
               <img src="/typescript.png" alt="TypeScript" />
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
+              <img src="/sass.png" alt="sass" />
+              <span>SCSS</span>
+            </div>
+            <div className="tech-item">
               <img src="/mapbox.png" alt="MapBox" />
               <span>MapBox</span>
             </div>
             <div className="tech-item">
-              <img src="/figma.png" alt="Figma" />
+              <img src="/figma.svg" alt="Figma" />
               <span>Figma</span>
             </div>
             <div className="tech-item">
-              <img src="/seo.png" alt="SEO" />
-              <span>SEO</span>
+              <img src="/hubspot.png" alt="hubspot" />
+              <span>HubSpot</span>
             </div>
           </div>
         </section>
@@ -125,41 +141,35 @@ export const Project5Page = (props: PageProps) => (
         <section className="modal-section">
           <h2>Réalisations</h2>
           <p>
-            Voici quelques-unes des réalisations effectuées lors de ce stage :
+            Voici la carte intéractive réalisée lors de ce stage en react.js via
+            l'API de MapBox :
           </p>
-          <div className="project-gallery">
-            <div className="gallery-item">
-              <img src="/geopostcodes-map.png" alt="Carte interactive GeoPostcodes" />
-              <span>Carte interactive des codes postaux</span>
-            </div>
-            <div className="gallery-item">
-              <img src="/geopostcodes-zipcode.png" alt="Outil de recherche de codes postaux" />
-              <span>Zip Code Looker</span>
-            </div>
-            <div className="gallery-item">
-              <img src="/geopostcodes-homepage.png" alt="Refonte de la page d'accueil" />
-              <span>Refonte de la page d'accueil</span>
-            </div>
-            <div className="gallery-item">
-              <img src="/geopostcodes-dashboard.png" alt="Dashboard utilisateur" />
-              <span>Interface du tableau de bord</span>
-            </div>
+          <div className="iframe-container">
+            <iframe
+              src="https://iframes.geopostcodes.com/map-explorer"
+              title="GeoPostcodes Map Explorer"
+              className="geopostcodes-iframe"
+              loading="lazy"
+              allow="geolocation"
+            />
           </div>
+          <p className="iframe-note">
+            L'objectif était de montrer visuellement les données qu'à
+            l'entreprise sur les États-Unis, tout en montant aussi qu'elle
+            dispose des autres données du monde entier, et ce, en redirigeant
+            vers le site de GeoPostcodes.
+          </p>
         </section>
 
         <section className="modal-section">
-          <h2>Impact et résultats</h2>
+          <h2>Conclusion</h2>
           <p>
-            Les améliorations apportées au site web ont contribué à une augmentation 
-            significative du trafic organique (+23%) et à une meilleure rétention des 
-            utilisateurs. La carte interactive a particulièrement été appréciée par les 
-            clients, facilitant leur compréhension et utilisation des données géographiques.
-          </p>
-          <p>
-            Ce stage m'a permis de développer des compétences techniques très recherchées 
-            et de comprendre comment elles s'intègrent dans un environnement professionnel réel. 
-            J'ai également eu l'opportunité de travailler dans un contexte international, 
-            GeoPostcodes servant des clients dans le monde entier.
+            Ce stage m'a permis de développer mes compétences techniques et de
+            comprendre comment elles s'intègrent dans un environnement
+            professionnel réel. J'ai également eu l'opportunité de travailler
+            dans un contexte international, GeoPostcodes servant des clients
+            dans le monde entier, et donc d'améliorer mon anglais, à l'écris et
+            à l'oral.
           </p>
         </section>
       </div>

@@ -12,7 +12,7 @@
 
   h1 {
     font-size: 2.5rem;
-    color: $primary-color;
+    color: $project3-color;
     text-align: center;
     margin: 2rem 0;
     font-family: $font-family-title-1;
@@ -20,7 +20,7 @@
 
   h2 {
     font-size: 1.8rem;
-    color: $primary-color;
+    color: $project3-color;
     margin: 1.5rem 0 1rem;
     font-family: $font-family-title-1;
     position: relative;
@@ -30,7 +30,7 @@
       display: block;
       width: 50px;
       height: 3px;
-      background-color: $primary-color;
+      background-color: $project3-color;
       margin-top: 0.5rem;
     }
   }
@@ -57,7 +57,7 @@
 
       &::before {
         content: "•";
-        color: $primary-color;
+        color: $project3-color;
         font-size: 1.5rem;
         position: absolute;
         left: 0;
@@ -65,7 +65,31 @@
       }
 
       strong {
-        color: $primary-color;
+        color: $project3-color;
+      }
+    }
+  }
+
+  .la-grimpette-img {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    img {
+      width: calc(75% - 0.5rem);
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
       }
     }
   }
