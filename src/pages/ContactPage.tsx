@@ -50,24 +50,6 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
               Page d'accueil
             </button>
           </div>
-
-          <div className="social-links">
-            <a href="https://www.linkedin.com/in/rémi-asselin/" target="_blank">
-              <img src="/linkedin.webp" alt="LinkedIn" />
-              LinkedIn
-            </a>
-            <a href="https://github.com/RemiAsselin42" target="_blank">
-              <img src="/github.png" alt="GitHub" />
-              GitHub
-            </a>
-            <a
-              href="https://www.pappers.fr/entreprise/983775214"
-              target="_blank"
-            >
-              <img src="/pappers.png" alt="Pappers" />
-              Pappers
-            </a>
-          </div>
         </div>
       ) : (
         <>
