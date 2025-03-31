@@ -642,13 +642,14 @@
 
   scrollbar-gutter: stable both-edges;
 
-  height: calc(100vh - 300px);
+  height: calc(100vh - 40px);
 
   @include respond-to(mobile) {
     scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;
     }
+    height: calc(100vh - 200px);
   }
 
   @include respond-to(tablet) {
@@ -656,10 +657,12 @@
     &::-webkit-scrollbar {
       display: none;
     }
+    height: 100vh;
   }
 
   @include respond-to(macbook) {
     margin-top: 20px;
+    height: calc(100vh - 200px);
   }
 
   @include respond-to(desktop) {
@@ -705,7 +708,7 @@
   transform: translateY(-0px);
 
   @include respond-to(mobile) {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
 
   @include respond-to(tablet) {
