@@ -42,9 +42,11 @@
       font-size: clamp(1rem, 3rem, 2em);
       background-color: transparent;
       border: 6px solid $white;
-      filter: blur(2px);
+      // -webkit-filter: blur(2px);
+      // filter: blur(2px);
 
       &:hover {
+        // -webkit-filter: blur(0px);
         filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
         box-shadow: none;
       }
@@ -105,6 +107,7 @@
       font-size: 6em;
     }
     .home-button-div .contact-button {
+      -webkit-filter: blur(0px);
       filter: blur(0);
     }
   }
@@ -116,6 +119,7 @@
       font-size: 5em;
     }
     .home-button-div .contact-button {
+      -webkit-filter: blur(0px);
       filter: blur(0);
     }
   }
@@ -130,6 +134,7 @@
       font-size: 1.5em !important;
     }
     .home-button-div .contact-button {
+      -webkit-filter: blur(0px);
       filter: blur(0);
     }
   }
@@ -144,6 +149,7 @@
       font-size: 1.5em !important;
     }
     .home-button-div .contact-button {
+      -webkit-filter: blur(0px);
       filter: blur(0);
     }
   }

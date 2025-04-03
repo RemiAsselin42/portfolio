@@ -56,6 +56,7 @@
   .project-info {
     font-size: 1.5em;
     color: color.adjust($text-light, $alpha: -0.6);
+    -webkit-filter: blur(1px);
     filter: blur(1px);
     text-align: center;
     height: fit-content;
@@ -313,6 +314,7 @@
 
   .back-to-project-fixed {
     .prev-button {
+      -webkit-filter: blur(0px) !important;
       filter: blur(0px) !important;
       opacity: 1 !important;
     }
@@ -415,6 +417,7 @@
 
   .back-to-project-fixed {
     .prev-button {
+      -webkit-filter: blur(0px) !important;
       filter: blur(0px) !important;
       opacity: 1 !important;
     }
@@ -443,10 +446,12 @@
         color: $text-light;
         transition: all $transition-base;
         opacity: 0.8;
+        -webkit-filter: blur(1px);
         filter: blur(1px);
         position: relative;
 
         &:hover {
+          -webkit-filter: blur(0px);
           filter: blur(0);
           transform: scale(1.05);
           transition: all $transition-base;
@@ -500,41 +505,6 @@
     }
   }
 }
-
-// .project-container {
-// }
-// .project-details-container {
-//   // max-height: calc(100lvh - 170px);
-//   // padding-bottom: 60px;
-
-//   .project-container {
-//     // align-self: center;
-//     perspective: 1000px;
-//     backface-visibility: hidden;
-//     will-change: transform;
-//     transform-style: preserve-3d;
-//     transform-origin: center center;
-//     position: absolute;
-//     // margin: 0 auto;
-//     width: 100%;
-//     // height: 80%;
-//     // margin: 0 0 110px;
-
-//     @include respond-to(mobile) {
-//       height: 100lvh;
-//     }
-
-//     &.flipping-out {
-//       animation: flip-out 0.5s forwards;
-//       z-index: 10;
-//     }
-
-//     &.flipping-in {
-//       animation: flip-in 0.5s forwards;
-//       z-index: 5;
-//     }
-//   }
-// }
 
 .project-container,
 .project-details-container {
@@ -734,13 +704,11 @@
     font-family: $font-family-title-1;
     color: $text-light;
     transition: all $transition-base;
-    filter: blur(2px);
     opacity: 0.6;
-
-    filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
 
     &:hover {
-      filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
       transform: scale(1.05);
       transition: all $transition-base;
       opacity: 1;

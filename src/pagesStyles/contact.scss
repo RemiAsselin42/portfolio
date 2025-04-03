@@ -160,13 +160,12 @@
           font-size: 1.2rem;
           padding: $spacing-base $spacing-base;
           border-width: 3px;
-          filter: blur(0);
         }
 
         &:hover {
           transform: scale(1.05);
           transition: all $transition-base;
-          filter: blur(0) drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
         }
       }
 
@@ -174,6 +173,7 @@
         font-size: 1.8em;
         background-color: transparent;
         border: 6px solid $white;
+        -webkit-filter: blur(2px);
         filter: blur(2px);
 
         @include respond-to(mobile) {
@@ -181,11 +181,10 @@
           font-size: 1.2rem;
           padding: $spacing-base $spacing-base;
           border-width: 3px;
-          filter: blur(0);
         }
 
         &:hover {
-          filter: blur(0) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
           box-shadow: none;
         }
       }

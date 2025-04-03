@@ -26,11 +26,13 @@
     color: #ffffff;
     opacity: 0.5;
     transition: all 0.3s ease;
+    -webkit-filter: blur(1px);
     filter: blur(1px);
 
     &:hover {
       opacity: 1;
       transform: scale(1.5);
+      -webkit-filter: blur(0.5px);
       filter: blur(0.5px);
     }
   }
@@ -55,6 +57,7 @@
       background-color: $white;
       transition: all $transition-base;
       opacity: 0.5;
+      -webkit-filter: blur(1px);
       filter: blur(1px);
 
       &.active,
@@ -62,6 +65,7 @@
         opacity: 1;
         transform: scale(1.5);
         transition: all $transition-base;
+        -webkit-filter: blur(0.5px);
         filter: blur(0.5px);
         pointer-events: none;
       }
@@ -69,6 +73,7 @@
       &:hover {
         transform: scale(1.3);
         transition: all $transition-base;
+        -webkit-filter: blur(0.5px);
         filter: blur(0.5px);
       }
     }
