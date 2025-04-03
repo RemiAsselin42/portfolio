@@ -230,9 +230,21 @@ function App() {
         <div className="bg">
           <svg className="noise-filter">
             <defs>
-              <filter id="blur">
-                <feGaussianBlur stdDeviation="100" />
-                <feColorMatrix type="saturate" values="1" />
+              <filter
+                id="blur"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+                filterUnits="objectBoundingBox"
+              >
+                <feGaussianBlur stdDeviation="100" result="blurredImage" />
+                <feColorMatrix
+                  type="saturate"
+                  values="1"
+                  in="blurredImage"
+                  result="colorAdjusted"
+                />
               </filter>
             </defs>
           </svg>
