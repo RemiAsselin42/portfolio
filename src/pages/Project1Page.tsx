@@ -44,7 +44,7 @@ export const Project1Page = (props: PageProps) => (
         <strong>{">"}</strong> ou{" "}
         <button className="btn-contact-text" onClick={props.onContactPage}>
           <strong> contactez-moi </strong>
-        </button>
+        </button>{" "}
         directement&nbsp;!
       </p>
     }
