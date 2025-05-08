@@ -232,13 +232,13 @@ function App() {
             <defs>
               <filter
                 id="blur"
-                x="-50%"
-                y="-50%"
-                width="200%"
-                height="200%"
-                filterUnits="objectBoundingBox"
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                filterUnits="userSpaceOnUse"
               >
-                <feGaussianBlur stdDeviation="100" result="blurredImage" />
+                <feGaussianBlur stdDeviation="80" result="blurredImage" />
                 <feColorMatrix
                   type="saturate"
                   values="1"
