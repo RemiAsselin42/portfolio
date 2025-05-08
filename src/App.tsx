@@ -20,7 +20,6 @@ function App() {
   const [isSafari, setIsSafari] = useState(false);
   const [showSafariNotice, setShowSafariNotice] = useState(false);
 
-  // Détection de Safari
   useEffect(() => {
     const ua = navigator.userAgent.toLowerCase();
     const isSafariBrowser =
@@ -31,10 +30,6 @@ function App() {
     setIsSafari(isSafariBrowser);
     if (isSafariBrowser) {
       setShowSafariNotice(true);
-      // Masquer la notification après 8 secondes
-      setTimeout(() => {
-        setShowSafariNotice(false);
-      }, 8000);
     }
   }, []);
 
@@ -291,8 +286,8 @@ function App() {
           <div className="safari-notice">
             <div className="safari-notice-content">
               <p>
-                Pour une expérience visuelle optimale, nous recommandons Chrome
-                ou Edge
+                Pour une expérience visuelle optimale, je vous recommande plutôt
+                d'utiliser Chrome ou Edge.
               </p>
               <button onClick={() => setShowSafariNotice(false)}>×</button>
             </div>
