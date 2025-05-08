@@ -14,7 +14,7 @@
   z-index: 1000;
   width: auto;
   max-width: 95%;
-  animation: fadeInOut 8s ease-in-out forwards;
+  animation: fadeInOut 1s ease-in-out forwards;
 
   .safari-notice-content {
     display: flex;
@@ -28,7 +28,7 @@
 
     p {
       margin: 0 15px 0 0;
-      font-size: 14px;
+      font-size: 15px;
     }
 
     button {
@@ -52,16 +52,8 @@
     opacity: 0;
     transform: translateY(-20px) translateX(-50%);
   }
-  15% {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
   85% {
     opacity: 1;
     transform: translateY(0) translateX(-50%);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-20px) translateX(-50%);
   }
 }
