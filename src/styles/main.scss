@@ -4,6 +4,7 @@
 @use "variables" as *;
 @use "mixins" as *;
 @use "responsive" as *;
+@use "safari-fixes" as *;
 
 :root {
   font-family: $font-family-base;

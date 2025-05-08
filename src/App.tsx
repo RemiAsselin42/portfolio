@@ -17,6 +17,26 @@ function App() {
     | "left-fade-in"
   >("fade-in");
   const [shapesStyles, setShapesStyles] = useState<React.CSSProperties[]>([]);
+  const [isSafari, setIsSafari] = useState(false);
+  const [showSafariNotice, setShowSafariNotice] = useState(false);
+
+  // Détection de Safari
+  useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+    const isSafariBrowser =
+      (ua.indexOf("safari") !== -1 && ua.indexOf("chrome") === -1) ||
+      ua.indexOf("iphone") !== -1 ||
+      ua.indexOf("ipad") !== -1;
+
+    setIsSafari(isSafariBrowser);
+    if (isSafariBrowser) {
+      setShowSafariNotice(true);
+      // Masquer la notification après 8 secondes
+      setTimeout(() => {
+        setShowSafariNotice(false);
+      }, 8000);
+    }
+  }, []);
 
   const handlePageTransition = (newPage: number) => {
     if (newPage < currentPage) {
@@ -183,7 +203,8 @@ function App() {
     const animationDuration = 50 + Math.random() * 10;
     const floatDirection = Math.random() > 0.5 ? 1 : -1;
 
-    return {
+    // Style de base pour tous les navigateurs
+    const baseStyle = {
       position: "absolute",
       width: `${size}px`,
       height: `${size}px`,
@@ -197,6 +218,8 @@ function App() {
       animation: `float${size} ${animationDuration}s ease-in-out infinite`,
       animationDirection: floatDirection > 0 ? "normal" : "reverse",
     } as React.CSSProperties;
+
+    return baseStyle;
   };
 
   const generateRandomPolygon = () => {
@@ -227,7 +250,7 @@ function App() {
   return (
     <>
       <div className="page-container">
-        <div className="bg">
+        <div className={`bg ${isSafari ? "safari-bg" : ""}`}>
           <svg className="noise-filter">
             <defs>
               <filter
@@ -249,13 +272,32 @@ function App() {
             </defs>
           </svg>
 
-          <div className="shapes-container">
+          <div
+            className={`shapes-container ${isSafari ? "safari-shapes" : ""}`}
+          >
             <div className="static-shape" />
             {shapesStyles.map((style, index) => (
-              <div key={index} className="shape" style={style} />
+              <div
+                key={index}
+                className={`shape ${isSafari ? "safari-shape" : ""}`}
+                style={style}
+              />
             ))}
           </div>
         </div>
+
+        {/* Notification Safari */}
+        {showSafariNotice && (
+          <div className="safari-notice">
+            <div className="safari-notice-content">
+              <p>
+                Pour une expérience visuelle optimale, nous recommandons Chrome
+                ou Edge
+              </p>
+              <button onClick={() => setShowSafariNotice(false)}>×</button>
+            </div>
+          </div>
+        )}
 
         <div
           className={`page-wrapper ${animationStage}`}
