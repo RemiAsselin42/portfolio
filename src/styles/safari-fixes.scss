@@ -12,8 +12,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: auto;
-  max-width: 95%;
+  width: 75vw;
+  max-width: 100%;
   animation: fadeInOut 1s ease-in-out forwards;
 
   .safari-notice-content {
