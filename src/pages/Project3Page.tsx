@@ -1,5 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project3Page = (props: PageProps) => (
   <ProjectTemplate
@@ -53,23 +54,26 @@ export const Project3Page = (props: PageProps) => (
         <section className="modal-section">
           <h2>Captures d'écran</h2>
           <div className="la-grimpette-img">
-            <img
+            <LazyImage
               src="/la-grimpette-1.png"
               alt="Section Backoffice Activités La Grimpette"
             />
-            <img
+            <LazyImage
               src="/la-grimpette-2.png"
               alt="Section Backoffice Inscriptions La Grimpette"
             />
-            <img
+            <LazyImage
               src="/la-grimpette-3.png"
               alt="Section Backoffice Ajout Activités La Grimpette"
             />
-            <img
+            <LazyImage
               src="/la-grimpette-4.png"
               alt="Section Backoffice Modification Activités La Grimpette"
             />
-            <img src="/la-grimpette-5.png" alt="Site front La Grimpette" />
+            <LazyImage
+              src="/la-grimpette-5.png"
+              alt="Site front La Grimpette"
+            />
           </div>
         </section>
 

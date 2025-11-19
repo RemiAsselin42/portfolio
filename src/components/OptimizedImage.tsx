@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./LazyImage.scss";
 
 interface OptimizedImageProps {
   src: string;
@@ -42,7 +43,17 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
 
   return (
     <div className={`optimized-image-container ${className}`}>
-      {!imageLoaded && !hasError && <div className="image-placeholder"></div>}
+      {!imageLoaded && !hasError && (
+        <div
+          className="loading-spinner"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+      )}
       {hasError ? (
         <div className="image-error flex items-center justify-center bg-gray-200 text-gray-500 text-sm p-4">
           Image non disponible

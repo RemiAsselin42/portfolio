@@ -1,5 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project4Page = (props: PageProps) => (
   <ProjectTemplate
@@ -138,18 +139,18 @@ export const Project4Page = (props: PageProps) => (
           </p>
           <div className="project-gallery">
             <div className="gallery-item">
-              <img src="/yan-archi-logo.png" alt="Logo Yan Archi" />
+              <LazyImage src="/yan-archi-logo.png" alt="Logo Yan Archi" />
               <span>Logo principal</span>
             </div>
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/yan-archi-courrier-template.png"
                 alt="Template de planche projet Yan Archi"
               />
               <span>Template des courriers</span>
             </div>
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/yan-archi-business-card.png"
                 alt="Carte de visite Yan Archi"
               />
@@ -158,7 +159,7 @@ export const Project4Page = (props: PageProps) => (
           </div>
           <div className="project-gallery-full">
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/yan-archi-template-2.png"
                 alt="Template de planche projet Yan Archi"
               />

@@ -31,7 +31,7 @@ export const MobileWarning: React.FC<MobileWarningProps> = ({
             position: "absolute",
             width: "150px",
             height: "5px",
-            backgroundColor: "#f77851",
+            backgroundColor: "#ea2538",
             transform: "rotate(-45deg)",
             marginTop: "-80px",
           }}

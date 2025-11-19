@@ -28,11 +28,11 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
     // Palette orangée / rose plus soutenu pour contraste texte blanc
     const warmColors = [
       "#FF6B6B", // Coral Red
-      "#FF8E53", // Orange
+      "#ff5378ff", // Orange
       "#FF5252", // Red
       "#FF4081", // Pink
       "#F50057", // Deep Pink
-      "#FF7043", // Deep Orange
+      "#ff438bff", // Deep Orange
     ];
     const color = warmColors[Math.floor(Math.random() * warmColors.length)];
 

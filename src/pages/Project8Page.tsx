@@ -1,5 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project8Page = (props: PageProps) => (
   <ProjectTemplate
@@ -131,36 +132,39 @@ export const Project8Page = (props: PageProps) => (
           </p>
           <div className="project-gallery">
             <div className="gallery-item">
-              <img src="/bbv-olsberg-logo.png" alt="Logo BBV Olsberg" />
+              <LazyImage src="/bbv-olsberg-logo.png" alt="Logo BBV Olsberg" />
               <span>Logo principal</span>
             </div>
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/bbv-olsberg-colors.png"
                 alt="Palette de couleurs BBV Olsberg"
               />
               <span>Palette chromatique</span>
             </div>
             <div className="gallery-item">
-              <img src="/bbv-olsberg-jersey.png" alt="Maillot BBV Olsberg" />
+              <LazyImage
+                src="/bbv-olsberg-jersey.png"
+                alt="Maillot BBV Olsberg"
+              />
               <span>Maquette des maillots</span>
             </div>
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/bbv-olsberg-poster.png"
                 alt="Affiche événement BBV Olsberg"
               />
               <span>Affiche d'événement</span>
             </div>
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/bbv-olsberg-social.png"
                 alt="Visuels réseaux sociaux BBV Olsberg"
               />
               <span>Posts réseaux sociaux</span>
             </div>
             <div className="gallery-item">
-              <img
+              <LazyImage
                 src="/bbv-olsberg-branding.png"
                 alt="Applications de la charte graphique"
               />

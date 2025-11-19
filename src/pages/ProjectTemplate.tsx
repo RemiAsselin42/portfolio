@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { PageProps } from "../types/PageTypes";
 import { OptimizedImage } from "../components/OptimizedImage";
+import { ImageLightbox } from "../components/ImageLightbox";
 
 interface ProjectTemplateProps extends PageProps {
   projectId: number;
@@ -57,6 +58,9 @@ export const ProjectTemplate = ({
   const [showButtons, setShowButtons] = useState(false);
   const projectLayoutRef = useRef<HTMLDivElement>(null);
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState({ src: "", alt: "" });
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 992);
     checkMobile();
@@ -94,6 +98,20 @@ export const ProjectTemplate = ({
 
   const handleEnSavoirPlus = () => handleSwitchView("details");
   const handleBackToProject = () => handleSwitchView("project");
+
+  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === "IMG") {
+      const img = target as HTMLImageElement;
+      // Exclude tech icons and logos
+      if (target.closest(".tech-item") || target.closest(".modale-logo")) {
+        return;
+      }
+
+      setLightboxImage({ src: img.src, alt: img.alt });
+      setLightboxOpen(true);
+    }
+  };
 
   const getAnimationClass = (forView: "project" | "details") => {
     if (!isTransitioning) return "";
@@ -223,7 +241,10 @@ export const ProjectTemplate = ({
             )}`}
           >
             <div className="project-details">
-              <div className="project-details-scrollable">
+              <div
+                className="project-details-scrollable"
+                onClick={handleContentClick}
+              >
                 {renderModalContent()}
               </div>
             </div>
@@ -236,6 +257,13 @@ export const ProjectTemplate = ({
               </button>
             </div>
           )}
+
+          <ImageLightbox
+            isOpen={lightboxOpen}
+            src={lightboxImage.src}
+            alt={lightboxImage.alt}
+            onClose={() => setLightboxOpen(false)}
+          />
         </>
       )}
     </div>
