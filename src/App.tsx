@@ -34,7 +34,7 @@ function App() {
 
   const handlePageTransition = (newPage: number) => {
     const isMobile = window.innerWidth < 992;
-    const transitionDuration = isMobile ? 500 : 1000;
+    const transitionDuration = isMobile ? 300 : 1000;
 
     if (newPage < currentPage) {
       setAnimationStage("left-fade-out");

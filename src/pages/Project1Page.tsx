@@ -40,7 +40,7 @@ export const Project1Page = (props: PageProps) => (
         pour mes projets web, et<strong> Premiere Pro </strong>
         pour le montage vidéo.
         <hr />
-        Curieux d'en savoir plus ? Cliquez sur <strong>+</strong> ou{" "}
+        Curieux d'en savoir plus&nbsp;? Cliquez sur <strong>+</strong> ou{" "}
         <strong>{">"}</strong> ou{" "}
         <button className="btn-contact-text" onClick={props.onContactPage}>
           <strong> contactez-moi </strong>

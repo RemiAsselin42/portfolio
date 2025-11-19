@@ -16,7 +16,7 @@ export const Project4Page = (props: PageProps) => (
         Pendant mon <strong>stage</strong> chez Yan Olivares Architecture,
         architecte urbaniste à Saint-Etienne, j'ai réalisé une{" "}
         <strong>refonte complète de l'identité visuelle</strong> de son cabinet.
-        Ce projet a englobé :
+        Ce projet a englobé&nbsp;:
         <br />• <strong>Création d'un nouveau logo</strong> alliant le nom de
         l'architect à une forme de tampon à encre japonais.
         <br />• <strong>Design des planches projets</strong> pour présenter
@@ -134,7 +134,7 @@ export const Project4Page = (props: PageProps) => (
           <h2>Réalisations</h2>
           <p>
             Voici un aperçu des différents éléments graphiques créés pour le
-            cabinet Yan Archi :
+            cabinet Yan Archi&nbsp;:
           </p>
           <div className="project-gallery">
             <div className="gallery-item">

@@ -15,7 +15,7 @@ export const Project5Page = (props: PageProps) => (
       <>
         Pendant mon <strong>stage chez GeoPostcodes</strong>, j'ai occupé un
         double rôle de web designer et développeur front-end, tout en
-        participant à l'amélioration du SEO. Mes missions comprenaient :
+        participant à l'amélioration du SEO. Mes missions comprenaient&nbsp;:
         <br />• <strong>Webdesign et optimisation</strong> - Création et
         modification de pages web sur WordPress avec Elementor, amélioration du
         référencement (SEO), optimisation des performances du site web, et
@@ -142,7 +142,7 @@ export const Project5Page = (props: PageProps) => (
           <h2>Réalisations</h2>
           <p>
             Voici la carte intéractive réalisée lors de ce stage en react.js via
-            l'API de MapBox :
+            l'API de MapBox&nbsp;:
           </p>
           <div className="iframe-container">
             <iframe

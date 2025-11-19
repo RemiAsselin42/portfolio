@@ -62,7 +62,7 @@ export const Project7Page = (props: PageProps) => (
           <h2>Processus de création</h2>
           <p>
             La réalisation de cette vidéo s'est déroulée en plusieurs étapes
-            clés :
+            clés&nbsp;:
           </p>
           <ul className="features-list">
             <li>
@@ -152,7 +152,7 @@ export const Project7Page = (props: PageProps) => (
           <h2>Challenges techniques</h2>
           <p>
             La création d'une vidéo hopecore présente plusieurs défis techniques
-            spécifiques :
+            spécifiques&nbsp;:
           </p>
           <ul className="features-list">
             <li>

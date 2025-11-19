@@ -15,7 +15,7 @@ export const Project3Page = (props: PageProps) => (
       <p>
         <strong>La Grimpette</strong> est un projet de cours autour du PHP et du
         SQL. Il s'agit du site d'un club d'escalade fictif. Ce projet comprend
-        deux volets essentiels :
+        deux volets essentiels&nbsp;:
         <br />• <strong>Un site front</strong> qui présente le club, ses
         activités et événements, catégorisés en 3 sections (enfants, ados et
         adultes) avec la posibilité de s'y inscrire.
@@ -107,7 +107,7 @@ export const Project3Page = (props: PageProps) => (
           <h2>Aspect technique</h2>
           <p>
             Le développement de ce projet a nécessité la mise en œuvre de
-            plusieurs technologies et pratiques de développement web :
+            plusieurs technologies et pratiques de développement web&nbsp;:
           </p>
           <ul className="features-list">
             <li>

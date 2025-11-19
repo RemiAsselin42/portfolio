@@ -37,7 +37,7 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
     <div className="contact-section" id="contact-section">
       {submitStatus === "success" ? (
         <div className="contact-layout contact-layout-success">
-          <h3 className="thank-you-message">Merci !</h3>
+          <h2>Merci&nbsp;!</h2>
           <p className="thank-you-message">
             Je vous recontacterai dès que possible.
           </p>

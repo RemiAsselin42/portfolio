@@ -19,7 +19,7 @@ export const Project2Page = (props: PageProps) => (
         mobilités douces auprès des jeunes. Notre groupe a décidé de concevoir
         une application pour aider et accompagner les jeunes à faire du vélo.
         <br />
-        Avec HiroGo, les utilisateurs peuvent :
+        Avec HiroGo, les utilisateurs peuvent&nbsp;:
         <ul>
           <li>
             <strong>Trouver des itinéraires sécurisés</strong>
@@ -130,7 +130,7 @@ export const Project2Page = (props: PageProps) => (
 
         <section className="modal-section">
           <h2>Démonstration du projet</h2>
-          <p>Testez l'application HiroGo directement ci-dessous :</p>
+          <p>Testez l'application HiroGo directement ci-dessous&nbsp;:</p>
           <div className="iframe-container">
             <iframe
               src="https://remiasselin42.github.io/HiroGo/"

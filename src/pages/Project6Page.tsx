@@ -15,7 +15,7 @@ export const Project6Page = (props: PageProps) => (
       <>
         <strong>Hyxe</strong> est un projet de cours réalisé en duo, centré sur
         l'apprentissage du PHP et la création d'applications dynamiques. Il
-        s'agit d'une réplique simplifiée de Twitter avec :
+        s'agit d'une réplique simplifiée de Twitter avec&nbsp;:
         <br />• <strong>Publication de messages</strong> similaires aux tweets.
         <br />• <strong>Système de réponses</strong> permettant d'interagir avec
         les publications d'autres utilisateurs.
@@ -85,7 +85,7 @@ export const Project6Page = (props: PageProps) => (
           <h2>Aspect technique</h2>
           <p>
             Ce projet nous a permis d'explorer plusieurs facettes du
-            développement web :
+            développement web&nbsp;:
           </p>
           <ul className="features-list">
             <li>
@@ -143,7 +143,9 @@ export const Project6Page = (props: PageProps) => (
 
         <section className="modal-section">
           <h2>Processus de développement</h2>
-          <p>Le développement de Hyxe s'est déroulé en plusieurs phases :</p>
+          <p>
+            Le développement de Hyxe s'est déroulé en plusieurs phases&nbsp;:
+          </p>
           <ul className="features-list">
             <li>
               <strong>Conception</strong>&nbsp;:&nbsp;Définition des

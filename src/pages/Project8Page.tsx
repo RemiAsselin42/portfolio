@@ -15,13 +15,13 @@ export const Project8Page = (props: PageProps) => (
       <>
         <strong>BBV Olsberg</strong> est un projet de design graphique réalisé
         dans le cadre de mes cours. L'objectif était de créer une charte
-        graphique complète à partir de deux contraintes tirées au sort :
+        graphique complète à partir de deux contraintes tirées au sort&nbsp;:
         <br />• <strong>Brief</strong>&nbsp;:&nbsp;Un club de basket allemand
         fictif.
         <br />• <strong>Thème</strong>&nbsp;:&nbsp;Style rétro/néon.
         <br />
         <br />
-        J'ai développé une identité visuelle complète comprenant :
+        J'ai développé une identité visuelle complète comprenant&nbsp;:
         <br />• <strong>Logo</strong> représentant l'identité du club.
         <br />• <strong>Palette de couleurs</strong> inspirée des ambiances néon
         des années 80/90.
@@ -57,7 +57,7 @@ export const Project8Page = (props: PageProps) => (
           <h2>Le processus créatif</h2>
           <p>
             La création de cette identité visuelle s'est déroulée en plusieurs
-            étapes clés :
+            étapes clés&nbsp;:
           </p>
           <ul className="features-list">
             <li>
@@ -127,7 +127,7 @@ export const Project8Page = (props: PageProps) => (
           <h2>Applications</h2>
           <p>
             La charte graphique a été déclinée sur différents supports pour
-            montrer sa polyvalence :
+            montrer sa polyvalence&nbsp;:
           </p>
           <div className="project-gallery">
             <div className="gallery-item">

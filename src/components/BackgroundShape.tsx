@@ -25,14 +25,14 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
 
     const animationDuration = 45 + Math.random() * 20; // Durée plus variable
     const floatDirection = Math.random() > 0.5 ? 1 : -1;
-    // Palette orangée / rose pâle / pêche
+    // Palette orangée / rose plus soutenu pour contraste texte blanc
     const warmColors = [
-      "#FF9A9E",
-      "#FECFEF",
-      "#FFB347",
-      "#FF9966",
-      "#FF6B6B",
-      "#FF8E53",
+      "#FF6B6B", // Coral Red
+      "#FF8E53", // Orange
+      "#FF5252", // Red
+      "#FF4081", // Pink
+      "#F50057", // Deep Pink
+      "#FF7043", // Deep Orange
     ];
     const color = warmColors[Math.floor(Math.random() * warmColors.length)];
 
