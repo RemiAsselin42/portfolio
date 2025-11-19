@@ -33,6 +33,9 @@ function App() {
   }, []);
 
   const handlePageTransition = (newPage: number) => {
+    const isMobile = window.innerWidth < 992;
+    const transitionDuration = isMobile ? 500 : 1000;
+
     if (newPage < currentPage) {
       setAnimationStage("left-fade-out");
       setTimeout(() => {
@@ -41,7 +44,7 @@ function App() {
         setTimeout(() => {
           setAnimationStage("left-fade-in");
         }, 20);
-      }, 1000);
+      }, transitionDuration);
     } else {
       setAnimationStage("fade-out");
       setTimeout(() => {
@@ -50,7 +53,7 @@ function App() {
         setTimeout(() => {
           setAnimationStage("fade-in");
         }, 20);
-      }, 1000);
+      }, transitionDuration);
     }
   };
 

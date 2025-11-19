@@ -151,12 +151,22 @@ $warm-colors: (#ff9a9e, #fecfef, #ffb347, #ff9966, #ff6b6b, #ff8e53);
   transform: translateX(0) scale(1) rotateY(0deg);
   opacity: 1;
   transition: transform $transition-fade, opacity $transition-fade;
+
+  @include respond-to(mobile) {
+    transition: transform $transition-fade-mobile,
+      opacity $transition-fade-mobile;
+  }
 }
 
 .fade-out {
   transform: translateX(-100%) scale(1.5) rotateY(0.2turn);
   opacity: 0;
   transition: transform $transition-fade, opacity $transition-fade;
+
+  @include respond-to(mobile) {
+    transition: transform $transition-fade-mobile,
+      opacity $transition-fade-mobile;
+  }
 }
 
 // Animation de transition gauche vers droite
@@ -171,12 +181,22 @@ $warm-colors: (#ff9a9e, #fecfef, #ffb347, #ff9966, #ff6b6b, #ff8e53);
   transform: translateX(0) scale(1) rotateY(0deg);
   opacity: 1;
   transition: transform $transition-fade, opacity $transition-fade;
+
+  @include respond-to(mobile) {
+    transition: transform $transition-fade-mobile,
+      opacity $transition-fade-mobile;
+  }
 }
 
 .left-fade-out {
   transform: translateX(100%) scale(1.5) rotateY(-0.2turn);
   opacity: 0;
   transition: transform $transition-fade, opacity $transition-fade;
+
+  @include respond-to(mobile) {
+    transition: transform $transition-fade-mobile,
+      opacity $transition-fade-mobile;
+  }
 }
 
 h1 {
