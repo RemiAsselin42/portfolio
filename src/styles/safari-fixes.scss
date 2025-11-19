@@ -1,63 +1,30 @@
+@use "responsive" as *;
+
+// Fix pour Safari qui gère mal les filtres SVG sur les conteneurs animés
 .safari-shapes {
-  filter: blur(10px);
+  // Remplace le filter: url(#blur) par un flou CSS natif
+  // stdDeviation="80" correspond approximativement à blur(80px)
+  filter: blur(80px) !important;
+
+  // Force l'accélération matérielle pour éviter les clignotements
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+
+  // Agrandir légèrement le conteneur pour éviter les bords flous coupés
+  margin: -100px;
+  width: calc(100vw + 200px);
+  height: calc(100vh + 200px);
 }
 
 .safari-shape {
-  filter: blur(80px);
+  // On retire le flou individuel qui tue les performances
+  filter: none !important;
+
+  // Optimisation du rendu
+  will-change: transform;
 }
 
+// Suppression de la notice Safari (code mort, mais gardé pour référence si besoin de réactiver)
 .safari-notice {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: 75vw;
-  max-width: 100%;
-  animation: fadeInOut 2s ease-in-out forwards;
-
-  @include respond-to(mobile) {
-    width: 95vw;
-  }
-
-  .safari-notice-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
-    p {
-      margin: 0 15px 0 0;
-      font-size: 15px;
-    }
-
-    button {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      padding: 0 5px;
-      margin-left: 10px;
-
-      &:hover {
-        color: #ff5733;
-      }
-    }
-  }
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px) translateX(-50%);
-  }
-  85% {
-    opacity: 1;
-    transform: translateY(0) translateX(-50%);
-  }
+  display: none;
 }

@@ -57,7 +57,7 @@ body {
 }
 
 // Define warm colors array
-$warm-colors: (#ff6b6b, #f0a500, #ff7300, #ff9564, #ff5733);
+$warm-colors: (#ff9a9e, #fecfef, #ffb347, #ff9966, #ff6b6b, #ff8e53);
 
 // Function to get random warm color
 @function random-warm-color() {
@@ -98,7 +98,11 @@ $warm-colors: (#ff6b6b, #f0a500, #ff7300, #ff9564, #ff5733);
   overflow: hidden;
   filter: url(#blur);
   mix-blend-mode: screen;
-  opacity: 0.2;
+  opacity: 0.4;
+
+  @include respond-to(mobile) {
+    opacity: 0.6;
+  }
 
   .static-shape {
     background-color: #242424;

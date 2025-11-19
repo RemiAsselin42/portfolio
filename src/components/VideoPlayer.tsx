@@ -35,22 +35,16 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     }
   }, [poster]);
 
+  // Démarrage automatique de la vidéo une fois initialisée
+  useEffect(() => {
+    if (videoInitialized && videoRef.current) {
+      videoRef.current.load();
+      playVideo();
+    }
+  }, [videoInitialized]);
+
   const handleFirstClick = () => {
     setVideoInitialized(true);
-
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.addEventListener(
-          "canplay",
-          () => {
-            playVideo();
-          },
-          { once: true }
-        );
-
-        videoRef.current.load();
-      }
-    }, 0);
   };
 
   const playVideo = () => {
@@ -58,7 +52,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       videoRef.current
         .play()
         .then(() => setIsPlaying(true))
-        .catch((err) => console.error("Erreur de lecture:", err));
+        .catch((err) => {
+          console.error("Erreur de lecture:", err);
+          setIsPlaying(false);
+        });
     }
   };
 

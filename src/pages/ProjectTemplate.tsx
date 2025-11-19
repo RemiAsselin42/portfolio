@@ -45,87 +45,68 @@ export const ProjectTemplate = ({
   onNextPage,
   modalContent,
 }: ProjectTemplateProps) => {
-  const [showDetails, setShowDetails] = useState(false);
-  const [isFlipping, setIsFlipping] = useState(false);
-  const [flipDirection, setFlipDirection] = useState<
+  const [viewState, setViewState] = useState<"project" | "details">("project");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionDirection, setTransitionDirection] = useState<
     "to-details" | "to-project"
   >("to-details");
-  const [projectContainerVisible, setProjectContainerVisible] = useState(true);
-  const [detailsContainerVisible, setDetailsContainerVisible] = useState(false);
+
   const [nextButtonHover, setNextButtonHover] = useState(false);
   const [moreButtonHover, setMoreButtonHover] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showButtons, setShowButtons] = useState(false);
   const projectLayoutRef = useRef<HTMLDivElement>(null);
 
-  const checkIfMobile = () => {
-    const mobileBreakpoint = 992;
-    setIsMobile(window.innerWidth < mobileBreakpoint);
-  };
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 992);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleScroll = () => {
     if (!projectLayoutRef.current || !isMobile) return;
-
     const { scrollTop, scrollHeight, clientHeight } = projectLayoutRef.current;
-    const isScrolledToBottom = scrollTop + clientHeight >= scrollHeight - 50;
-
-    setShowButtons(isScrolledToBottom);
+    setShowButtons(scrollTop + clientHeight >= scrollHeight - 50);
   };
 
-  useEffect(() => {
-    checkIfMobile();
+  const handleSwitchView = (target: "project" | "details") => {
+    if (isTransitioning) return;
 
-    const handleResize = () => {
-      checkIfMobile();
-    };
+    const direction = target === "details" ? "to-details" : "to-project";
+    setTransitionDirection(direction);
+    setIsTransitioning(true);
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const handleEnSavoirPlus = () => {
-    if (isFlipping) return;
-
-    setFlipDirection("to-details");
-    setIsFlipping(true);
+    if (target === "project") {
+      setShowButtons(false);
+    }
 
     setTimeout(() => {
-      setProjectContainerVisible(false);
-      setDetailsContainerVisible(true);
-      setShowDetails(true);
-
+      setViewState(target);
       setTimeout(() => {
-        setIsFlipping(false);
-      }, 500);
-    }, 500);
-  };
-
-  const handleBackToProject = () => {
-    if (isFlipping) return;
-
-    // Masquer les boutons lorsqu'on revient à la page de projet
-    setShowButtons(false);
-
-    setFlipDirection("to-project");
-    setIsFlipping(true);
-
-    setTimeout(() => {
-      setDetailsContainerVisible(false);
-      setProjectContainerVisible(true);
-      setShowDetails(false);
-
-      setTimeout(() => {
-        setIsFlipping(false);
-
-        // Réinitialiser la position de scroll de la page de projet
-        if (projectLayoutRef.current) {
+        setIsTransitioning(false);
+        if (target === "project" && projectLayoutRef.current) {
           projectLayoutRef.current.scrollTop = 0;
         }
       }, 500);
     }, 500);
+  };
+
+  const handleEnSavoirPlus = () => handleSwitchView("details");
+  const handleBackToProject = () => handleSwitchView("project");
+
+  const getAnimationClass = (forView: "project" | "details") => {
+    if (!isTransitioning) return "";
+
+    if (forView === "project") {
+      return transitionDirection === "to-details"
+        ? "flipping-out"
+        : "flipping-in";
+    } else {
+      return transitionDirection === "to-details"
+        ? "flipping-in"
+        : "flipping-out";
+    }
   };
 
   const renderModalContent = () => {
@@ -176,33 +157,12 @@ export const ProjectTemplate = ({
     );
   };
 
-  const getContainerClass = () => {
-    if (!isFlipping) return "";
-
-    if (flipDirection === "to-details") {
-      return "flipping-out";
-    } else {
-      return "flipping-in";
-    }
-  };
-
-  const getDetailsClass = () => {
-    if (!isFlipping) return "";
-
-    if (flipDirection === "to-details") {
-      return "flipping-in";
-    } else {
-      return "flipping-out";
-    }
-  };
-
   return (
     <div className="project-flip-container">
-      {projectContainerVisible && (
+      {viewState === "project" && (
         <div
-          className={`project-container ${getContainerClass()}`}
+          className={`project-container ${getAnimationClass("project")}`}
           id={`project-${projectId}`}
-          style={{ display: showDetails && !isFlipping ? "none" : "flex" }}
         >
           <h3 className="project-info">{projectInfo}</h3>
           <div
@@ -255,11 +215,12 @@ export const ProjectTemplate = ({
         </div>
       )}
 
-      {detailsContainerVisible && (
+      {viewState === "details" && (
         <>
           <div
-            className={`project-details-container ${getDetailsClass()}`}
-            style={{ display: !showDetails && !isFlipping ? "none" : "flex" }}
+            className={`project-details-container ${getAnimationClass(
+              "details"
+            )}`}
           >
             <div className="project-details">
               <div className="project-details-scrollable">
@@ -268,7 +229,7 @@ export const ProjectTemplate = ({
             </div>
           </div>
 
-          {showDetails && !isFlipping && (
+          {!isTransitioning && (
             <div className="back-to-project-fixed">
               <button className="prev-button" onClick={handleBackToProject}>
                 Retour au projet
