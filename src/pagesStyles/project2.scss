@@ -104,12 +104,12 @@
       width: 100%;
       height: auto;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px $black-alpha-20;
       transition: transform 0.3s ease;
 
       &:hover {
         transform: scale(1.05);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 6px 12px $black-alpha-30;
       }
     }
   }
@@ -123,8 +123,8 @@
     .hirogo-iframe {
       border: none;
       border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      background-color: #fff;
+      box-shadow: 0 0 20px $black-alpha-30;
+      background-color: $white;
       width: 100%;
       max-width: 400px;
     }

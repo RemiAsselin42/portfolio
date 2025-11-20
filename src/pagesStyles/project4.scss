@@ -82,14 +82,14 @@
     margin-top: 1.5rem;
 
     .element-item {
-      background-color: rgba(247, 120, 81, 0.05);
+      background-color: rgba($accent-orange, 0.05);
       border-radius: 10px;
       padding: 1rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
 
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 15px $black-alpha-10;
       }
 
       p {
@@ -109,14 +109,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: rgba(247, 120, 81, 0.05);
+      background-color: rgba($accent-orange, 0.05);
       border-radius: 10px;
       padding: 1rem;
       transition: all 0.3s ease;
 
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 20px $black-alpha-15;
       }
 
       img {
@@ -125,7 +125,7 @@
         border-radius: 5px;
         margin-bottom: 0.8rem;
         object-fit: cover;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 10px $black-alpha-10;
       }
 
       span {
@@ -147,14 +147,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: rgba(247, 120, 81, 0.05);
+      background-color: rgba($accent-orange, 0.05);
       border-radius: 10px;
       padding: 1rem;
       transition: all 0.3s ease;
 
       &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 8px 20px $black-alpha-15;
       }
 
       img {
@@ -163,7 +163,7 @@
         border-radius: 5px;
         margin-bottom: 0.8rem;
         object-fit: cover;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 3px 10px $black-alpha-10;
       }
 
       span {

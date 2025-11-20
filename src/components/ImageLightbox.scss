@@ -1,10 +1,12 @@
+@use "../styles/variables" as *;
+
 .image-lightbox-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: $black-alpha-95;
   z-index: 99999;
   display: flex;
   justify-content: center;
@@ -22,7 +24,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: $white-alpha-20;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -37,7 +39,7 @@
     transition: background 0.3s;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.4);
+      background: $white-alpha-40;
     }
   }
 

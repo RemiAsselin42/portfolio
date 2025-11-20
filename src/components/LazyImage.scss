@@ -1,3 +1,5 @@
+@use "../styles/variables" as *;
+
 .loading-spinner {
   position: absolute;
   top: 50%;
@@ -5,9 +7,9 @@
   transform: translate(-50%, -50%);
   width: 40px;
   height: 40px;
-  border: 3px solid rgba(255, 255, 255, 0.1);
+  border: 3px solid $white-alpha-10;
   border-radius: 50%;
-  border-top-color: #f77851; // Primary color
+  border-top-color: $accent-orange; // Primary color
   animation: spin 1s ease-in-out infinite;
   z-index: 10;
 }
@@ -18,7 +20,7 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: $white-alpha-05;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 1rem;
