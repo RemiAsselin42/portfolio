@@ -1,6 +1,7 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
 import { VideoPlayer } from "../components/VideoPlayer";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project7Page = (props: PageProps) => (
   <ProjectTemplate
@@ -130,19 +131,31 @@ export const Project7Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/premiere.png" alt="Adobe Premiere Pro" />
+              <LazyImage
+                src="/premiere.png"
+                alt="Adobe Premiere Pro"
+                className="tech-icon"
+              />
               <span>Premiere Pro</span>
             </div>
             <div className="tech-item">
-              <img src="/aftereffects.png" alt="After Effects" />
+              <LazyImage
+                src="/aftereffects.png"
+                alt="After Effects"
+                className="tech-icon"
+              />
               <span>After Effects</span>
             </div>
             <div className="tech-item">
-              <img src="/audition.png" alt="Adobe Audition" />
+              <LazyImage
+                src="/audition.png"
+                alt="Adobe Audition"
+                className="tech-icon"
+              />
               <span>Audition</span>
             </div>
             <div className="tech-item">
-              <img src="/canon.png" alt="Canon" />
+              <LazyImage src="/canon.png" alt="Canon" className="tech-icon" />
               <span>Canon</span>
             </div>
           </div>

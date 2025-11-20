@@ -1,5 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project6Page = (props: PageProps) => (
   <ProjectTemplate
@@ -115,27 +116,27 @@ export const Project6Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/php.png" alt="PHP" />
+              <LazyImage src="/php.png" alt="PHP" className="tech-icon" />
               <span>PHP</span>
             </div>
             <div className="tech-item">
-              <img src="/sql.png" alt="SQL" />
+              <LazyImage src="/sql.png" alt="SQL" className="tech-icon" />
               <span>SQL</span>
             </div>
             <div className="tech-item">
-              <img src="/css.png" alt="CSS" />
+              <LazyImage src="/css.png" alt="CSS" className="tech-icon" />
               <span>CSS</span>
             </div>
             <div className="tech-item">
-              <img src="/github.png" alt="GitHub" />
+              <LazyImage src="/github.png" alt="GitHub" className="tech-icon" />
               <span>Git</span>
             </div>
             <div className="tech-item">
-              <img src="/mysql.png" alt="MySQL" />
+              <LazyImage src="/mysql.png" alt="MySQL" className="tech-icon" />
               <span>MySQL</span>
             </div>
             <div className="tech-item">
-              <img src="/wamp.png" alt="WAMP" />
+              <LazyImage src="/wamp.png" alt="WAMP" className="tech-icon" />
               <span>WAMP</span>
             </div>
           </div>

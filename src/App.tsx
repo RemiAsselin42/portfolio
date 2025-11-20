@@ -6,6 +6,7 @@ import "./pagesStyles/project.scss";
 import { pages } from "./pages";
 import { ProjectDots } from "./components/ProjectDots";
 import { BackgroundShape } from "./components/BackgroundShape";
+import { MouseFollower } from "./components/MouseFollower";
 import { useImagePreloader } from "./hooks/useImagePreloader";
 import { useSwipe } from "./hooks/useSwipe";
 
@@ -86,11 +87,13 @@ function App() {
     const calculateShapesCount = () => {
       const width = window.innerWidth;
       if (width >= 3440) {
-        return 10;
+        return 25;
       } else if (width >= 1920) {
-        return Math.round(3 + (width - 1920) * (7 / (3440 - 1920)));
+        return Math.round(15 + (width - 1920) * (10 / (3440 - 1920)));
+      } else if (width >= 992) {
+        return Math.round(10 + (width - 992) * (5 / (1920 - 992)));
       } else {
-        return Math.max(3, Math.round(3 * (width / 1920)));
+        return Math.max(5, Math.round(5 + (width / 992) * 3));
       }
     };
 
@@ -200,10 +203,9 @@ function App() {
             {Array.from({ length: shapesCount }).map((_, index) => (
               <BackgroundShape key={index} isSafari={isSafari} />
             ))}
+            <MouseFollower isSafari={isSafari} />
           </div>
         </div>
-
-        {/* Notification Safari supprimée car le fix CSS est implémenté */}
 
         <div
           className={`page-wrapper ${animationStage}`}

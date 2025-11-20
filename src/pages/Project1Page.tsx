@@ -1,5 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project1Page = (props: PageProps) => (
   <ProjectTemplate
@@ -12,7 +13,7 @@ export const Project1Page = (props: PageProps) => (
     }}
     projectTitle="Bonjour&nbsp;!"
     projectDescription={
-      <p>
+      <div>
         <strong>Bienvenue</strong> sur mon portfolio&nbsp;!
         <hr />
         Je suis Rémi, <strong>designer et développeur web</strong> à mon compte
@@ -46,7 +47,7 @@ export const Project1Page = (props: PageProps) => (
           <strong> contactez-moi </strong>
         </button>{" "}
         directement&nbsp;!
-      </p>
+      </div>
     }
     projectTech="React.js, Vite.js, TypeScript, SASS, GitHub"
     modalContent={
@@ -82,27 +83,31 @@ export const Project1Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/react.png" alt="React" />
+              <LazyImage src="/react.png" alt="React" className="tech-icon" />
               <span>React</span>
             </div>
             <div className="tech-item">
-              <img src="/vite.png" alt="Vite" />
+              <LazyImage src="/vite.png" alt="Vite" className="tech-icon" />
               <span>Vite</span>
             </div>
             <div className="tech-item">
-              <img src="/typescript.png" alt="TypeScript" />
+              <LazyImage
+                src="/typescript.png"
+                alt="TypeScript"
+                className="tech-icon"
+              />
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
-              <img src="/sass.png" alt="SASS" />
+              <LazyImage src="/sass.png" alt="SASS" className="tech-icon" />
               <span>SASS</span>
             </div>
             <div className="tech-item">
-              <img src="/css.png" alt="CSS" />
+              <LazyImage src="/css.png" alt="CSS" className="tech-icon" />
               <span>CSS3</span>
             </div>
             <div className="tech-item">
-              <img src="/github.png" alt="GitHub" />
+              <LazyImage src="/github.png" alt="GitHub" className="tech-icon" />
               <span>GitHub</span>
             </div>
           </div>

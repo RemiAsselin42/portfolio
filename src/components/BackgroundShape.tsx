@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 
 interface BackgroundShapeProps {
   isSafari: boolean;
@@ -7,9 +7,32 @@ interface BackgroundShapeProps {
 export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
   isSafari,
 }) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+  const currentOffset = useRef({ x: 0, y: 0 });
+
   // Génération des paramètres aléatoires une seule fois au montage
   const params = useMemo(() => {
-    const size = Math.floor(Math.random() * 300 + 500);
+    const width = window.innerWidth;
+    let baseSizeMin, baseSizeMax;
+
+    if (width >= 3440) {
+      baseSizeMin = 600;
+      baseSizeMax = 1000;
+    } else if (width >= 1920) {
+      baseSizeMin = 500;
+      baseSizeMax = 800;
+    } else if (width >= 992) {
+      baseSizeMin = 400;
+      baseSizeMax = 700;
+    } else {
+      baseSizeMin = 250;
+      baseSizeMax = 500;
+    }
+
+    const size = Math.floor(
+      Math.random() * (baseSizeMax - baseSizeMin) + baseSizeMin
+    );
     // On garde les formes plus centrées (15-85%) pour éviter qu'elles sortent trop
     const top = Math.random() * 70 + 15;
     const left = Math.random() * 70 + 15;
@@ -102,22 +125,84 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
     };
   }, [params]);
 
-  const style: React.CSSProperties = {
+  // Logique de fuite de la souris
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+
+    let animationFrameId: number;
+
+    const animate = () => {
+      if (!wrapperRef.current) return;
+
+      // Calcul de la position d'ancrage en pixels
+      const anchorX = (window.innerWidth * params.left) / 100;
+      const anchorY = (window.innerHeight * params.top) / 100;
+
+      const dx = anchorX - mouseRef.current.x;
+      const dy = anchorY - mouseRef.current.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      const maxDist = 400; // Rayon d'interaction
+      const maxDisplacement = 100; // Déplacement maximum en pixels
+
+      let targetX = 0;
+      let targetY = 0;
+
+      if (dist < maxDist) {
+        const force = (maxDist - dist) / maxDist;
+        // Fuite : on s'éloigne de la souris
+        targetX = (dx / dist) * force * maxDisplacement;
+        targetY = (dy / dist) * force * maxDisplacement;
+      }
+
+      // Lissage du mouvement (Lerp)
+      const ease = 0.05;
+      currentOffset.current.x += (targetX - currentOffset.current.x) * ease;
+      currentOffset.current.y += (targetY - currentOffset.current.y) * ease;
+
+      // Application de la transformation sur le wrapper
+      wrapperRef.current.style.transform = `translate(${currentOffset.current.x}px, ${currentOffset.current.y}px)`;
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [params.left, params.top]);
+
+  const wrapperStyle: React.CSSProperties = {
     position: "absolute",
-    width: `${params.size}px`,
-    height: `${params.size}px`,
     top: `${params.top}%`,
     left: `${params.left}%`,
+    pointerEvents: "none",
+    zIndex: 0,
+  };
+
+  const shapeStyle: React.CSSProperties = {
+    width: `${params.size}px`,
+    height: `${params.size}px`,
     backgroundColor: params.color,
     clipPath: `polygon(${params.polygon})`,
     opacity: "0.8",
     transition: "all 0.3s ease",
-    transform: "translate(-50%, -50%)",
+    // L'animation gère le centrage (-50%, -50%) et le flottement
     animation: `${params.animationName} ${params.animationDuration}s ease-in-out infinite`,
     animationDirection: params.floatDirection > 0 ? "normal" : "reverse",
   };
 
   return (
-    <div className={`shape ${isSafari ? "safari-shape" : ""}`} style={style} />
+    <div ref={wrapperRef} style={wrapperStyle}>
+      <div
+        className={`shape ${isSafari ? "safari-shape" : ""}`}
+        style={shapeStyle}
+      />
+    </div>
   );
 };

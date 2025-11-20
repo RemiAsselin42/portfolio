@@ -1,5 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
+import { LazyImage } from "../components/LazyImage";
 
 export const Project5Page = (props: PageProps) => (
   <ProjectTemplate
@@ -100,39 +101,55 @@ export const Project5Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/wordpress.png" alt="WordPress" />
+              <LazyImage
+                src="/wordpress.png"
+                alt="WordPress"
+                className="tech-icon"
+              />
               <span>WordPress</span>
             </div>
             <div className="tech-item">
-              <img src="/elementor.png" alt="Elementor" />
+              <LazyImage
+                src="/elementor.png"
+                alt="Elementor"
+                className="tech-icon"
+              />
               <span>Elementor</span>
             </div>
             <div className="tech-item">
-              <img src="/react.png" alt="React" />
+              <LazyImage src="/react.png" alt="React" className="tech-icon" />
               <span>React.js</span>
             </div>
             <div className="tech-item">
-              <img src="/vite.png" alt="vite" />
+              <LazyImage src="/vite.png" alt="vite" className="tech-icon" />
               <span>Vite.js</span>
             </div>
             <div className="tech-item">
-              <img src="/typescript.png" alt="TypeScript" />
+              <LazyImage
+                src="/typescript.png"
+                alt="TypeScript"
+                className="tech-icon"
+              />
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
-              <img src="/sass.png" alt="sass" />
+              <LazyImage src="/sass.png" alt="sass" className="tech-icon" />
               <span>SCSS</span>
             </div>
             <div className="tech-item">
-              <img src="/mapbox.png" alt="MapBox" />
+              <LazyImage src="/mapbox.png" alt="MapBox" className="tech-icon" />
               <span>MapBox</span>
             </div>
             <div className="tech-item">
-              <img src="/figma.svg" alt="Figma" />
+              <LazyImage src="/figma.svg" alt="Figma" className="tech-icon" />
               <span>Figma</span>
             </div>
             <div className="tech-item">
-              <img src="/hubspot.png" alt="hubspot" />
+              <LazyImage
+                src="/hubspot.png"
+                alt="hubspot"
+                className="tech-icon"
+              />
               <span>HubSpot</span>
             </div>
           </div>

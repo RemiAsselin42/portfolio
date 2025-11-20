@@ -14,6 +14,8 @@ export const LazyImage: React.FC<LazyImageProps> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
+  if (!src) return null;
+
   return (
     <div
       className={`lazy-image-container ${isLoaded ? "loaded" : ""} ${

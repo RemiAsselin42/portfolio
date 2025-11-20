@@ -19,6 +19,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [imageSrc, setImageSrc] = useState("");
 
   useEffect(() => {
+    if (!src) return;
+
     setImageLoaded(false);
     setHasError(false);
 
@@ -41,30 +43,23 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     };
   }, [src, srcSet]);
 
+  if (!src) return null;
+
   return (
     <div className={`optimized-image-container ${className}`}>
-      {!imageLoaded && !hasError && (
-        <div
-          className="loading-spinner"
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      )}
       {hasError ? (
         <div className="image-error flex items-center justify-center bg-gray-200 text-gray-500 text-sm p-4">
           Image non disponible
         </div>
       ) : (
-        <img
-          src={imageSrc}
-          srcSet={srcSet}
-          alt={alt}
-          className={`fade-in-image ${imageLoaded ? "loaded" : "loading"}`}
-        />
+        imageSrc && (
+          <img
+            src={imageSrc}
+            srcSet={srcSet}
+            alt={alt}
+            className={`fade-in-image ${imageLoaded ? "loaded" : "loading"}`}
+          />
+        )
       )}
     </div>
   );
