@@ -4,7 +4,7 @@
 @use "../styles/variables" as *;
 @use "../styles/mixins" as *;
 
-.project-dots-div {
+.project-dots-container {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -12,69 +12,74 @@
   height: 65px;
   pointer-events: none;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  .dot-home,
-  .dot-contact {
-    transform: scale(1.3);
-    position: relative;
-    pointer-events: all;
-    cursor: pointer;
-    margin: 0 8px;
-    display: inline-block;
-    width: 20px;
-    height: 25px;
-    color: $white;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-    -webkit-filter: blur(1px);
-    filter: blur(1px);
+  // Optional: Add a subtle gradient to ensure visibility
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
 
-    &:hover {
-      opacity: 1;
-      transform: scale(1.5);
-      -webkit-filter: blur(0.5px);
-      filter: blur(0.5px);
-    }
-  }
-
-  .project-dots {
+  .project-dots-list {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    pointer-events: all;
+    gap: 12px;
 
-    .dot {
-      position: relative;
-      pointer-events: all;
-      cursor: pointer;
-      margin: 0 8px;
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: $white;
-      transition: all $transition-base;
-      opacity: 0.5;
-      -webkit-filter: blur(1px);
-      filter: blur(1px);
+    .dot-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      &.active,
-      &.active:hover {
-        opacity: 1;
-        transform: scale(1.5);
+      .dot-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
         transition: all $transition-base;
-        -webkit-filter: blur(0.5px);
-        filter: blur(0.5px);
-        pointer-events: none;
-      }
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-      &:hover {
-        transform: scale(1.3);
-        transition: all $transition-base;
-        -webkit-filter: blur(0.5px);
-        filter: blur(0.5px);
+        &.home-icon,
+        &.contact-icon {
+          color: $white;
+          font-size: 1.2rem;
+          opacity: 0.5;
+          filter: blur(1px);
+          width: 30px;
+          height: 30px;
+
+          &:hover {
+            opacity: 1;
+            transform: scale(1.2);
+            filter: blur(0);
+          }
+        }
+
+        &.circle {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: $white;
+          opacity: 0.5;
+          filter: blur(1px);
+
+          &:hover {
+            transform: scale(1.3);
+            filter: blur(0.5px);
+          }
+
+          &.active {
+            opacity: 1;
+            transform: scale(1.5);
+            filter: blur(0.5px);
+            pointer-events: none;
+          }
+        }
       }
     }
   }

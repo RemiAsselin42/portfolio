@@ -69,7 +69,7 @@ export const ProjectTemplate = ({
   }, []);
 
   const handleScroll = () => {
-    if (!projectLayoutRef.current || !isMobile) return;
+    if (!projectLayoutRef.current || !isMobile || isTransitioning) return;
     const { scrollTop, scrollHeight, clientHeight } = projectLayoutRef.current;
     setShowButtons(scrollTop + clientHeight >= scrollHeight - 50);
   };

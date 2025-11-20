@@ -15,29 +15,40 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
   onSelect,
 }) => {
   return (
-    <div className="project-dots-div">
-      <div className="project-dots">
-        <span className="dot-home" onClick={() => onSelect(0)}>
-          <FontAwesomeIcon icon={faHome} />
-        </span>
+    <nav className="project-dots-container">
+      <ul className="project-dots-list">
+        <li className="dot-item">
+          <button
+            className="dot-button home-icon"
+            onClick={() => onSelect(0)}
+            aria-label="Accueil"
+          >
+            <FontAwesomeIcon icon={faHome} />
+          </button>
+        </li>
 
         {projectPages.map((page, index) => (
-          <span
-            key={index}
-            className={`dot ${currentProject === page ? "active" : ""} ${
-              index === projectPages.length - 1 ? "last" : ""
-            }`}
-            onClick={() => onSelect(page)}
-          />
+          <li key={index} className="dot-item">
+            <button
+              className={`dot-button circle ${
+                currentProject === page ? "active" : ""
+              }`}
+              onClick={() => onSelect(page)}
+              aria-label={`Projet ${page}`}
+            />
+          </li>
         ))}
 
-        <span
-          className="dot-contact"
-          onClick={() => onSelect(projectPages.length + 1)}
-        >
-          <FontAwesomeIcon icon={faPaperPlane} />
-        </span>
-      </div>
-    </div>
+        <li className="dot-item">
+          <button
+            className="dot-button contact-icon"
+            onClick={() => onSelect(projectPages.length + 1)}
+            aria-label="Contact"
+          >
+            <FontAwesomeIcon icon={faPaperPlane} />
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 };
