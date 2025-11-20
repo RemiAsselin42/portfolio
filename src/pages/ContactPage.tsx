@@ -1,6 +1,7 @@
 import { PageProps } from "../types/PageTypes";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { RollingText } from "../components/RollingText";
 
 export const ContactPage = ({ onHomePage }: PageProps) => {
   const form = useRef<HTMLFormElement>(null);
@@ -47,7 +48,7 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
               className="submit-button home-button message-sent"
               onClick={onHomePage}
             >
-              Page d'accueil
+              <RollingText text="Page d'accueil" />
             </button>
           </div>
         </div>
@@ -90,14 +91,14 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
                 className="submit-button"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Envoi..." : "Envoyer"}
+                {isSubmitting ? "Envoi..." : <RollingText text="Envoyer" />}
               </button>
               <button
                 type="button"
                 className="submit-button home-button"
                 onClick={onHomePage}
               >
-                Page d'accueil
+                <RollingText text="Page d'accueil" />
               </button>
             </div>
             {submitStatus === "error" && (

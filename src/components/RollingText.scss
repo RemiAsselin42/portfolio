@@ -1,0 +1,23 @@
+.rolling-text {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: middle;
+  line-height: 1.2; // Ajuster selon la police
+
+  .letter-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+
+    .letter {
+      display: block;
+      white-space: pre; // Pour préserver les espaces
+    }
+
+    .duplicate {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+}

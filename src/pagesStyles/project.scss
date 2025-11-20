@@ -64,7 +64,8 @@
 
     @include respond-to(mobile) {
       font-size: 1.2em;
-      margin: $spacing-base 0;
+      margin-bottom: $spacing-base;
+      margin-top: 0;
     }
   }
 
@@ -162,7 +163,6 @@
         text-align: left;
         transition: height 0.3s ease;
         flex-grow: 1;
-        padding-right: $spacing-base;
         scrollbar-width: thin;
 
         @include respond-to(macbook) {
