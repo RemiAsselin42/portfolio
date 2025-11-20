@@ -31,7 +31,23 @@ export const MouseFollower: React.FC<MouseFollowerProps> = ({
       mouseRef.current = { x, y };
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        let x = e.touches[0].clientX;
+        let y = e.touches[0].clientY;
+
+        if (isSafari) {
+          x += 100;
+          y += 100;
+        }
+
+        mouseRef.current = { x, y };
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchstart", handleTouchMove);
 
     let animationFrameId: number;
 
@@ -53,6 +69,8 @@ export const MouseFollower: React.FC<MouseFollowerProps> = ({
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, [isSafari]);

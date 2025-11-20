@@ -87,13 +87,13 @@ function App() {
     const calculateShapesCount = () => {
       const width = window.innerWidth;
       if (width >= 3440) {
-        return 25;
+        return 12;
       } else if (width >= 1920) {
-        return Math.round(15 + (width - 1920) * (10 / (3440 - 1920)));
+        return Math.round(5 + (width - 1920) * (7 / (3440 - 1920)));
       } else if (width >= 992) {
-        return Math.round(10 + (width - 992) * (5 / (1920 - 992)));
+        return Math.round(2 + (width - 992) * (5 / (1920 - 992)));
       } else {
-        return Math.max(5, Math.round(5 + (width / 992) * 3));
+        return Math.max(0, Math.round(2 + (width / 992) * 3));
       }
     };
 

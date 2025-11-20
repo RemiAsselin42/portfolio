@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 interface BackgroundShapeProps {
   isSafari: boolean;
@@ -47,6 +47,7 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
     const randomScale = 0.8 + Math.random() * 0.6; // 0.8 à 1.4
 
     const animationDuration = 45 + Math.random() * 20; // Durée plus variable
+    const animationDelay = Math.random() * -20; // Délai négatif pour commencer à différents moments
     const floatDirection = Math.random() > 0.5 ? 1 : -1;
     // Palette orangée / rose plus soutenu pour contraste texte blanc
     const warmColors = [
@@ -57,7 +58,8 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
       "#F50057", // Deep Pink
       "#ff438bff", // Deep Orange
     ];
-    const color = warmColors[Math.floor(Math.random() * warmColors.length)];
+    const initialColor =
+      warmColors[Math.floor(Math.random() * warmColors.length)];
 
     // Génération du polygone
     const points = Math.floor(Math.random() * 8) + 5;
@@ -83,34 +85,68 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
       randomRotate,
       randomScale,
       animationDuration,
+      animationDelay,
       floatDirection,
-      color,
+      initialColor,
+      warmColors,
       polygon,
       animationName,
     };
   }, []);
+
+  const [currentColor, setCurrentColor] = useState(params.initialColor);
+
+  // Changement de couleur aléatoire
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // 30% de chance de changer de couleur à chaque intervalle
+      if (Math.random() < 0.3) {
+        const newColor =
+          params.warmColors[
+            Math.floor(Math.random() * params.warmColors.length)
+          ];
+        setCurrentColor(newColor);
+      }
+    }, 4000); // Vérifie toutes les 4 secondes
+
+    return () => clearInterval(interval);
+  }, [params.warmColors]);
 
   // Gestion du cycle de vie des styles CSS (création et nettoyage)
   useEffect(() => {
     const keyframes = `
       @keyframes ${params.animationName} {
         0% {
-          transform: translate(-50%, -50%) rotate(0deg) scale(1);
+          transform: translate(-50%, -50%) rotate(0deg) scale(0.8);
+          opacity: 0.3;
         }
-        33% {
+        25% {
+          transform: translate(${params.randomTranslateX * 0.5}%, ${
+      params.randomTranslateY * 0.5
+    }%) 
+                    rotate(${params.randomRotate * 0.5}deg) 
+                    scale(${params.randomScale});
+          opacity: 0.7;
+        }
+        50% {
           transform: translate(${params.randomTranslateX}%, ${
       params.randomTranslateY
     }%) 
                     rotate(${params.randomRotate}deg) 
-                    scale(${params.randomScale});
+                    scale(${params.randomScale * 1.4});
+          opacity: 0.2;
         }
-        66% {
-          transform: translate(${-params.randomTranslateX}%, ${-params.randomTranslateY}%) 
-                    rotate(${-params.randomRotate}deg) 
-                    scale(${2 - params.randomScale});
+        75% {
+          transform: translate(${params.randomTranslateX * 0.5}%, ${
+      params.randomTranslateY * 0.5
+    }%) 
+                    rotate(${params.randomRotate * 0.5}deg) 
+                    scale(${params.randomScale});
+          opacity: 0.6;
         }
         100% {
-          transform: translate(-50%, -50%) rotate(0deg) scale(1);
+          transform: translate(-50%, -50%) rotate(0deg) scale(0.8);
+          opacity: 0.3;
         }
       }
     `;
@@ -188,12 +224,13 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
   const shapeStyle: React.CSSProperties = {
     width: `${params.size}px`,
     height: `${params.size}px`,
-    backgroundColor: params.color,
+    backgroundColor: currentColor,
     clipPath: `polygon(${params.polygon})`,
-    opacity: "0.8",
-    transition: "all 0.3s ease",
+    // Opacité gérée par l'animation
+    transition: "background-color 3s ease",
     // L'animation gère le centrage (-50%, -50%) et le flottement
     animation: `${params.animationName} ${params.animationDuration}s ease-in-out infinite`,
+    animationDelay: `${params.animationDelay}s`,
     animationDirection: params.floatDirection > 0 ? "normal" : "reverse",
   };
 
