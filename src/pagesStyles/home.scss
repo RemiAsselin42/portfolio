@@ -73,50 +73,74 @@
 }
 
 @include respond-to(desktop) {
-  #home-container .name-title-1::after {
-    color: $white-alpha-05;
-    -webkit-text-stroke: 6px rgba(255, 255, 255, 0.75);
+  #home-container .name-title-1 .name-background {
+    color: transparent;
+    background-image: radial-gradient(
+        circle 350px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 1) 50%,
+        transparent 50.1%
+      ),
+      linear-gradient($white-alpha-00, $white-alpha-05);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-repeat: no-repeat;
+    -webkit-text-stroke: 7px rgba(255, 255, 255, 1);
 
     z-index: 1;
-    content: "Asselin";
     position: absolute;
-    transform: translateX(-70%) translateY(-10%) rotate(-5deg);
+    transform: translateX(-65%) translateY(-10%) rotate(-7deg);
     font-family: $font-family-title-2;
     font-size: clamp(3em, 7vw, 10em);
     margin-bottom: $spacing-xl;
     font-weight: 700;
+    pointer-events: none;
+    padding-right: 0.2em;
+    white-space: nowrap;
   }
 }
 
 @include respond-to(tablet) {
-  #home-container .name-title-1::after {
-    color: $white-alpha-05;
-    -webkit-text-stroke: 4px rgba(255, 255, 255, 0.75);
+  #home-container .name-title-1 .name-background {
+    color: transparent;
+    background: $white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-repeat: no-repeat;
+    -webkit-text-stroke: 4px rgba(255, 255, 255, 1);
 
     z-index: 1;
-    content: "Asselin";
     position: absolute;
-    transform: translateX(-70%) translateY(-10%) rotate(-5deg);
+    transform: translateX(-65%) translateY(-10%) rotate(-7deg);
     font-family: $font-family-title-2;
     font-size: clamp(3em, 7vw, 10em);
     margin-bottom: $spacing-xl;
     font-weight: 700;
+    pointer-events: none;
+    padding-right: 0.2em;
+    white-space: nowrap;
   }
 }
 
 @include respond-to(mobile) {
-  #home-container .name-title-1::after {
-    color: $white-alpha-05;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.75) !important;
+  #home-container .name-title-1 .name-background {
+    color: transparent;
+    background: $white;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-repeat: no-repeat;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 1) !important;
 
     z-index: 1;
-    content: "Asselin";
     position: absolute;
-    transform: translateX(-70%) translateY(-10%) rotate(-5deg);
+    transform: translateX(-65%) translateY(-10%) rotate(-7deg);
     font-family: $font-family-title-2;
     font-size: clamp(3em, 7vw, 10em);
     margin-bottom: $spacing-xl;
     font-weight: 700;
+    pointer-events: none;
+    padding-right: 0.2em;
+    white-space: nowrap;
   }
 }
 

@@ -55,11 +55,17 @@ export const MouseFollower: React.FC<MouseFollowerProps> = ({
       // Facteur de lissage (plus petit = plus de délai/inertie)
       const ease = 0.08;
 
-      posRef.current.x += (mouseRef.current.x - posRef.current.x) * ease;
-      posRef.current.y += (mouseRef.current.y - posRef.current.y) * ease;
+      const dx = mouseRef.current.x - posRef.current.x;
+      const dy = mouseRef.current.y - posRef.current.y;
 
-      if (shapeRef.current) {
-        shapeRef.current.style.transform = `translate(${posRef.current.x}px, ${posRef.current.y}px) translate(-50%, -50%)`;
+      // Optimization: Stop updating if close enough
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+        posRef.current.x += dx * ease;
+        posRef.current.y += dy * ease;
+
+        if (shapeRef.current) {
+          shapeRef.current.style.transform = `translate(${posRef.current.x}px, ${posRef.current.y}px) translate(-50%, -50%)`;
+        }
       }
 
       animationFrameId = requestAnimationFrame(animate);
