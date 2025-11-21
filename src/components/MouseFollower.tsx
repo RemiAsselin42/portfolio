@@ -80,9 +80,9 @@ export const MouseFollower: React.FC<MouseFollowerProps> = ({
     const styleSheet = document.createElement("style");
     styleSheet.textContent = `
       @keyframes pulse {
-        0% { transform: scale(0.8); }
+        0% { transform: scale(1); }
         50% { transform: scale(1.2); }
-        100% { transform: scale(0.8); }
+        100% { transform: scale(1); }
       }
     `;
     document.head.appendChild(styleSheet);

@@ -53,7 +53,7 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
     const warmColors = [
       "#FF6B6B", // Coral Red
       "#ff5378ff", // Orange
-      "#FF5252", // Red
+      "#ff7552ff", // Red
       "#FF4081", // Pink
       "#F50057", // Deep Pink
       "#ff438bff", // Deep Orange

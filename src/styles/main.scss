@@ -143,7 +143,7 @@ body {
 // Animations de transition droite vers gauche
 
 .reset-position {
-  transform: translateX(100%) scale(1.5) rotateY(-0.2turn);
+  transform: translateY(100%) scale(0.5) rotateX(-0.2turn);
   opacity: 0;
   transition: none;
 
@@ -154,7 +154,7 @@ body {
 }
 
 .fade-in {
-  transform: translateX(0) scale(1) rotateY(0deg);
+  transform: translateY(0) scale(1) rotateX(0deg);
   opacity: 1;
   transition: transform $transition-fade, opacity $transition-fade;
 
@@ -166,7 +166,7 @@ body {
 }
 
 .fade-out {
-  transform: translateX(-100%) scale(1.5) rotateY(0.2turn);
+  transform: translateY(-100%) scale(0.5) rotateX(0.2turn);
   opacity: 0;
   transition: transform $transition-fade, opacity $transition-fade;
 
@@ -180,7 +180,7 @@ body {
 // Animation de transition gauche vers droite
 
 .left-reset-position {
-  transform: translateX(-100%) scale(1.5) rotateY(0.2turn);
+  transform: translateY(-100%) scale(0.5) rotateX(0.2turn);
   opacity: 0;
   transition: none;
 
@@ -191,7 +191,7 @@ body {
 }
 
 .left-fade-in {
-  transform: translateX(0) scale(1) rotateY(0deg);
+  transform: translateY(0) scale(1) rotateX(0deg);
   opacity: 1;
   transition: transform $transition-fade, opacity $transition-fade;
 
@@ -203,7 +203,7 @@ body {
 }
 
 .left-fade-out {
-  transform: translateX(100%) scale(1.5) rotateY(-0.2turn);
+  transform: translateY(100%) scale(0.5) rotateX(-0.2turn);
   opacity: 0;
   transition: transform $transition-fade, opacity $transition-fade;
 
