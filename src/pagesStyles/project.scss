@@ -43,6 +43,16 @@
   }
 }
 
+.project-page-wrapper {
+  @include respond-to(mobile) {
+    height: calc(100vh - 65px);
+  }
+
+  @include respond-to(tablet) {
+    height: calc(100vh - 65px);
+  }
+}
+
 #page-0 {
   height: 100vh;
 }
@@ -60,12 +70,11 @@
     filter: blur(1px);
     text-align: center;
     height: fit-content;
-    margin-top: 1em;
+    margin: 1em 0;
 
     @include respond-to(mobile) {
       font-size: 1.2em;
       margin-bottom: $spacing-base;
-      margin-top: 0;
     }
   }
 
@@ -228,16 +237,20 @@
         width: 80%;
         margin: $spacing-lg auto;
         flex-shrink: 0;
-
-        @include respond-to(mobile) {
-          padding-bottom: 200px; // Increased to ensure text clears buttons and dots
-        }
-
-        @include respond-to(tablet) {
-          padding-bottom: 20px;
-        }
       }
     }
+  }
+}
+
+@include respond-to(mobile) {
+  .project-container .project-layout {
+    padding-bottom: 200px;
+  }
+}
+
+@include respond-to(tablet) {
+  .project-container .project-layout {
+    padding-bottom: 150px;
   }
 }
 
@@ -336,14 +349,14 @@
 @include respond-to(tablet) {
   .project-button-container {
     position: fixed;
-    bottom: 0;
+    bottom: 80px;
     left: 0;
     width: 100%;
     z-index: 100;
     transition: transform 0.3s ease-out;
-    transform: translateY(200px);
+    transform: translateY(150px);
     &.buttons-visible {
-      transform: translateY(-30px);
+      transform: translateY(0);
     }
 
     .project-button {
@@ -551,7 +564,7 @@
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  height: calc(100lvh - 65px);
+  height: 100%;
   margin: 0 auto;
   position: relative;
   perspective: 1000px;
@@ -597,13 +610,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 
   @include respond-to(mobile) {
-    height: calc(100lvh - 150px);
+    height: 100%;
   }
 
   @include respond-to(tablet) {
-    height: calc(100lvh - 170px);
+    height: 100%;
   }
 
   @include respond-to(macbook) {
@@ -631,7 +645,8 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    height: calc(100vh - 200px);
+    height: calc(100% - 80px); // Leave space for back button
+    margin-bottom: 60px; // Push content up from bottom
   }
 
   @include respond-to(tablet) {
@@ -639,7 +654,8 @@
     &::-webkit-scrollbar {
       display: none;
     }
-    height: 100vh;
+    height: calc(100% - 80px);
+    margin-bottom: 60px;
   }
 
   @include respond-to(macbook) {
@@ -690,7 +706,7 @@
   transform: translateY(-0px);
 
   @include respond-to(mobile) {
-    transform: translateY(-20px);
+    transform: translateY(10px);
   }
 
   @include respond-to(tablet) {

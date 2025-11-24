@@ -208,7 +208,9 @@ function App() {
         </div>
 
         <div
-          className={`page-wrapper ${animationStage}`}
+          className={`page-wrapper ${animationStage} ${
+            isProjectPage ? "project-page-wrapper" : ""
+          }`}
           id={`page-${currentPage}`}
         >
           <CurrentPage
