@@ -10,13 +10,6 @@ export const HomePage = ({ onNextPage, onContactPage }: PageProps) => {
     let mouseX = 0;
     let mouseY = 0;
     let isMouseMoving = false;
-    let cachedRect: DOMRect | null = null;
-
-    const updateRect = () => {
-      if (textRef.current) {
-        cachedRect = textRef.current.getBoundingClientRect();
-      }
-    };
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
@@ -25,9 +18,11 @@ export const HomePage = ({ onNextPage, onContactPage }: PageProps) => {
     };
 
     const animate = () => {
-      if (isMouseMoving && textRef.current && cachedRect) {
-        const centerX = cachedRect.left + cachedRect.width / 2;
-        const centerY = cachedRect.top + cachedRect.height / 2;
+      if (isMouseMoving && textRef.current) {
+        // Always get fresh rect to handle page transitions and scrolling correctly
+        const rect = textRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
 
         const dx = mouseX - centerX;
         const dy = mouseY - centerY;
@@ -46,27 +41,17 @@ export const HomePage = ({ onNextPage, onContactPage }: PageProps) => {
         textRef.current.style.setProperty("--cursor-x", `${finalX}px`);
         textRef.current.style.setProperty("--cursor-y", `${finalY}px`);
 
-        // Reset flag to avoid unnecessary updates if mouse stops but loop continues
-        // However, for smooth tracking we might want to keep updating if we were interpolating,
-        // but here we are setting position directly based on mouse, so we can stop if mouse doesn't move.
         isMouseMoving = false;
       }
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Initial rect calculation
-    updateRect();
-
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("resize", updateRect);
-    window.addEventListener("scroll", updateRect); // In case the page scrolls
 
     animate();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", updateRect);
-      window.removeEventListener("scroll", updateRect);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
