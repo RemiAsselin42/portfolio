@@ -129,7 +129,7 @@ export const Project6Page = (props: PageProps) => (
             </div>
             <div className="tech-item">
               <LazyImage src="/github.png" alt="GitHub" className="tech-icon" />
-              <span>Git</span>
+              <span>GitHub</span>
             </div>
             <div className="tech-item">
               <LazyImage src="/mysql.png" alt="MySQL" className="tech-icon" />

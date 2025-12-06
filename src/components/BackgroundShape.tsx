@@ -10,6 +10,8 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
   const currentOffset = useRef({ x: 0, y: 0 });
+  const rippleOffsetRef = useRef({ x: 0, y: 0 });
+  const rippleVelocityRef = useRef({ x: 0, y: 0 });
 
   // Génération des paramètres aléatoires une seule fois au montage
   const params = useMemo(() => {
@@ -166,7 +168,50 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
+
+    const handleRipple = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      const { x: rippleX, y: rippleY, maxScale } = customEvent.detail;
+
+      if (!wrapperRef.current) return;
+
+      // Calcul de la position d'ancrage en pixels
+      const anchorX = (window.innerWidth * params.left) / 100;
+      const anchorY = (window.innerHeight * params.top) / 100;
+
+      // Distance entre le ripple et la shape
+      const dx = anchorX - rippleX;
+      const dy = anchorY - rippleY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // Force du ripple basée sur la distance
+      const rippleRadius = (window.innerWidth + window.innerHeight) / 2;
+      const maxRippleDist = rippleRadius * (maxScale / 100);
+      const rippleForce = Math.max(0, 1 - dist / maxRippleDist);
+
+      if (rippleForce > 0 && dist > 0) {
+        // Calcul du délai en fonction de la distance (progression de l'onde)
+        // Plus la shape est loin, plus elle attend longtemps avant de bouger
+        // Le délai est inverse : (1 - rippleForce) = les shapes lointaines attendent plus
+        const maxDelay = 5000; // Délai max en ms
+        const delayFactor = 1 - rippleForce; // Inverse: loin = délai long
+        const delay = delayFactor * delayFactor * maxDelay; // Progression non-linéaire
+
+        // Réduction du déplacement en fonction de la distance
+        // Plus loin = force réduite (épuisement de l'onde)
+        const baseForce = 300;
+        const adjustedForce = rippleForce * rippleForce * baseForce;
+
+        // Appliquer la vélocité avec délai
+        setTimeout(() => {
+          rippleVelocityRef.current.x = (dx / dist) * adjustedForce;
+          rippleVelocityRef.current.y = (dy / dist) * adjustedForce;
+        }, delay);
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("ripple-created", handleRipple);
 
     let animationFrameId: number;
 
@@ -194,10 +239,32 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
         targetY = (dy / dist) * force * maxDisplacement;
       }
 
-      // Lissage du mouvement (Lerp)
-      const ease = 0.05;
-      currentOffset.current.x += (targetX - currentOffset.current.x) * ease;
-      currentOffset.current.y += (targetY - currentOffset.current.y) * ease;
+      // Appliquer la vélocité du ripple (éloignement rapide)
+      const rippleEaseOut = 0.15; // Éloignement rapide
+      rippleOffsetRef.current.x += rippleVelocityRef.current.x * rippleEaseOut;
+      rippleOffsetRef.current.y += rippleVelocityRef.current.y * rippleEaseOut;
+
+      // Ralentir la vélocité du ripple progressivement
+      rippleVelocityRef.current.x *= 0.88;
+      rippleVelocityRef.current.y *= 0.88;
+
+      // Retour lent vers zéro pour l'offset du ripple
+      const rippleReturnEase = 0.02; // Retour très lent
+      rippleOffsetRef.current.x +=
+        (0 - rippleOffsetRef.current.x) * rippleReturnEase;
+      rippleOffsetRef.current.y +=
+        (0 - rippleOffsetRef.current.y) * rippleReturnEase;
+
+      // Ajouter le décalage du ripple au décalage total
+      targetX += rippleOffsetRef.current.x;
+      targetY += rippleOffsetRef.current.y;
+
+      // Lissage du mouvement du souris (Lerp rapide)
+      const mouseEase = 0.08;
+      currentOffset.current.x +=
+        (targetX - currentOffset.current.x) * mouseEase;
+      currentOffset.current.y +=
+        (targetY - currentOffset.current.y) * mouseEase;
 
       // Application de la transformation sur le wrapper
       wrapperRef.current.style.transform = `translate(${currentOffset.current.x}px, ${currentOffset.current.y}px)`;
@@ -209,6 +276,7 @@ export const BackgroundShape: React.FC<BackgroundShapeProps> = ({
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("ripple-created", handleRipple);
       cancelAnimationFrame(animationFrameId);
     };
   }, [params.left, params.top]);

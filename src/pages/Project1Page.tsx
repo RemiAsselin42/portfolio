@@ -1,6 +1,5 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
-import { LazyImage } from "../components/LazyImage";
 
 export const Project1Page = (props: PageProps) => (
   <ProjectTemplate
@@ -83,31 +82,27 @@ export const Project1Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <LazyImage src="/react.png" alt="React" className="tech-icon" />
+              <img src="/react.png" alt="React" />
               <span>React</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/vite.png" alt="Vite" className="tech-icon" />
+              <img src="/vite.png" alt="Vite" />
               <span>Vite</span>
             </div>
             <div className="tech-item">
-              <LazyImage
-                src="/typescript.png"
-                alt="TypeScript"
-                className="tech-icon"
-              />
+              <img src="/typescript.png" alt="TypeScript" />
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/sass.png" alt="SASS" className="tech-icon" />
-              <span>SASS</span>
+              <img src="/sass.png" alt="Sass" />
+              <span>Sass</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/css.png" alt="CSS" className="tech-icon" />
+              <img src="/css.png" alt="CSS3" />
               <span>CSS3</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/github.png" alt="GitHub" className="tech-icon" />
+              <img src="/github.png" alt="GitHub" />
               <span>GitHub</span>
             </div>
           </div>

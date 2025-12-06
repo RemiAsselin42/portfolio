@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { PageProps } from "../types/PageTypes";
-import { OptimizedImage } from "../components/OptimizedImage";
+import { LazyImage } from "../components/LazyImage";
 import { ImageLightbox } from "../components/ImageLightbox";
 
 interface ProjectTemplateProps extends PageProps {
@@ -192,10 +192,9 @@ export const ProjectTemplate = ({
               {customMedia
                 ? customMedia
                 : projectImage && (
-                    <OptimizedImage
+                    <LazyImage
                       src={`${projectImage.src}`}
                       alt={projectImage.alt}
-                      className="project-image"
                     />
                   )}
             </div>

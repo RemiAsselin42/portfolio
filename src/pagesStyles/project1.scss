@@ -8,6 +8,8 @@
 .portfolio-modal-content {
   max-width: 1200px;
 
+  align-content: center;
+
   section:last-child {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -101,38 +103,54 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: $spacing-xl;
-      margin-top: $spacing-lg;
-
-      @include respond-to(mobile) {
-        gap: $spacing-base;
-      }
+      gap: 2rem;
+      margin-top: 1.5rem;
 
       .tech-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        transition: transform $transition-base;
-
-        &:hover {
-          transform: translateY(-5px);
-        }
+        width: 100px;
 
         img {
-          width: auto;
-          height: 80px;
-          margin-bottom: $spacing-small;
-
-          @include respond-to(mobile) {
-            height: 60px;
-          }
+          width: 60px;
+          height: 60px;
+          object-fit: contain;
+          margin-bottom: 0.5rem;
+          transition: transform 0.3s ease;
+          border-radius: 10px;
         }
 
         span {
-          font-size: 1rem;
-          color: $text-light;
-          font-family: $font-family-base;
+          font-size: 0.9rem;
+          text-align: center;
         }
+
+        &:hover img {
+          transform: translateY(-5px);
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .elements-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-stack {
+        gap: 1.5rem;
       }
     }
   }

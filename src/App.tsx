@@ -7,6 +7,7 @@ import { pages } from "./pages";
 import { ProjectDots } from "./components/ProjectDots";
 import { BackgroundShape } from "./components/BackgroundShape";
 import { MouseFollower } from "./components/MouseFollower";
+import { RippleEffect } from "./components/RippleEffect";
 import { useImagePreloader } from "./hooks/useImagePreloader";
 import { useSwipe } from "./hooks/useSwipe";
 
@@ -127,10 +128,34 @@ function App() {
       "/react.png",
       "/vite.png",
       "/typescript.png",
+      "/javascript.png",
       "/sass.png",
       "/css.png",
+      "/html.webp",
       "/github.png",
       "/hopecore-poster.png",
+      "/wamp.png",
+      "/sql.png",
+      "/mysql.png",
+      "/php.png",
+      "/hubspot.png",
+      "/indesign.png",
+      "/illustrator.webp",
+      "/photoshop.png",
+      "/premiere.png",
+      "/aftereffects.png",
+      "/audition.png",
+      "/canon.png",
+      "/elementor.png",
+      "/hirogo-presentation.jpg",
+      "/wordpress.png",
+      "/pappers.png",
+      "/linkedin.png",
+      "/openweather.png",
+      "/openstreetmap.png",
+      "/mapbox.png",
+      "/json.png",
+      "/figma.png",
     ],
     []
   );
@@ -148,8 +173,7 @@ function App() {
         4: ["/yan-archi.png"],
         5: ["/geopostcodes.png"],
         6: ["/hyxe.png"],
-        7: ["/hopecode-tiktok.mp4"],
-        8: ["/bbv-olsberg.png"],
+        7: ["/hopecore-poster.png"],
       };
 
       return pageImageMap[nextPageIndex] || [];
@@ -186,12 +210,6 @@ function App() {
                 filterUnits="userSpaceOnUse"
               >
                 <feGaussianBlur stdDeviation="80" result="blurredImage" />
-                <feColorMatrix
-                  type="saturate"
-                  values="1"
-                  in="blurredImage"
-                  result="colorAdjusted"
-                />
               </filter>
             </defs>
           </svg>
@@ -205,11 +223,14 @@ function App() {
             ))}
             <MouseFollower isSafari={isSafari} />
           </div>
+          <RippleEffect />
         </div>
 
         <div
           className={`page-wrapper ${animationStage} ${
             isProjectPage ? "project-page-wrapper" : ""
+          } ${currentPage === 0 ? "home-page" : `project-${currentPage}`} ${
+            currentPage === pages.length - 1 ? "contact-page" : ""
           }`}
           id={`page-${currentPage}`}
         >

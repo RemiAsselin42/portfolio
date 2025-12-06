@@ -163,6 +163,32 @@
         font-size: 0.9rem;
         text-align: center;
       }
+
+      &:hover img {
+        transform: translateY(-5px);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .elements-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-stack {
+      gap: 1.5rem;
     }
   }
 }

@@ -136,11 +136,20 @@
       padding: $spacing-base 0 5px;
       margin: 0 $spacing-base;
 
-      .fade-in-image {
+      .image-container {
         width: 100%;
-        height: auto;
-        object-fit: contain;
-        max-height: 70vh;
+        min-height: 200px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          max-height: 70vh;
+        }
       }
     }
 
@@ -636,6 +645,8 @@
   scrollbar-color: $primary-color transparent;
   scroll-behavior: smooth;
 
+  display: flex;
+
   scrollbar-gutter: stable both-edges;
 
   height: calc(100vh - 40px);
@@ -664,7 +675,7 @@
   }
 
   @include respond-to(desktop) {
-    margin-top: 35px;
+    margin: 10vh 0;
   }
 
   &::-webkit-scrollbar {
@@ -683,6 +694,7 @@
 }
 
 .project-details-content {
+  display: flex;
   @include respond-to(macbook) {
     max-width: 1000px;
     margin: 0 50px;

@@ -1,0 +1,176 @@
+@use "../styles/variables" as *;
+
+.ripple-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: all;
+  z-index: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ripple-wave {
+  position: absolute;
+  pointer-events: none;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple-expand 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+
+  // Onde sinusoïdale fine avec dégradé lisse
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 0.5px solid var(--ripple-color, #ffb3b3);
+    opacity: 0.65;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px var(--ripple-color, #ffb3b3),
+      0 0 16px rgba(255, 179, 179, 0.4);
+    filter: blur(0.4px);
+    animation: ripple-wave 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  // Deuxième onde décalée pour effet sinusoïdal
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 0.2px solid var(--ripple-color, #ffb3b3);
+    opacity: 0.35;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 4px var(--ripple-color, #ffb3b3);
+    filter: blur(0.2px);
+    animation: ripple-wave-offset 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      0.15s forwards;
+  }
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(var(--ripple-max-scale, 200));
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-wave {
+  0% {
+    opacity: 0.65;
+    box-shadow: 0 0 8px var(--ripple-color, #ffb3b3),
+      0 0 16px rgba(255, 179, 179, 0.4);
+  }
+  15% {
+    opacity: 0.62;
+    box-shadow: 0 0 9px var(--ripple-color, #ffb3b3),
+      0 0 18px rgba(255, 179, 179, 0.45);
+  }
+  30% {
+    opacity: 0.58;
+    box-shadow: 0 0 10px var(--ripple-color, #ffb3b3),
+      0 0 20px rgba(255, 179, 179, 0.5);
+  }
+  45% {
+    opacity: 0.52;
+    box-shadow: 0 0 11px var(--ripple-color, #ffb3b3),
+      0 0 22px rgba(255, 179, 179, 0.45);
+  }
+  60% {
+    opacity: 0.42;
+    box-shadow: 0 0 10px var(--ripple-color, #ffb3b3),
+      0 0 20px rgba(255, 179, 179, 0.35);
+  }
+  75% {
+    opacity: 0.26;
+    box-shadow: 0 0 8px var(--ripple-color, #ffb3b3),
+      0 0 16px rgba(255, 179, 179, 0.2);
+  }
+  90% {
+    opacity: 0.08;
+    box-shadow: 0 0 4px var(--ripple-color, #ffb3b3),
+      0 0 8px rgba(255, 179, 179, 0.08);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 3px var(--ripple-color, #ffb3b3),
+      0 0 6px rgba(255, 179, 179, 0.05);
+  }
+}
+
+@keyframes ripple-wave-offset {
+  0% {
+    opacity: 0.35;
+    box-shadow: 0 0 4px var(--ripple-color, #ffb3b3);
+  }
+  15% {
+    opacity: 0.33;
+    box-shadow: 0 0 4px var(--ripple-color, #ffb3b3),
+      0 0 8px rgba(255, 179, 179, 0.25);
+  }
+  30% {
+    opacity: 0.32;
+    box-shadow: 0 0 5px var(--ripple-color, #ffb3b3),
+      0 0 10px rgba(255, 179, 179, 0.3);
+  }
+  45% {
+    opacity: 0.29;
+    box-shadow: 0 0 5px var(--ripple-color, #ffb3b3),
+      0 0 10px rgba(255, 179, 179, 0.28);
+  }
+  60% {
+    opacity: 0.23;
+    box-shadow: 0 0 6px var(--ripple-color, #ffb3b3),
+      0 0 11px rgba(255, 179, 179, 0.22);
+  }
+  75% {
+    opacity: 0.13;
+    box-shadow: 0 0 4px var(--ripple-color, #ffb3b3),
+      0 0 8px rgba(255, 179, 179, 0.1);
+  }
+  90% {
+    opacity: 0.04;
+    box-shadow: 0 0 2px var(--ripple-color, #ffb3b3),
+      0 0 4px rgba(255, 179, 179, 0.03);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 1px var(--ripple-color, #ffb3b3);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .ripple-wave {
+    &::before {
+      border-width: 0.75px;
+      box-shadow: 0 0 6px var(--ripple-color, #ff5378ff),
+        0 0 12px rgba(255, 83, 120, 0.3);
+    }
+
+    &::after {
+      border-width: 0.5px;
+      box-shadow: 0 0 3px var(--ripple-color, #ff5378ff);
+    }
+  }
+
+  @keyframes ripple-expand {
+    100% {
+      transform: translate(-50%, -50%) scale(100);
+    }
+  }
+}

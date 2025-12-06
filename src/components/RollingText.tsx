@@ -12,7 +12,11 @@ export const RollingText: React.FC<RollingTextProps> = ({ text }) => {
         <span
           key={index}
           className="letter-wrapper"
-          style={{ "--delay": `${index * 0.025}s` } as React.CSSProperties}
+          style={
+            {
+              "--delay": `${(index * 0.025).toFixed(3)}s`,
+            } as React.CSSProperties
+          }
         >
           <span className="letter original">{char}</span>
           <span className="letter duplicate">{char}</span>

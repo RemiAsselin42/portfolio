@@ -109,7 +109,7 @@ export const MouseFollower: React.FC<MouseFollowerProps> = ({
   const innerStyle: React.CSSProperties = {
     width: "400px",
     height: "400px",
-    backgroundColor: "#1a1717",
+    backgroundColor: "#000000ff",
     borderRadius: "50%",
     animation: "pulse 5s ease-in-out infinite",
   };
