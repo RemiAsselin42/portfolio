@@ -13,23 +13,26 @@ export const Project1Page = (props: PageProps) => (
     projectTitle="Bonjour&nbsp;!"
     projectDescription={
       <div>
-        <strong>Bienvenue</strong> sur mon portfolio&nbsp;!
         <hr />
-        Je suis Rémi, <strong>designer et développeur web</strong> à mon compte
-        &nbsp;!
+        Je suis Rémi, <strong>UX/UI designer et développeur web</strong>&nbsp;!
         <hr />
-        Actuellement en{" "}
-        <strong>
-          bachelor Information Communication et Design Digital
-        </strong> à <strong>Télécom Saint-Étienne</strong>, je recherche un
-        <strong> master en web design</strong> pour septembre 2025.
+        Je suis actuellement en{" "}
+        <strong>master Design d'Interfaces Multimédia et Internet</strong> à
+        l'université <strong>Sorbonne Paris Nord</strong>, formation qui me
+        permet de développer mes compétences en design web et en conception
+        d'interfaces accessibles et inclusives.
+        <hr />
+        Cette formation en alternance me permet également de travailler depuis
+        septembre 2025 en tant que <strong>webdesigner</strong> au sein de{" "}
+        <strong>l'Inserm</strong> dans le département de communication interne.
         <hr />
         Découvrez ici mes <strong>projets web, print et audiovisuels</strong>,
         issus de travaux personnels et académiques.
         <hr />
         En parallèle, j'ai créé mon <strong>auto-entreprise</strong>,
-        collaborant avec des <strong>associations du secteur social</strong>,
-        développant ainsi mes compétences en
+        collaborant avec des <strong>associations</strong> ou des{" "}
+        <strong>travailleurs indépendants</strong>, développant ainsi mes
+        compétences en
         <strong> gestion entrepreneuriale</strong>
         .
         <hr />
