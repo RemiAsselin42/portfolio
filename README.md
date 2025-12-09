@@ -65,37 +65,6 @@ npm run dev
 npm run build
 \`\`\`
 
-### Lint
-
-\`\`\`bash
-npm run lint
-\`\`\`
-
-### Preview
-
-\`\`\`bash
-npm run preview
-\`\`\`
-
----
-
-## 📁 Structure du Projet
-
-\`\`\`
-portfolio/
-├── src/
-│ ├── components/ # Composants React réutilisables
-│ ├── pages/ # Pages principales
-│ ├── hooks/ # Hooks personnalisés
-│ ├── styles/ # Styles SCSS globaux
-│ ├── types/ # Types TypeScript
-│ └── main.tsx # Entrée principale
-├── public/ # Fichiers statiques
-├── vite.config.ts # Configuration Vite
-├── tsconfig.json # Configuration TypeScript
-└── package.json # Dépendances
-\`\`\`
-
 ---
 
 ## 🎨 Composants Clés
@@ -142,6 +111,6 @@ Des questions ou envie de collaborer ? Contactez-moi via le formulaire sur le si
 
 <div align="center">
 
-**Fait avec ❤️ et quelques sueures par Rémi Asselin **
+<strong>Fait avec ❤️ et quelques sueures par Rémi Asselin </strong>
 
 </div>
