@@ -7,7 +7,7 @@ export const Project1Page = (props: PageProps) => (
     projectId={1}
     projectInfo="Présentation"
     projectImage={{
-      src: "/remi-pixel-art.png",
+      src: "/remi-pixel-art.webp",
       alt: "Portrait pixel art de Rémi",
     }}
     projectTitle="Bonjour&nbsp;!"
@@ -85,27 +85,27 @@ export const Project1Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/react.png" alt="React" />
+              <img src="/react.webp" alt="React" />
               <span>React</span>
             </div>
             <div className="tech-item">
-              <img src="/vite.png" alt="Vite" />
+              <img src="/vite.webp" alt="Vite" />
               <span>Vite</span>
             </div>
             <div className="tech-item">
-              <img src="/typescript.png" alt="TypeScript" />
+              <img src="/typescript.webp" alt="TypeScript" />
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
-              <img src="/sass.png" alt="Sass" />
+              <img src="/sass.webp" alt="Sass" />
               <span>Sass</span>
             </div>
             <div className="tech-item">
-              <img src="/css.png" alt="CSS3" />
+              <img src="/css.webp" alt="CSS3" />
               <span>CSS3</span>
             </div>
             <div className="tech-item">
-              <img src="/github.png" alt="GitHub" />
+              <img src="/github.webp" alt="GitHub" />
               <span>GitHub</span>
             </div>
           </div>

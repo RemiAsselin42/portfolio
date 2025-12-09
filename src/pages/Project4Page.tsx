@@ -8,7 +8,7 @@ export const Project4Page = (props: PageProps) => (
     projectId={4}
     projectInfo="Projet de stage&nbsp;:&nbsp;Refonte de charte graphique"
     projectImage={{
-      src: "/yan-archi.png",
+      src: "/yan-archi.webp",
       alt: "Stage chez Yan Olivares Architecture",
     }}
     projectTitle="Yan Olivares Architecture"
@@ -117,11 +117,11 @@ export const Project4Page = (props: PageProps) => (
               <span>Illustrator</span>
             </div>
             <div className="tech-item">
-              <img src="/indesign.png" alt="Adobe InDesign" />
+              <img src="/indesign.webp" alt="Adobe InDesign" />
               <span>InDesign</span>
             </div>
             <div className="tech-item">
-              <img src="/photoshop.png" alt="Adobe Photoshop" />
+              <img src="/photoshop.webp" alt="Adobe Photoshop" />
               <span>Photoshop</span>
             </div>
             <div className="tech-item">
@@ -139,19 +139,19 @@ export const Project4Page = (props: PageProps) => (
           </p>
           <div className="project-gallery">
             <div className="gallery-item">
-              <LazyImage src="/yan-archi-logo.png" alt="Logo Yan Archi" />
+              <LazyImage src="/yan-archi-logo.webp" alt="Logo Yan Archi" />
               <span>Logo principal</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/yan-archi-courrier-template.png"
+                src="/yan-archi-courrier-template.webp"
                 alt="Template de planche projet Yan Archi"
               />
               <span>Template des courriers</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/yan-archi-business-card.png"
+                src="/yan-archi-business-card.webp"
                 alt="Carte de visite Yan Archi"
               />
               <span>Carte de visite</span>
@@ -160,7 +160,7 @@ export const Project4Page = (props: PageProps) => (
           <div className="project-gallery-full">
             <div className="gallery-item">
               <LazyImage
-                src="/yan-archi-template-2.png"
+                src="/yan-archi-template-2.webp"
                 alt="Template de planche projet Yan Archi"
               />
               <span>Template de planche projet</span>

@@ -11,7 +11,7 @@ export const Project7Page = (props: PageProps) => (
     customMedia={
       <VideoPlayer
         src="hopecore-tiktok.mp4"
-        poster="/hopecore-poster.png"
+        poster="/hopecore-poster.webp"
         className="project-video"
       />
     }
@@ -132,7 +132,7 @@ export const Project7Page = (props: PageProps) => (
           <div className="tech-stack">
             <div className="tech-item">
               <LazyImage
-                src="/premiere.png"
+                src="/premiere.webp"
                 alt="Adobe Premiere Pro"
                 className="tech-icon"
               />
@@ -140,7 +140,7 @@ export const Project7Page = (props: PageProps) => (
             </div>
             <div className="tech-item">
               <LazyImage
-                src="/aftereffects.png"
+                src="/aftereffects.webp"
                 alt="After Effects"
                 className="tech-icon"
               />
@@ -148,14 +148,14 @@ export const Project7Page = (props: PageProps) => (
             </div>
             <div className="tech-item">
               <LazyImage
-                src="/audition.png"
+                src="/audition.webp"
                 alt="Adobe Audition"
                 className="tech-icon"
               />
               <span>Audition</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/canon.png" alt="Canon" className="tech-icon" />
+              <LazyImage src="/canon.webp" alt="Canon" className="tech-icon" />
               <span>Canon</span>
             </div>
           </div>

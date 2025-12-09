@@ -8,7 +8,7 @@ export const Project2Page = (props: PageProps) => (
     projectId={2}
     projectInfo="Projet de cours&nbsp;:&nbsp;Workshop avec le département de la Loire"
     projectImage={{
-      src: "/mockup-hirogo.png",
+      src: "/mockup-hirogo.webp",
       alt: "Mockup de l'application HiroGo",
     }}
     projectTitle="HiroGo"
@@ -122,10 +122,10 @@ export const Project2Page = (props: PageProps) => (
         {/* <section className="modal-section">
           <h2>Captures d'écran</h2>
           <div className="screenshots-grid">
-            <img src="/hirogo-screen1.png" alt="Écran d'accueil HiroGo" />
-            <img src="/hirogo-screen2.png" alt="Carte interactive HiroGo" />
-            <img src="/hirogo-screen3.png" alt="Menu des quêtes HiroGo" />
-            <img src="/hirogo-screen4.png" alt="Profil utilisateur HiroGo" />
+            <img src="/hirogo-screen1.webp" alt="Écran d'accueil HiroGo" />
+            <img src="/hirogo-screen2.webp" alt="Carte interactive HiroGo" />
+            <img src="/hirogo-screen3.webp" alt="Menu des quêtes HiroGo" />
+            <img src="/hirogo-screen4.webp" alt="Profil utilisateur HiroGo" />
           </div>
         </section> */}
 
@@ -158,27 +158,27 @@ export const Project2Page = (props: PageProps) => (
               <span>HTML5</span>
             </div>
             <div className="tech-item">
-              <img src="/css.png" alt="CSS" />
+              <img src="/css.webp" alt="CSS" />
               <span>CSS3</span>
             </div>
             <div className="tech-item">
-              <img src="/javascript.png" alt="JavaScript" />
+              <img src="/javascript.webp" alt="JavaScript" />
               <span>JavaScript</span>
             </div>
             <div className="tech-item">
-              <img src="/mapbox.png" alt="MapBox API" />
+              <img src="/mapbox.webp" alt="MapBox API" />
               <span>MapBox API</span>
             </div>
             <div className="tech-item">
-              <img src="/openweather.png" alt="OpenWeather API" />
+              <img src="/openweather.webp" alt="OpenWeather API" />
               <span>OpenWeather API</span>
             </div>
             <div className="tech-item">
-              <img src="/openstreetmap.png" alt="OpenStreetMap API" />
+              <img src="/openstreetmap.webp" alt="OpenStreetMap API" />
               <span>OpenStreetMap API</span>
             </div>
             <div className="tech-item">
-              <img src="/github.png" alt="GitHub" />
+              <img src="/github.webp" alt="GitHub" />
               <span>GitHub</span>
             </div>
           </div>

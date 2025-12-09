@@ -8,7 +8,7 @@ export const Project3Page = (props: PageProps) => (
     projectId={3}
     projectInfo="Projet de cours autour du PHP et des bases de données"
     projectImage={{
-      src: "/la-grimpette.png",
+      src: "/la-grimpette.webp",
       alt: "Mockup La Grimpette",
     }}
     projectTitle="La Grimpette"
@@ -55,23 +55,23 @@ export const Project3Page = (props: PageProps) => (
           <h2>Captures d'écran</h2>
           <div className="la-grimpette-img">
             <LazyImage
-              src="/la-grimpette-1.png"
+              src="/la-grimpette-1.webp"
               alt="Section Backoffice Activités La Grimpette"
             />
             <LazyImage
-              src="/la-grimpette-2.png"
+              src="/la-grimpette-2.webp"
               alt="Section Backoffice Inscriptions La Grimpette"
             />
             <LazyImage
-              src="/la-grimpette-3.png"
+              src="/la-grimpette-3.webp"
               alt="Section Backoffice Ajout Activités La Grimpette"
             />
             <LazyImage
-              src="/la-grimpette-4.png"
+              src="/la-grimpette-4.webp"
               alt="Section Backoffice Modification Activités La Grimpette"
             />
             <LazyImage
-              src="/la-grimpette-5.png"
+              src="/la-grimpette-5.webp"
               alt="Site front La Grimpette"
             />
           </div>
@@ -133,35 +133,35 @@ export const Project3Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/php.png" alt="PHP" />
+              <img src="/php.webp" alt="PHP" />
               <span>PHP</span>
             </div>
             <div className="tech-item">
-              <img src="/sql.png" alt="SQL" />
+              <img src="/sql.webp" alt="SQL" />
               <span>SQL</span>
             </div>
             <div className="tech-item">
-              <img src="/react.png" alt="React" />
+              <img src="/react.webp" alt="React" />
               <span>React</span>
             </div>
             <div className="tech-item">
-              <img src="/sass.png" alt="SASS" />
+              <img src="/sass.webp" alt="SASS" />
               <span>SASS</span>
             </div>
             <div className="tech-item">
-              <img src="/javascript.png" alt="JavaScript" />
+              <img src="/javascript.webp" alt="JavaScript" />
               <span>JavaScript</span>
             </div>
             <div className="tech-item">
-              <img src="/json.png" alt="JSON" />
+              <img src="/json.webp" alt="JSON" />
               <span>JSON</span>
             </div>
             <div className="tech-item">
-              <img src="/wamp.png" alt="WAMP" />
+              <img src="/wamp.webp" alt="WAMP" />
               <span>WAMP</span>
             </div>
             <div className="tech-item">
-              <img src="/github.png" alt="GitHub" />
+              <img src="/github.webp" alt="GitHub" />
               <span>GitHub</span>
             </div>
             <div className="tech-item">

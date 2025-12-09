@@ -8,7 +8,7 @@ export const Project6Page = (props: PageProps) => (
     projectId={6}
     projectInfo="Projet de cours&nbsp;:&nbsp;Application web dynamique en PHP"
     projectImage={{
-      src: "/hyxe.png",
+      src: "/hyxe.webp",
       alt: "Mockup Hyxe - Clone de Twitter",
     }}
     projectTitle="Hyxe"
@@ -116,27 +116,31 @@ export const Project6Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <LazyImage src="/php.png" alt="PHP" className="tech-icon" />
+              <LazyImage src="/php.webp" alt="PHP" className="tech-icon" />
               <span>PHP</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/sql.png" alt="SQL" className="tech-icon" />
+              <LazyImage src="/sql.webp" alt="SQL" className="tech-icon" />
               <span>SQL</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/css.png" alt="CSS" className="tech-icon" />
+              <LazyImage src="/css.webp" alt="CSS" className="tech-icon" />
               <span>CSS</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/github.png" alt="GitHub" className="tech-icon" />
+              <LazyImage
+                src="/github.webp"
+                alt="GitHub"
+                className="tech-icon"
+              />
               <span>GitHub</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/mysql.png" alt="MySQL" className="tech-icon" />
+              <LazyImage src="/mysql.webp" alt="MySQL" className="tech-icon" />
               <span>MySQL</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/wamp.png" alt="WAMP" className="tech-icon" />
+              <LazyImage src="/wamp.webp" alt="WAMP" className="tech-icon" />
               <span>WAMP</span>
             </div>
           </div>

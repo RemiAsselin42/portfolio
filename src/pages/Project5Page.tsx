@@ -8,7 +8,7 @@ export const Project5Page = (props: PageProps) => (
     projectId={5}
     projectInfo="Stage professionnel&nbsp;:&nbsp;Web Design & Développement Front-end"
     projectImage={{
-      src: "/geopostcodes.png",
+      src: "/geopostcodes.webp",
       alt: "Stage chez GeoPostcodes",
     }}
     projectTitle="GeoPostcodes"
@@ -102,7 +102,7 @@ export const Project5Page = (props: PageProps) => (
           <div className="tech-stack">
             <div className="tech-item">
               <LazyImage
-                src="/wordpress.png"
+                src="/wordpress.webp"
                 alt="WordPress"
                 className="tech-icon"
               />
@@ -110,34 +110,38 @@ export const Project5Page = (props: PageProps) => (
             </div>
             <div className="tech-item">
               <LazyImage
-                src="/elementor.png"
+                src="/elementor.webp"
                 alt="Elementor"
                 className="tech-icon"
               />
               <span>Elementor</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/react.png" alt="React" className="tech-icon" />
+              <LazyImage src="/react.webp" alt="React" className="tech-icon" />
               <span>React.js</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/vite.png" alt="vite" className="tech-icon" />
+              <LazyImage src="/vite.webp" alt="vite" className="tech-icon" />
               <span>Vite.js</span>
             </div>
             <div className="tech-item">
               <LazyImage
-                src="/typescript.png"
+                src="/typescript.webp"
                 alt="TypeScript"
                 className="tech-icon"
               />
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/sass.png" alt="sass" className="tech-icon" />
+              <LazyImage src="/sass.webp" alt="sass" className="tech-icon" />
               <span>SCSS</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/mapbox.png" alt="MapBox" className="tech-icon" />
+              <LazyImage
+                src="/mapbox.webp"
+                alt="MapBox"
+                className="tech-icon"
+              />
               <span>MapBox</span>
             </div>
             <div className="tech-item">
@@ -146,7 +150,7 @@ export const Project5Page = (props: PageProps) => (
             </div>
             <div className="tech-item">
               <LazyImage
-                src="/hubspot.png"
+                src="/hubspot.webp"
                 alt="hubspot"
                 className="tech-icon"
               />

@@ -8,7 +8,7 @@ export const Project8Page = (props: PageProps) => (
     projectId={8}
     projectInfo="Projet de cours&nbsp;:&nbsp;Design graphique - Charte graphique"
     projectImage={{
-      src: "/bbv-olsberg.png",
+      src: "/bbv-olsberg.webp",
       alt: "Mockup BBV Olsberg - Club de basket allemand",
     }}
     projectTitle="BBV Olsberg"
@@ -132,40 +132,40 @@ export const Project8Page = (props: PageProps) => (
           </p>
           <div className="project-gallery">
             <div className="gallery-item">
-              <LazyImage src="/bbv-olsberg-logo.png" alt="Logo BBV Olsberg" />
+              <LazyImage src="/bbv-olsberg-logo.webp" alt="Logo BBV Olsberg" />
               <span>Logo principal</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/bbv-olsberg-colors.png"
+                src="/bbv-olsberg-colors.webp"
                 alt="Palette de couleurs BBV Olsberg"
               />
               <span>Palette chromatique</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/bbv-olsberg-jersey.png"
+                src="/bbv-olsberg-jersey.webp"
                 alt="Maillot BBV Olsberg"
               />
               <span>Maquette des maillots</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/bbv-olsberg-poster.png"
+                src="/bbv-olsberg-poster.webp"
                 alt="Affiche événement BBV Olsberg"
               />
               <span>Affiche d'événement</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/bbv-olsberg-social.png"
+                src="/bbv-olsberg-social.webp"
                 alt="Visuels réseaux sociaux BBV Olsberg"
               />
               <span>Posts réseaux sociaux</span>
             </div>
             <div className="gallery-item">
               <LazyImage
-                src="/bbv-olsberg-branding.png"
+                src="/bbv-olsberg-branding.webp"
                 alt="Applications de la charte graphique"
               />
               <span>Applications diverses</span>
@@ -177,15 +177,15 @@ export const Project8Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <img src="/illustrator.png" alt="Adobe Illustrator" />
+              <img src="/illustrator.webp" alt="Adobe Illustrator" />
               <span>Illustrator</span>
             </div>
             <div className="tech-item">
-              <img src="/indesign.png" alt="Adobe InDesign" />
+              <img src="/indesign.webp" alt="Adobe InDesign" />
               <span>InDesign</span>
             </div>
             <div className="tech-item">
-              <img src="/photoshop.png" alt="Adobe Photoshop" />
+              <img src="/photoshop.webp" alt="Adobe Photoshop" />
               <span>Photoshop</span>
             </div>
           </div>

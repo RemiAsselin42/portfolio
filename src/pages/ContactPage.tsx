@@ -110,16 +110,16 @@ export const ContactPage = ({ onHomePage }: PageProps) => {
 
           <div className="social-links">
             <a href="https://www.linkedin.com/in/rémi-asselin/" target="_blank">
-              <img src="/linkedin.png" alt="LinkedIn" />
+              <img src="/linkedin.webp" alt="LinkedIn" />
             </a>
             <a href="https://github.com/RemiAsselin42" target="_blank">
-              <img src="/github.png" alt="GitHub" />
+              <img src="/github.webp" alt="GitHub" />
             </a>
             <a
               href="https://www.pappers.fr/entreprise/983775214"
               target="_blank"
             >
-              <img src="/pappers.png" alt="Pappers" />
+              <img src="/pappers.webp" alt="Pappers" />
             </a>
           </div>
         </>
