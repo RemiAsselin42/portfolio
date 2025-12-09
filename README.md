@@ -1,6 +1,6 @@
 # 🎨 Portfolio - Rémi Asselin
 
-Bienvenue sur mon portfolio ! Un site web moderne et interactif showcasing mes projets en **développement web**, **design UX/UI**, et **audiovisuel**.
+Bienvenue sur mon portfolio ! Un site web interactif (et original !) de présentation de mes projets en **développement web**, **design UX/UI**, et **audiovisuel**.
 
 [![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat&logo=react)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org)
@@ -111,6 +111,6 @@ Des questions ou envie de collaborer ? Contactez-moi via le formulaire sur le si
 
 <div align="center">
 
-<strong>Fait avec ❤️ et quelques sueures par Rémi Asselin </strong>
+<strong>Fait avec ❤️ et quelques sueurs par Rémi Asselin </strong>
 
 </div>
