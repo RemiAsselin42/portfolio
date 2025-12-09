@@ -147,7 +147,7 @@ function App() {
       "/audition.webp",
       "/canon.webp",
       "/elementor.webp",
-      "/hirogo-presentation.jpg",
+      "/hirogo-presentation.webp",
       "/wordpress.webp",
       "/pappers.webp",
       "/linkedin.webp",

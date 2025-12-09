@@ -1,50 +1,147 @@
-# React + TypeScript + Vite
+# 🎨 Portfolio - Rémi Asselin
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur mon portfolio ! Un site web moderne et interactif showcasing mes projets en **développement web**, **design UX/UI**, et **audiovisuel**.
 
-Currently, two official plugins are available:
+[![React](https://img.shields.io/badge/React-19.0.0-61DAFB?style=flat&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=flat&logo=vite)](https://vitejs.dev)
+[![SCSS](https://img.shields.io/badge/SCSS-Sass-C69?style=flat&logo=sass)](https://sass-lang.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+# ✨ Aperçu
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🎯 Mes Projets
 
-- Configure the top-level `parserOptions` property like this:
+### 💼 Cours & Apprentissage
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **L'App Hirogo**
+- **Projet La Grimpette**
+- **Création de Hyxe**
+- **Création d'un TikTok**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 🏢 Expérience Professionnelle
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Yan Archi** - Design & Branding
+- **GeoPostcodes** - Web, UX/UI & SEO
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## 🛠️ Stack Technique
+
+### Frontend
+
+- **React** - Interface utilisateur
+- **TypeScript** - Typage statique
+- **Vite** - Build tool ultra-rapide
+- **SCSS** - Styling avancé
+
+---
+
+## 🚀 Installation & Utilisation
+
+### Prérequis
+
+- Node.js
+- npm
+
+### Installation
+
+\`\`\`bash
+git clone https://github.com/RemiAsselin42/portfolio.git
+cd portfolio
+npm install
+\`\`\`
+
+### Développement
+
+\`\`\`bash
+npm run dev
+\`\`\`
+
+### Build
+
+\`\`\`bash
+npm run build
+\`\`\`
+
+### Lint
+
+\`\`\`bash
+npm run lint
+\`\`\`
+
+### Preview
+
+\`\`\`bash
+npm run preview
+\`\`\`
+
+---
+
+## 📁 Structure du Projet
+
+\`\`\`
+portfolio/
+├── src/
+│ ├── components/ # Composants React réutilisables
+│ ├── pages/ # Pages principales
+│ ├── hooks/ # Hooks personnalisés
+│ ├── styles/ # Styles SCSS globaux
+│ ├── types/ # Types TypeScript
+│ └── main.tsx # Entrée principale
+├── public/ # Fichiers statiques
+├── vite.config.ts # Configuration Vite
+├── tsconfig.json # Configuration TypeScript
+└── package.json # Dépendances
+\`\`\`
+
+---
+
+## 🎨 Composants Clés
+
+### Components
+
+- **OptimizedImage** - Images optimisées avec lazy loading
+- **ImageLightbox** - Galerie d'images interactive
+- **VideoPlayer** - Lecteur vidéo personnalisé
+- **RippleEffect** - Effets ripple au clic
+- **RollingText** - Animations de texte fluides
+- **MouseFollower** - Curseur personnalisé qui suit la souris
+- **ProjectDots** - Navigation entre projets
+
+### Hooks
+
+- **useImagePreloader** - Préchargement d'images performant
+- **useSwipe** - Détection des gestes de swipe
+
+---
+
+## 🌐 Déploiement
+
+Le site est optimisé pour le déploiement sur GitHub Pages avec un custom domain configuré via CNAME.
+
+---
+
+## 💻 Features Futures
+
+- [ ] Mode sombre
+- [ ] Support multilingue (EN/FR)
+
+---
+
+## 📧 Contact
+
+Des questions ou envie de collaborer ? Contactez-moi via le formulaire sur le site !
+
+- **Email** : [contact.remiasselin42@example.com]
+- **GitHub** : [@RemiAsselin42](https://github.com/RemiAsselin42)
+- **Portfolio** : [remiasselin.com](https://remiasselin.com)
+
+---
+
+<div align="center">
+
+**Fait avec ❤️ et quelques sueures par Rémi Asselin **
+
+</div>

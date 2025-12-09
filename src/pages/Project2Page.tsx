@@ -78,7 +78,7 @@ export const Project2Page = (props: PageProps) => (
           <h2>Notre équipe</h2>
           <div className="team-images">
             <LazyImage
-              src="/hirogo-presentation.jpg"
+              src="/hirogo-presentation.webp"
               alt="Présentation finale devant le jury"
             />
           </div>
