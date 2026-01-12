@@ -103,7 +103,7 @@ Le site est optimisé pour le déploiement sur GitHub Pages avec un custom domai
 
 Des questions ou envie de collaborer ? Contactez-moi via le formulaire sur le site !
 
-- **Email** : [contact.remiasselin42@gmail.com](mailto:contact.remiasselin42@gmail.com)
+- **Email** : [dev.remiasselin42@gmail.com](mailto:dev.remiasselin42@gmail.com)
 - **GitHub** : [@RemiAsselin42](https://github.com/RemiAsselin42)
 - **Portfolio** : [remiasselin.com](https://remiasselin.com)
 
