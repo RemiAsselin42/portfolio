@@ -145,7 +145,7 @@ export const Project5Page = (props: PageProps) => (
               <span>MapBox</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/figma.svg" alt="Figma" className="tech-icon" />
+              <LazyImage src="/figma.webp" alt="Figma" className="tech-icon" />
               <span>Figma</span>
             </div>
             <div className="tech-item">

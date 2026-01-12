@@ -165,7 +165,7 @@ export const Project3Page = (props: PageProps) => (
               <span>GitHub</span>
             </div>
             <div className="tech-item">
-              <img src="/figma.svg" alt="Figma" />
+              <img src="/figma.webp" alt="Figma" />
               <span>Figma</span>
             </div>
           </div>
