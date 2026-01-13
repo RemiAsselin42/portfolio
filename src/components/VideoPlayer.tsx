@@ -191,7 +191,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </div>
       )}
 
-      {videoInitialized && (
+      {shouldLoad && videoInitialized && (
         <video
           ref={videoRef}
           className="video-player"

@@ -5,6 +5,7 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   srcSet?: string;
+  sizes?: string;
   isTechIcon?: boolean;
   showError?: boolean;
 }
@@ -15,6 +16,7 @@ export const LazyImageComponent: React.FC<ImageProps> = ({
   className,
   isTechIcon,
   srcSet,
+  sizes,
   showError = true,
   ...props
 }) => {
@@ -77,6 +79,7 @@ export const LazyImageComponent: React.FC<ImageProps> = ({
         onError={() => setHasError(true)}
         className={isLoaded ? "visible" : ""}
         srcSet={srcSet}
+        sizes={sizes}
         {...props}
       />
     </div>

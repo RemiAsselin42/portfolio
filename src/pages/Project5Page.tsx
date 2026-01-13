@@ -105,6 +105,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/wordpress.webp"
                 alt="WordPress"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>WordPress</span>
             </div>
@@ -113,6 +114,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/elementor.webp"
                 alt="Elementor"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>Elementor</span>
             </div>
@@ -121,6 +123,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/react.webp"
                 alt="React"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>React.js</span>
             </div>
@@ -129,6 +132,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/vite.webp"
                 alt="vite"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>Vite.js</span>
             </div>
@@ -137,6 +141,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/typescript.webp"
                 alt="TypeScript"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>TypeScript</span>
             </div>
@@ -145,6 +150,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/sass.webp"
                 alt="sass"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>SCSS</span>
             </div>
@@ -153,6 +159,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/mapbox.webp"
                 alt="MapBox"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>MapBox</span>
             </div>
@@ -161,6 +168,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/figma.webp"
                 alt="Figma"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>Figma</span>
             </div>
@@ -169,6 +177,7 @@ export const Project5Page = (props: PageProps) => (
                 src="/hubspot.webp"
                 alt="hubspot"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>HubSpot</span>
             </div>

@@ -135,6 +135,7 @@ export const Project7Page = (props: PageProps) => (
                 src="/premiere.webp"
                 alt="Adobe Premiere Pro"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>Premiere Pro</span>
             </div>
@@ -143,6 +144,7 @@ export const Project7Page = (props: PageProps) => (
                 src="/aftereffects.webp"
                 alt="After Effects"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>After Effects</span>
             </div>
@@ -151,6 +153,7 @@ export const Project7Page = (props: PageProps) => (
                 src="/audition.webp"
                 alt="Adobe Audition"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>Audition</span>
             </div>
@@ -159,6 +162,7 @@ export const Project7Page = (props: PageProps) => (
                 src="/canon.webp"
                 alt="Canon"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>Canon</span>
             </div>

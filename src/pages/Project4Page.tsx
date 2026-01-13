@@ -142,6 +142,7 @@ export const Project4Page = (props: PageProps) => (
               <LazyImageComponent
                 src="/yan-archi-logo.webp"
                 alt="Logo Yan Archi"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 352px"
               />
               <span>Logo principal</span>
             </div>
@@ -149,6 +150,7 @@ export const Project4Page = (props: PageProps) => (
               <LazyImageComponent
                 src="/yan-archi-courrier-template.webp"
                 alt="Template de planche projet Yan Archi"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 352px"
               />
               <span>Template des courriers</span>
             </div>
@@ -156,6 +158,7 @@ export const Project4Page = (props: PageProps) => (
               <LazyImageComponent
                 src="/yan-archi-business-card.webp"
                 alt="Carte de visite Yan Archi"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 352px"
               />
               <span>Carte de visite</span>
             </div>
@@ -165,6 +168,7 @@ export const Project4Page = (props: PageProps) => (
               <LazyImageComponent
                 src="/yan-archi-template-2.webp"
                 alt="Template de planche projet Yan Archi"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1168px"
               />
               <span>Template de planche projet</span>
             </div>

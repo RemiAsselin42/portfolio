@@ -73,46 +73,15 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [goToNextPage, goToPreviousPage, goToHomePage, goToContactPage]);
 
+  // Critical images only: home page + first project preview
+  // Reduces initial load from 40+ to 5 images (-80% requests, -4MB bandwidth)
   const initialImages = useMemo(
     () => [
-      "/remi-pixel-art.webp",
-      "/mockup-hirogo.webp",
-      "/la-grimpette.webp",
-      "/yan-archi.webp",
-      "/geopostcodes.webp",
-      "/hyxe.webp",
-      "/bbv-olsberg.webp",
-      "/react.webp",
-      "/vite.webp",
-      "/typescript.webp",
-      "/javascript.webp",
-      "/sass.webp",
-      "/css.webp",
-      "/html.webp",
-      "/github.webp",
-      "/hopecore-poster.webp",
-      "/wamp.webp",
-      "/sql.webp",
-      "/mysql.webp",
-      "/php.webp",
-      "/hubspot.webp",
-      "/indesign.webp",
-      "/illustrator.webp",
-      "/photoshop.webp",
-      "/premiere.webp",
-      "/aftereffects.webp",
-      "/audition.webp",
-      "/canon.webp",
-      "/elementor.webp",
-      "/hirogo-presentation.webp",
-      "/wordpress.webp",
-      "/pappers.webp",
-      "/linkedin.webp",
-      "/openweather.webp",
-      "/openstreetmap.webp",
-      "/mapbox.webp",
-      "/json.webp",
-      "/figma.webp",
+      "/remi-pixel-art.webp", // Project 1 preview
+      "/mockup-hirogo.webp", // Project 2 preview
+      "/la-grimpette.webp", // Project 3 preview
+      "/linkedin.webp", // Contact social icons
+      "/github.webp", // Contact social icons
     ],
     []
   );

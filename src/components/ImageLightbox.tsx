@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { CloseIcon } from "./icons";
 import "./ImageLightbox.scss";
 import "./LazyImageComponent.scss";
 
@@ -49,7 +48,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       onClick={onClose}
     >
       <button className="lightbox-close-btn" onClick={onClose}>
-        <FontAwesomeIcon icon={faTimes} />
+        <CloseIcon size={24} />
       </button>
       <div
         onClick={(e) => e.stopPropagation()}

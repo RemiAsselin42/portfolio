@@ -1,7 +1,6 @@
 import React from "react";
 import "./ProjectDots.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { HomeIcon, PaperPlaneIcon } from "./icons";
 
 interface ProjectDotsProps {
   projectPages: number[];
@@ -23,7 +22,7 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
             onClick={() => onSelect(0)}
             aria-label="Accueil"
           >
-            <FontAwesomeIcon icon={faHome} />
+            <HomeIcon size={18} />
           </button>
         </li>
 
@@ -45,7 +44,7 @@ export const ProjectDots: React.FC<ProjectDotsProps> = ({
             onClick={() => onSelect(projectPages.length + 1)}
             aria-label="Contact"
           >
-            <FontAwesomeIcon icon={faPaperPlane} />
+            <PaperPlaneIcon size={18} />
           </button>
         </li>
       </ul>

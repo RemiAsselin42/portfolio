@@ -120,6 +120,7 @@ export const Project6Page = (props: PageProps) => (
                 src="/php.webp"
                 alt="PHP"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>PHP</span>
             </div>
@@ -128,6 +129,7 @@ export const Project6Page = (props: PageProps) => (
                 src="/sql.webp"
                 alt="SQL"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>SQL</span>
             </div>
@@ -136,6 +138,7 @@ export const Project6Page = (props: PageProps) => (
                 src="/css.webp"
                 alt="CSS"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>CSS</span>
             </div>
@@ -144,6 +147,7 @@ export const Project6Page = (props: PageProps) => (
                 src="/github.webp"
                 alt="GitHub"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>GitHub</span>
             </div>
@@ -152,6 +156,7 @@ export const Project6Page = (props: PageProps) => (
                 src="/mysql.webp"
                 alt="MySQL"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>MySQL</span>
             </div>
@@ -160,6 +165,7 @@ export const Project6Page = (props: PageProps) => (
                 src="/wamp.webp"
                 alt="WAMP"
                 className="tech-icon"
+                sizes="60px"
               />
               <span>WAMP</span>
             </div>
