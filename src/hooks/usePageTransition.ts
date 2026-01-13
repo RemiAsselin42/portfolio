@@ -8,6 +8,9 @@ export type AnimationStage =
   | "left-reset-position"
   | "left-fade-in";
 
+// Breakpoint constant for responsive behavior
+const MOBILE_BREAKPOINT = 992;
+
 interface UsePageTransitionOptions {
   totalPages: number;
   onTransitionComplete?: (newPage: number) => void;
@@ -39,7 +42,7 @@ export const usePageTransition = ({
         return;
       }
 
-      const isMobile = window.innerWidth < 992;
+      const isMobile = window.innerWidth < MOBILE_BREAKPOINT;
       const transitionDuration = isMobile ? 300 : 500;
 
       // Animation vers la gauche (retour en arrière)
@@ -50,14 +53,14 @@ export const usePageTransition = ({
           setCurrentPage(newPage);
           setTimeout(() => {
             setAnimationStage("left-fade-in");
-            // Annonce de la nouvelle page aux lecteurs d'écran
-            const mainContent = document.getElementById("main-content");
-            if (mainContent) {
-              // Utilise aria-live pour annoncer le changement sans scroll
-              mainContent.setAttribute(
-                "aria-label",
-                `Page ${newPage + 1} sur ${totalPages}, chargée`
-              );
+            // Announce page transition to screen readers
+            const announcementElement = document.getElementById(
+              "page-transition-announcement"
+            );
+            if (announcementElement) {
+              announcementElement.textContent = `Page ${
+                newPage + 1
+              } sur ${totalPages}, chargée`;
             }
             onTransitionComplete?.(newPage);
           }, 20);
@@ -71,14 +74,14 @@ export const usePageTransition = ({
           setCurrentPage(newPage);
           setTimeout(() => {
             setAnimationStage("fade-in");
-            // Annonce de la nouvelle page aux lecteurs d'écran
-            const mainContent = document.getElementById("main-content");
-            if (mainContent) {
-              // Utilise aria-live pour annoncer le changement sans scroll
-              mainContent.setAttribute(
-                "aria-label",
-                `Page ${newPage + 1} sur ${totalPages}, chargée`
-              );
+            // Announce page transition to screen readers
+            const announcementElement = document.getElementById(
+              "page-transition-announcement"
+            );
+            if (announcementElement) {
+              announcementElement.textContent = `Page ${
+                newPage + 1
+              } sur ${totalPages}, chargée`;
             }
             onTransitionComplete?.(newPage);
           }, 20);

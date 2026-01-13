@@ -159,6 +159,15 @@ function App() {
         Aller au contenu principal
       </a>
 
+      {/* Page transition announcement for screen readers */}
+      <div
+        id="page-transition-announcement"
+        role="status"
+        aria-live="polite"
+        className="sr-only"
+        aria-atomic="true"
+      />
+
       <div
         className="page-container"
         {...swipeHandlers}
@@ -201,7 +210,6 @@ function App() {
           }`}
           id="main-content"
           aria-label={`Page ${currentPage + 1} sur ${pages.length}`}
-          aria-live="polite"
         >
           <CurrentPage
             onNextPage={goToNextPage}

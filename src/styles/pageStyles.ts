@@ -11,5 +11,3 @@ import "../pagesStyles/project5.scss";
 import "../pagesStyles/project6.scss";
 import "../pagesStyles/project7.scss";
 import "../pagesStyles/project8.scss";
-
-export const stylesLoaded = true;

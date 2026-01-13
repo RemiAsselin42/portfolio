@@ -28,14 +28,15 @@ export const LazyImageComponent: React.FC<ImageProps> = ({
     setHasError(false);
 
     const imageElement = new window.Image();
+    // Attach handlers BEFORE setting src to avoid race condition with cached images
+    imageElement.onload = () => setIsLoaded(true);
+    imageElement.onerror = () => setHasError(true);
+
     imageElement.src = src;
     if (srcSet) imageElement.srcset = srcSet;
 
     if (imageElement.complete) {
       setIsLoaded(true);
-    } else {
-      imageElement.onload = () => setIsLoaded(true);
-      imageElement.onerror = () => setHasError(true);
     }
 
     return () => {
@@ -58,7 +59,7 @@ export const LazyImageComponent: React.FC<ImageProps> = ({
   if (hasError && showError) {
     return (
       <div className={`${containerClasses} image-error`}>
-        <div className="error-message">Image non disponible</div>
+        <div className="error-message">Image non disponible: {alt}</div>
       </div>
     );
   }
