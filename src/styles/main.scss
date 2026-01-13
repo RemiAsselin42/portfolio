@@ -42,6 +42,60 @@ body {
   min-height: 100dvh;
 }
 
+/* Skip link pour accessibilit\u00e9 clavier */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: $accent-orange;
+  color: $text-light;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  border-radius: 0 0 4px 0;
+  font-weight: 500;
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
+    outline: 3px solid $text-light;
+    outline-offset: 2px;
+  }
+}
+
+/* Am\u00e9lioration du focus visible pour tous les \u00e9l\u00e9ments interactifs */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:not([tabindex=\"-1\"]):focus-visible {
+  outline: 3px solid $accent-orange;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Masquer outline pour clics souris (garde pour clavier) */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Classe screen-reader only pour labels accessibles */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 #root {
   width: 100vw;
   height: 100vh;

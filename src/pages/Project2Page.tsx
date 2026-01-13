@@ -1,6 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
-import { LazyImage } from "../components/LazyImage";
+import { LazyImageComponent } from "../components";
 
 export const Project2Page = (props: PageProps) => (
   <ProjectTemplate
@@ -77,7 +77,7 @@ export const Project2Page = (props: PageProps) => (
         <section className="modal-section">
           <h2>Notre équipe</h2>
           <div className="team-images">
-            <LazyImage
+            <LazyImageComponent
               src="/hirogo-presentation.webp"
               alt="Présentation finale devant le jury"
             />

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import "./VideoPlayer.scss";
+import { useVideoLazyLoad } from "../hooks/useVideoLazyLoad";
 
 interface VideoPlayerProps {
   src: string;
@@ -13,6 +14,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   className = "",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { shouldLoad } = useVideoLazyLoad(containerRef);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [posterLoaded, setPosterLoaded] = useState(false);
@@ -189,7 +191,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </div>
       )}
 
-      {videoInitialized && (
+      {shouldLoad && videoInitialized && (
         <video
           ref={videoRef}
           className="video-player"

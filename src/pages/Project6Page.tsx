@@ -1,6 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
-import { LazyImage } from "../components/LazyImage";
+import { LazyImageComponent } from "../components";
 
 export const Project6Page = (props: PageProps) => (
   <ProjectTemplate
@@ -116,19 +116,31 @@ export const Project6Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <LazyImage src="/php.webp" alt="PHP" className="tech-icon" />
+              <LazyImageComponent
+                src="/php.webp"
+                alt="PHP"
+                className="tech-icon"
+              />
               <span>PHP</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/sql.webp" alt="SQL" className="tech-icon" />
+              <LazyImageComponent
+                src="/sql.webp"
+                alt="SQL"
+                className="tech-icon"
+              />
               <span>SQL</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/css.webp" alt="CSS" className="tech-icon" />
+              <LazyImageComponent
+                src="/css.webp"
+                alt="CSS"
+                className="tech-icon"
+              />
               <span>CSS</span>
             </div>
             <div className="tech-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/github.webp"
                 alt="GitHub"
                 className="tech-icon"
@@ -136,11 +148,19 @@ export const Project6Page = (props: PageProps) => (
               <span>GitHub</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/mysql.webp" alt="MySQL" className="tech-icon" />
+              <LazyImageComponent
+                src="/mysql.webp"
+                alt="MySQL"
+                className="tech-icon"
+              />
               <span>MySQL</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/wamp.webp" alt="WAMP" className="tech-icon" />
+              <LazyImageComponent
+                src="/wamp.webp"
+                alt="WAMP"
+                className="tech-icon"
+              />
               <span>WAMP</span>
             </div>
           </div>

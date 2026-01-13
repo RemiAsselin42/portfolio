@@ -1,27 +1,31 @@
 import { useState, useEffect, useMemo } from "react";
-import "./styles/main.scss";
-import "./pagesStyles/home.scss";
-import "./pagesStyles/contact.scss";
-import "./pagesStyles/project.scss";
+import "./styles/pageStyles";
 import { pages } from "./pages";
 import { ProjectDots } from "./components/ProjectDots";
 import { BackgroundShape } from "./components/BackgroundShape";
 import { MouseFollower } from "./components/MouseFollower";
 import { RippleEffect } from "./components/RippleEffect";
-import { useImagePreloader } from "./hooks/useImagePreloader";
-import { useSwipe } from "./hooks/useSwipe";
+import {
+  useImagePreloader,
+  useSwipe,
+  usePageTransition,
+  useBackgroundShapes,
+} from "./hooks";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [animationStage, setAnimationStage] = useState<
-    | "fade-in"
-    | "fade-out"
-    | "reset-position"
-    | "left-fade-out"
-    | "left-reset-position"
-    | "left-fade-in"
-  >("fade-in");
-  const [shapesCount, setShapesCount] = useState<number>(0);
+  const {
+    currentPage,
+    animationStage,
+    transitionToPage,
+    goToNextPage,
+    goToPreviousPage,
+    goToHomePage,
+    goToContactPage,
+  } = usePageTransition({
+    totalPages: pages.length,
+  });
+
+  const shapesCount = useBackgroundShapes();
   const [isSafari, setIsSafari] = useState(false);
 
   useEffect(() => {
@@ -34,87 +38,40 @@ function App() {
     setIsSafari(isSafariBrowser);
   }, []);
 
-  const handlePageTransition = (newPage: number) => {
-    const isMobile = window.innerWidth < 992;
-    const transitionDuration = isMobile ? 300 : 500;
-
-    if (newPage < currentPage) {
-      setAnimationStage("left-fade-out");
-      setTimeout(() => {
-        setAnimationStage("left-reset-position");
-        setCurrentPage(newPage);
-        setTimeout(() => {
-          setAnimationStage("left-fade-in");
-        }, 20);
-      }, transitionDuration);
-    } else {
-      setAnimationStage("fade-out");
-      setTimeout(() => {
-        setAnimationStage("reset-position");
-        setCurrentPage(newPage);
-        setTimeout(() => {
-          setAnimationStage("fade-in");
-        }, 20);
-      }, transitionDuration);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < pages.length - 1) {
-      handlePageTransition(currentPage + 1);
-    }
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 0) {
-      handlePageTransition(currentPage - 1);
-    }
-  };
-
   const swipeHandlers = useSwipe({
-    onSwipeLeft: handleNextPage,
-    onSwipeRight: handlePrevPage,
+    onSwipeLeft: goToNextPage,
+    onSwipeRight: goToPreviousPage,
   });
 
-  const handleHomePage = () => {
-    handlePageTransition(0);
-  };
-
-  const handleContactPage = () => {
-    handlePageTransition(pages.length - 1);
-  };
-
+  // Navigation clavier avec flèches
   useEffect(() => {
-    const calculateShapesCount = () => {
-      const width = window.innerWidth;
-      if (width >= 3440) {
-        return 12;
-      } else if (width >= 1920) {
-        return Math.round(5 + (width - 1920) * (7 / (3440 - 1920)));
-      } else if (width >= 992) {
-        return Math.round(2 + (width - 992) * (5 / (1920 - 992)));
-      } else {
-        return Math.max(0, Math.round(2 + (width / 992) * 3));
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignorer si l'utilisateur est dans un champ de formulaire
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
+
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        goToNextPage();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        goToPreviousPage();
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        goToHomePage();
+      } else if (e.key === "End") {
+        e.preventDefault();
+        goToContactPage();
       }
     };
 
-    setShapesCount(calculateShapesCount());
-
-    let timeoutId: NodeJS.Timeout;
-    const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setShapesCount(calculateShapesCount());
-      }, 300);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [goToNextPage, goToPreviousPage, goToHomePage, goToContactPage]);
 
   const initialImages = useMemo(
     () => [
@@ -197,8 +154,18 @@ function App() {
 
   return (
     <>
-      <div className="page-container" {...swipeHandlers}>
-        <div className={`bg ${isSafari ? "safari-bg" : ""}`}>
+      {/* Skip link pour navigation clavier */}
+      <a href="#main-content" className="skip-link">
+        Aller au contenu principal
+      </a>
+
+      <div
+        className="page-container"
+        {...swipeHandlers}
+        role="application"
+        aria-label="Portfolio interactif"
+      >
+        <div className={`bg ${isSafari ? "safari-bg" : ""}`} aria-hidden="true">
           <svg className="noise-filter">
             <defs>
               <filter
@@ -226,27 +193,31 @@ function App() {
           <RippleEffect />
         </div>
 
-        <div
+        <main
           className={`page-wrapper ${animationStage} ${
             isProjectPage ? "project-page-wrapper" : ""
           } ${currentPage === 0 ? "home-page" : `project-${currentPage}`} ${
             currentPage === pages.length - 1 ? "contact-page" : ""
           }`}
-          id={`page-${currentPage}`}
+          id="main-content"
+          aria-label={`Page ${currentPage + 1} sur ${pages.length}`}
+          aria-live="polite"
         >
           <CurrentPage
-            onNextPage={handleNextPage}
-            onHomePage={handleHomePage}
-            onContactPage={handleContactPage}
+            onNextPage={goToNextPage}
+            onHomePage={goToHomePage}
+            onContactPage={goToContactPage}
           />
-        </div>
+        </main>
 
         {isProjectPage && (
-          <ProjectDots
-            projectPages={projectPages}
-            currentProject={currentPage}
-            onSelect={(page) => handlePageTransition(page)}
-          />
+          <nav aria-label="Navigation entre projets">
+            <ProjectDots
+              projectPages={projectPages}
+              currentProject={currentPage}
+              onSelect={transitionToPage}
+            />
+          </nav>
         )}
       </div>
     </>

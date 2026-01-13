@@ -12,6 +12,26 @@ interface SwipeOutput {
   onTouchEnd: () => void;
 }
 
+/**
+ * Hook pour détecter les gestes de swipe sur écrans tactiles
+ * Filtre automatiquement les swipes verticaux pour éviter les faux positifs
+ *
+ * @param options - Configuration du swipe
+ * @param options.onSwipeLeft - Callback appelé lors d'un swipe vers la gauche
+ * @param options.onSwipeRight - Callback appelé lors d'un swipe vers la droite
+ * @param options.threshold - Distance minimale en pixels pour déclencher (défaut: 50)
+ * @returns Handlers d'événements touch à attacher à l'élément cible
+ *
+ * @example
+ * ```typescript
+ * const swipeHandlers = useSwipe({
+ *   onSwipeLeft: () => nextPage(),
+ *   onSwipeRight: () => prevPage(),
+ * });
+ *
+ * <div {...swipeHandlers}>Swipeable content</div>
+ * ```
+ */
 export const useSwipe = ({
   onSwipeLeft,
   onSwipeRight,

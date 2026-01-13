@@ -1,6 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
-import { LazyImage } from "../components/LazyImage";
+import { LazyImageComponent } from "../components";
 
 export const Project8Page = (props: PageProps) => (
   <ProjectTemplate
@@ -132,39 +132,42 @@ export const Project8Page = (props: PageProps) => (
           </p>
           <div className="project-gallery">
             <div className="gallery-item">
-              <LazyImage src="/bbv-olsberg-logo.webp" alt="Logo BBV Olsberg" />
+              <LazyImageComponent
+                src="/bbv-olsberg-logo.webp"
+                alt="Logo BBV Olsberg"
+              />
               <span>Logo principal</span>
             </div>
             <div className="gallery-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/bbv-olsberg-colors.webp"
                 alt="Palette de couleurs BBV Olsberg"
               />
               <span>Palette chromatique</span>
             </div>
             <div className="gallery-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/bbv-olsberg-jersey.webp"
                 alt="Maillot BBV Olsberg"
               />
               <span>Maquette des maillots</span>
             </div>
             <div className="gallery-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/bbv-olsberg-poster.webp"
                 alt="Affiche événement BBV Olsberg"
               />
               <span>Affiche d'événement</span>
             </div>
             <div className="gallery-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/bbv-olsberg-social.webp"
                 alt="Visuels réseaux sociaux BBV Olsberg"
               />
               <span>Posts réseaux sociaux</span>
             </div>
             <div className="gallery-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/bbv-olsberg-branding.webp"
                 alt="Applications de la charte graphique"
               />

@@ -1,6 +1,6 @@
 import { PageProps } from "../types/PageTypes";
 import { ProjectTemplate } from "./ProjectTemplate";
-import { LazyImage } from "../components/LazyImage";
+import { LazyImageComponent } from "../components";
 
 export const Project5Page = (props: PageProps) => (
   <ProjectTemplate
@@ -101,7 +101,7 @@ export const Project5Page = (props: PageProps) => (
           <h2>Technologies utilisées</h2>
           <div className="tech-stack">
             <div className="tech-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/wordpress.webp"
                 alt="WordPress"
                 className="tech-icon"
@@ -109,7 +109,7 @@ export const Project5Page = (props: PageProps) => (
               <span>WordPress</span>
             </div>
             <div className="tech-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/elementor.webp"
                 alt="Elementor"
                 className="tech-icon"
@@ -117,15 +117,23 @@ export const Project5Page = (props: PageProps) => (
               <span>Elementor</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/react.webp" alt="React" className="tech-icon" />
+              <LazyImageComponent
+                src="/react.webp"
+                alt="React"
+                className="tech-icon"
+              />
               <span>React.js</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/vite.webp" alt="vite" className="tech-icon" />
+              <LazyImageComponent
+                src="/vite.webp"
+                alt="vite"
+                className="tech-icon"
+              />
               <span>Vite.js</span>
             </div>
             <div className="tech-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/typescript.webp"
                 alt="TypeScript"
                 className="tech-icon"
@@ -133,11 +141,15 @@ export const Project5Page = (props: PageProps) => (
               <span>TypeScript</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/sass.webp" alt="sass" className="tech-icon" />
+              <LazyImageComponent
+                src="/sass.webp"
+                alt="sass"
+                className="tech-icon"
+              />
               <span>SCSS</span>
             </div>
             <div className="tech-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/mapbox.webp"
                 alt="MapBox"
                 className="tech-icon"
@@ -145,11 +157,15 @@ export const Project5Page = (props: PageProps) => (
               <span>MapBox</span>
             </div>
             <div className="tech-item">
-              <LazyImage src="/figma.webp" alt="Figma" className="tech-icon" />
+              <LazyImageComponent
+                src="/figma.webp"
+                alt="Figma"
+                className="tech-icon"
+              />
               <span>Figma</span>
             </div>
             <div className="tech-item">
-              <LazyImage
+              <LazyImageComponent
                 src="/hubspot.webp"
                 alt="hubspot"
                 className="tech-icon"

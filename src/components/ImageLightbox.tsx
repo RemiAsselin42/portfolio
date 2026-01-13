@@ -4,7 +4,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./ImageLightbox.scss";
-import "./LazyImage.scss";
+import "./LazyImageComponent.scss";
 
 interface ImageLightboxProps {
   isOpen: boolean;

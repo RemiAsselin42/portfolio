@@ -60,18 +60,26 @@ export const HomePage = ({ onNextPage, onContactPage }: PageProps) => {
     <div id="home-container">
       <h1 className="name-title-1">
         Rémi
-        <span className="name-background" ref={textRef}>
+        <span className="name-background" ref={textRef} aria-hidden="true">
           Asselin
         </span>
       </h1>
-      <div className="home-button-div">
-        <button className="home-button" onClick={onNextPage}>
+      <nav className="home-button-div" aria-label="Navigation principale">
+        <button
+          className="home-button"
+          onClick={onNextPage}
+          aria-label="Voir le portfolio"
+        >
           <RollingText text="Portfolio" />
         </button>
-        <button className="home-button contact-button" onClick={onContactPage}>
+        <button
+          className="home-button contact-button"
+          onClick={onContactPage}
+          aria-label="Page de contact"
+        >
           <RollingText text="Contact" />
         </button>
-      </div>
+      </nav>
     </div>
   );
 };

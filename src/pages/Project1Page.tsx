@@ -157,3 +157,4 @@ export const Project1Page = (props: PageProps) => (
 );
 
 Project1Page.pageId = 1;
+
