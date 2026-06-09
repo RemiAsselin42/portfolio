@@ -1,7 +1,7 @@
 :root {
   /* Polices self-hostées via @fontsource (zéro requête externe → RGPD ok). */
-  --font-title: "Fraunces Variable", Fraunces, Georgia, "Times New Roman", serif;
-  --font-body: "Cardo", Georgia, "Times New Roman", serif;
+  --font-title: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Zilla Slab", Georgia, "Times New Roman", serif;
   --font-mono: "Courier New", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --c-bg: #000000;

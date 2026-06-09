@@ -4,11 +4,11 @@ import * as THREE from 'three';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 import { useAsciiEffect } from './useAsciiEffect';
 
-const TITLE_FONT = '"Fraunces Variable", Georgia, serif';
+const TITLE_FONT = '"Instrument Serif", Georgia, serif';
 
 /**
  * Dessine le texte (blanc sur noir, aligné à gauche) dans un canvas 2D hors-écran
- * et en fait une texture. Police de titre (Fraunces, self-hostée) → la silhouette
+ * et en fait une texture. Police de titre (self-hostée) → la silhouette
  * « shaderisée » en ASCII suit les lettres du titre.
  */
 function makeTextTexture(text: string): THREE.CanvasTexture {
@@ -28,7 +28,7 @@ function makeTextTexture(text: string): THREE.CanvasTexture {
   const pad = w * 0.06;
   let fontSize = 240;
   const measure = () => {
-    ctx.font = `700 ${fontSize}px ${TITLE_FONT}`;
+    ctx.font = `400 ${fontSize}px ${TITLE_FONT}`;
     return ctx.measureText(text).width;
   };
   while (measure() > w - pad * 2 && fontSize > 12) fontSize -= 4;
@@ -46,12 +46,12 @@ function TextPlane({ text }: { text: string }) {
   const mesh = useRef<THREE.Mesh>(null);
   const [fontReady, setFontReady] = useState(false);
 
-  // Génère la texture seulement quand Fraunces est prête, sinon on dessinerait
+  // Génère la texture seulement quand la police de titre est prête, sinon on dessinerait
   // avec la police de repli (serif système) avant le swap.
   useEffect(() => {
     let alive = true;
     const done = () => alive && setFontReady(true);
-    document.fonts?.load(`700 240px ${TITLE_FONT}`).then(done, done);
+    document.fonts?.load(`400 240px ${TITLE_FONT}`).then(done, done);
     return () => {
       alive = false;
     };
