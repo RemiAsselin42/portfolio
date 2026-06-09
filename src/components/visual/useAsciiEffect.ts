@@ -23,7 +23,7 @@ export function useAsciiEffect({
   characters = ' .:-=+*#%@',
   fgColor = '#eaeaea',
   bgColor = '#000000',
-  invert = false,
+  invert = true,
   resolution = 0.16,
 }: AsciiOptions = {}): void {
   const { gl, scene, camera, size } = useThree();

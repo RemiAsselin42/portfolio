@@ -17,7 +17,7 @@ html {
 
 body {
   min-height: 100svh;
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background: var(--c-bg);
   color: var(--c-fg);
   line-height: 1.5;
@@ -35,6 +35,15 @@ video {
 
 a {
   color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.1;
 }
 
 :focus-visible {
@@ -89,12 +98,10 @@ a {
   padding: var(--space-5) var(--space-3);
 }
 .section h2 {
-  font-family: var(--font-mono);
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   margin-bottom: var(--space-3);
 }
 .section h3 {
-  font-family: var(--font-mono);
   margin-top: var(--space-3);
   margin-bottom: var(--space-1);
 }
@@ -114,7 +121,7 @@ a {
 .hero__title {
   position: relative;
   z-index: 0; /* sous le canvas (fallback visible si pas de canvas) */
-  font-family: var(--font-mono);
+  font-family: var(--font-title);
   font-weight: 700;
   font-size: clamp(2.5rem, 12vw, 9rem);
   line-height: 1;
@@ -150,7 +157,7 @@ a {
 }
 .contact-form label {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   margin-bottom: 0.25rem;
 }

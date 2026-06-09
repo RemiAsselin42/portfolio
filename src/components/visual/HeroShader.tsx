@@ -4,10 +4,12 @@ import * as THREE from 'three';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 import { useAsciiEffect } from './useAsciiEffect';
 
+const TITLE_FONT = '"Fraunces Variable", Georgia, serif';
+
 /**
  * Dessine le texte (blanc sur noir, aligné à gauche) dans un canvas 2D hors-écran
- * et en fait une texture. La police système monospace évite toute requête externe
- * (RGPD). C'est cette texture qui sera « shaderisée » en ASCII.
+ * et en fait une texture. Police de titre (Fraunces, self-hostée) → la silhouette
+ * « shaderisée » en ASCII suit les lettres du titre.
  */
 function makeTextTexture(text: string): THREE.CanvasTexture {
   const w = 1600;
@@ -26,7 +28,7 @@ function makeTextTexture(text: string): THREE.CanvasTexture {
   const pad = w * 0.06;
   let fontSize = 240;
   const measure = () => {
-    ctx.font = `700 ${fontSize}px "Courier New", ui-monospace, monospace`;
+    ctx.font = `700 ${fontSize}px ${TITLE_FONT}`;
     return ctx.measureText(text).width;
   };
   while (measure() > w - pad * 2 && fontSize > 12) fontSize -= 4;
@@ -42,7 +44,21 @@ function makeTextTexture(text: string): THREE.CanvasTexture {
 function TextPlane({ text }: { text: string }) {
   const { viewport } = useThree();
   const mesh = useRef<THREE.Mesh>(null);
-  const texture = useMemo(() => makeTextTexture(text), [text]);
+  const [fontReady, setFontReady] = useState(false);
+
+  // Génère la texture seulement quand Fraunces est prête, sinon on dessinerait
+  // avec la police de repli (serif système) avant le swap.
+  useEffect(() => {
+    let alive = true;
+    const done = () => alive && setFontReady(true);
+    document.fonts?.load(`700 240px ${TITLE_FONT}`).then(done, done);
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  const texture = useMemo(() => makeTextTexture(text), [text, fontReady]);
+  useEffect(() => () => texture.dispose(), [texture]);
 
   const aspect = texture.image.width / texture.image.height;
   const planeHeight = viewport.height;
@@ -75,6 +91,8 @@ function AsciiLayer() {
  * - `prefers-reduced-motion` ou avant montage → renvoie `null`, le <h1> SSR
  *   (sous le canvas) reste visible : fallback accessible et SEO-friendly.
  * - Décoratif → conteneur `aria-hidden`.
+ * - `invert` (dans useAsciiEffect) : ce sont les LETTRES qui portent les glyphes
+ *   denses, pas le fond (négatif de l'effet).
  *
  * NOTE perf : conversion CPU → DOM, parfaite pour ce hero unique. Pour appliquer
  * l'effet à de nombreux éléments, porter en post-processing GLSL (un seul
