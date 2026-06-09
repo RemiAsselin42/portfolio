@@ -128,3 +128,11 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# Claude Code — config locale non-versionnée
+CLAUDE.md
+mempalace.yaml
+
+# Graphify — locally generated artifacts
+graphify-out/
