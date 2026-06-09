@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroShader from '../components/visual/HeroShader';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+);
+const experiences = await getCollection('experiences');
+const education = await getCollection('education');
+---
+
+<Base>
+  <section class="hero" aria-label="Introduction">
+    <h1 class="hero__title">Rémi Asselin</h1>
+    <HeroShader client:only="react" text="Rémi Asselin" />
+  </section>
+
+  <section class="section" aria-labelledby="projets-title">
+    <h2 id="projets-title">Projets</h2>
+    <ul class="project-list">
+      {
+        projects.map((p) => (
+          <li>
+            <article>
+              <h3>{p.data.title}</h3>
+              <p>{p.data.summary}</p>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="stack-title">
+    <h2 id="stack-title">Stack &amp; compétences</h2>
+    <p>À compléter — composant Stack (logos) + niveaux de compétences.</p>
+  </section>
+
+  <section class="section" aria-labelledby="parcours-title">
+    <h2 id="parcours-title">Parcours</h2>
+    <h3>Expériences professionnelles</h3>
+    <ul>
+      {
+        experiences.map((e) => (
+          <li>
+            {e.data.role} — {e.data.company} ({e.data.start}
+            {e.data.end ? `–${e.data.end}` : ''})
+          </li>
+        ))
+      }
+    </ul>
+    <h3>Formations</h3>
+    <ul>
+      {
+        education.map((e) => (
+          <li>
+            {e.data.title} — {e.data.school} ({e.data.start}
+            {e.data.end ? `–${e.data.end}` : ''})
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact</h2>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      {/* TODO: remplacer par ta clé d'accès publique Web3Forms (ou un endpoint Formspree région EU) */}
+      <input type="hidden" name="access_key" value="REMPLACER_PAR_CLE_PUBLIQUE" />
+      <input type="hidden" name="from_name" value="Portfolio Rémi Asselin" />
+      <p>
+        <label for="cf-name">Nom</label>
+        <input id="cf-name" name="name" type="text" required autocomplete="name" />
+      </p>
+      <p>
+        <label for="cf-email">Email</label>
+        <input id="cf-email" name="email" type="email" required autocomplete="email" />
+      </p>
+      <p>
+        <label for="cf-msg">Message</label>
+        <textarea id="cf-msg" name="message" rows="5" required></textarea>
+      </p>
+      <p class="consent">
+        <input id="cf-consent" name="consent" type="checkbox" required />
+        <label for="cf-consent">
+          J'accepte d'être recontacté·e (voir la <a href="/politique-confidentialite"
+            >politique de confidentialité</a
+          >).
+        </label>
+      </p>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer>
+    <nav aria-label="Réseaux sociaux">
+      <a href="https://github.com/RemiAsselin42">GitHub</a>
+      <a href="https://www.linkedin.com/">LinkedIn</a>
+    </nav>
+    <p>
+      <a href="/mentions-legales">Mentions légales</a> ·
+      <a href="/politique-confidentialite">Politique de confidentialité</a>
+    </p>
+  </footer>
+</Base>

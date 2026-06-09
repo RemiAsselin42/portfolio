@@ -136,3 +136,11 @@ mempalace.yaml
 
 # Graphify — locally generated artifacts
 graphify-out/
+
+# Astro
+.astro/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
