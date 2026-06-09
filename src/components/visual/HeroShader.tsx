@@ -1,8 +1,8 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { AsciiEffect } from 'three/examples/jsm/effects/AsciiEffect.js';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
+import { useAsciiEffect } from './useAsciiEffect';
 
 /**
  * Dessine le texte (blanc sur noir, aligné à gauche) dans un canvas 2D hors-écran
@@ -63,73 +63,9 @@ function TextPlane({ text }: { text: string }) {
   );
 }
 
-/**
- * Rendu ASCII robuste (remplace le `<AsciiRenderer>` de drei, qui appelle
- * `effect.render()` avant son `setSize()` → `getImageData` reçoit une largeur
- * NaN et crashe à chaque frame).
- *
- * Ici on ne rend QUE lorsque la taille est finie et > 0, après `setSize`.
- */
-function Ascii({
-  text,
-  characters = ' .:-=+*#%@',
-  fgColor = '#eaeaea',
-  bgColor = '#000000',
-  invert = false,
-  resolution = 0.16,
-}: {
-  text: string;
-  characters?: string;
-  fgColor?: string;
-  bgColor?: string;
-  invert?: boolean;
-  resolution?: number;
-}) {
-  const { gl, scene, camera, size } = useThree();
-  const sized = useRef(false);
-
-  const effect = useMemo(() => {
-    const e = new AsciiEffect(gl, characters, { invert, resolution });
-    e.domElement.style.position = 'absolute';
-    e.domElement.style.top = '0';
-    e.domElement.style.left = '0';
-    e.domElement.style.pointerEvents = 'none';
-    return e;
-  }, [gl, characters, invert, resolution]);
-
-  useLayoutEffect(() => {
-    effect.domElement.style.color = fgColor;
-    effect.domElement.style.backgroundColor = bgColor;
-  }, [effect, fgColor, bgColor]);
-
-  useEffect(() => {
-    const parent = gl.domElement.parentNode;
-    gl.domElement.style.opacity = '0';
-    parent?.appendChild(effect.domElement);
-    return () => {
-      gl.domElement.style.opacity = '1';
-      effect.domElement.parentNode?.removeChild(effect.domElement);
-      sized.current = false;
-    };
-  }, [gl, effect]);
-
-  useEffect(() => {
-    if (
-      Number.isFinite(size.width) &&
-      Number.isFinite(size.height) &&
-      size.width > 0 &&
-      size.height > 0
-    ) {
-      effect.setSize(size.width, size.height);
-      sized.current = true;
-    }
-  }, [effect, size]);
-
-  // renderIndex 1 → prend la main sur la boucle de rendu (comme AsciiRenderer).
-  useFrame(() => {
-    if (sized.current) effect.render(scene, camera);
-  }, 1);
-
+/** Couche ASCII : le rendu est pris en charge par useAsciiEffect sur la scène courante. */
+function AsciiLayer() {
+  useAsciiEffect();
   return null;
 }
 
@@ -160,7 +96,7 @@ export default function HeroShader({ text }: { text: string }) {
       >
         <color attach="background" args={['#000000']} />
         <TextPlane text={text} />
-        <Ascii text={text} />
+        <AsciiLayer />
       </Canvas>
     </div>
   );

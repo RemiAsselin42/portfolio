@@ -1,0 +1,27 @@
+#!/bin/sh
+# Hook pre-commit versionné (installé dans .git/hooks par scripts/install-git-hooks.mjs,
+# lancé automatiquement au `npm install` via le script "prepare").
+# Gate les commits sur le code mort, la complexité et la duplication des fichiers
+# modifiés, via `fallow audit` (gate=new-only : seules les NOUVELLES anomalies bloquent).
+# Bypass ponctuel : git commit --no-verify
+
+# Résolution de fallow : devDependency locale d'abord, puis install global.
+if [ -x "node_modules/.bin/fallow" ]; then
+  FALLOW="node_modules/.bin/fallow"
+elif command -v fallow >/dev/null 2>&1; then
+  FALLOW="fallow"
+else
+  echo "fallow introuvable — lance 'npm install' (hook ignoré)."
+  exit 0
+fi
+
+# Base de comparaison : merge-base avec l'upstream si défini, sinon HEAD
+# (sur une branche sans upstream, on n'audite que les modifs du commit en cours).
+UPSTREAM="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || true)"
+if [ -n "$UPSTREAM" ]; then
+  BASE="$(git merge-base "$UPSTREAM" HEAD 2>/dev/null || echo "$UPSTREAM")"
+else
+  BASE="HEAD"
+fi
+
+exec "$FALLOW" audit --base "$BASE" --quiet --gate-marker pre-commit

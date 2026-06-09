@@ -12,14 +12,13 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "fallow": "fallow",
+    "fallow:audit": "fallow audit",
+    "prepare": "node scripts/install-git-hooks.mjs"
   },
   "dependencies": {
-    "@astrojs/react": "5.0.7",
-    "@astrojs/sitemap": "3.7.3",
-    "@react-three/drei": "10.7.7",
     "@react-three/fiber": "9.6.1",
-    "@react-three/postprocessing": "3.0.4",
     "astro": "6.4.5",
     "react": "19.2.7",
     "react-dom": "19.2.7",
@@ -27,6 +26,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.9",
+    "@astrojs/react": "5.0.7",
+    "@astrojs/sitemap": "3.7.3",
     "@axe-core/playwright": "4.11.3",
     "@eslint/js": "9.39.4",
     "@playwright/test": "1.60.0",
@@ -39,6 +40,7 @@
     "eslint": "9.39.4",
     "eslint-plugin-astro": "1.7.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
+    "fallow": "2.91.0",
     "jsdom": "29.1.1",
     "typescript": "6.0.3",
     "typescript-eslint": "8.61.0",
