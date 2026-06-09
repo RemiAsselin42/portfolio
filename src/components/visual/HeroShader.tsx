@@ -1,13 +1,13 @@
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { AsciiRenderer } from '@react-three/drei';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { AsciiEffect } from 'three/examples/jsm/effects/AsciiEffect.js';
 import { usePrefersReducedMotion } from './usePrefersReducedMotion';
 
 /**
  * Dessine le texte (blanc sur noir, aligné à gauche) dans un canvas 2D hors-écran
  * et en fait une texture. La police système monospace évite toute requête externe
- * (RGPD). C'est cette texture qui sera « shaderisée » en ASCII par l'AsciiRenderer.
+ * (RGPD). C'est cette texture qui sera « shaderisée » en ASCII.
  */
 function makeTextTexture(text: string): THREE.CanvasTexture {
   const w = 1600;
@@ -48,7 +48,6 @@ function TextPlane({ text }: { text: string }) {
   const planeHeight = viewport.height;
   const planeWidth = planeHeight * aspect;
 
-  // Dérive très douce — donne vie à l'ASCII sans agressivité.
   useFrame((state) => {
     if (!mesh.current) return;
     const t = state.clock.elapsedTime;
@@ -65,15 +64,85 @@ function TextPlane({ text }: { text: string }) {
 }
 
 /**
+ * Rendu ASCII robuste (remplace le `<AsciiRenderer>` de drei, qui appelle
+ * `effect.render()` avant son `setSize()` → `getImageData` reçoit une largeur
+ * NaN et crashe à chaque frame).
+ *
+ * Ici on ne rend QUE lorsque la taille est finie et > 0, après `setSize`.
+ */
+function Ascii({
+  text,
+  characters = ' .:-=+*#%@',
+  fgColor = '#eaeaea',
+  bgColor = '#000000',
+  invert = false,
+  resolution = 0.16,
+}: {
+  text: string;
+  characters?: string;
+  fgColor?: string;
+  bgColor?: string;
+  invert?: boolean;
+  resolution?: number;
+}) {
+  const { gl, scene, camera, size } = useThree();
+  const sized = useRef(false);
+
+  const effect = useMemo(() => {
+    const e = new AsciiEffect(gl, characters, { invert, resolution });
+    e.domElement.style.position = 'absolute';
+    e.domElement.style.top = '0';
+    e.domElement.style.left = '0';
+    e.domElement.style.pointerEvents = 'none';
+    return e;
+  }, [gl, characters, invert, resolution]);
+
+  useLayoutEffect(() => {
+    effect.domElement.style.color = fgColor;
+    effect.domElement.style.backgroundColor = bgColor;
+  }, [effect, fgColor, bgColor]);
+
+  useEffect(() => {
+    const parent = gl.domElement.parentNode;
+    gl.domElement.style.opacity = '0';
+    parent?.appendChild(effect.domElement);
+    return () => {
+      gl.domElement.style.opacity = '1';
+      effect.domElement.parentNode?.removeChild(effect.domElement);
+      sized.current = false;
+    };
+  }, [gl, effect]);
+
+  useEffect(() => {
+    if (
+      Number.isFinite(size.width) &&
+      Number.isFinite(size.height) &&
+      size.width > 0 &&
+      size.height > 0
+    ) {
+      effect.setSize(size.width, size.height);
+      sized.current = true;
+    }
+  }, [effect, size]);
+
+  // renderIndex 1 → prend la main sur la boucle de rendu (comme AsciiRenderer).
+  useFrame(() => {
+    if (sized.current) effect.render(scene, camera);
+  }, 1);
+
+  return null;
+}
+
+/**
  * Îlot React (client:only) : effet ASCII appliqué au texte du hero.
  *
  * - `prefers-reduced-motion` ou avant montage → renvoie `null`, le <h1> SSR
  *   (sous le canvas) reste visible : fallback accessible et SEO-friendly.
  * - Décoratif → conteneur `aria-hidden`.
  *
- * NOTE : `AsciiRenderer` (conversion CPU → DOM) est parfait pour un hero unique.
- * Pour appliquer l'effet à de nombreux éléments, porter cet effet en
- * post-processing GLSL (un seul contexte WebGL) — voir la roadmap.
+ * NOTE perf : conversion CPU → DOM, parfaite pour ce hero unique. Pour appliquer
+ * l'effet à de nombreux éléments, porter en post-processing GLSL (un seul
+ * contexte WebGL) — voir la roadmap du README.
  */
 export default function HeroShader({ text }: { text: string }) {
   const reduced = usePrefersReducedMotion();
@@ -91,13 +160,7 @@ export default function HeroShader({ text }: { text: string }) {
       >
         <color attach="background" args={['#000000']} />
         <TextPlane text={text} />
-        <AsciiRenderer
-          characters=" .:-=+*#%@"
-          fgColor="#eaeaea"
-          bgColor="#000000"
-          invert={false}
-          resolution={0.16}
-        />
+        <Ascii text={text} />
       </Canvas>
     </div>
   );
