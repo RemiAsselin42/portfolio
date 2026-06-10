@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import HeroShader from '../components/visual/HeroShader';
+import Shaderize from '../components/visual/Shaderize';
 import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects')).sort(
@@ -8,12 +9,18 @@ const projects = (await getCollection('projects')).sort(
 );
 const experiences = await getCollection('experiences');
 const education = await getCollection('education');
+
+// Image aléatoire (Lorem Picsum) — seed tirée au build : nouvelle image à chaque build.
+const heroImageSeed = Math.floor(Math.random() * 1_000_000);
+const heroImage = `https://picsum.photos/seed/${heroImageSeed}/600/800`;
 ---
 
 <Base>
   <section class="hero" aria-label="Introduction">
     <h1 class="hero__title">Rémi Asselin</h1>
-    <HeroShader client:only="react" text="Rémi Asselin" />
+    <img class="hero__media" src={heroImage} alt="" width="600" height="800" crossorigin="anonymous" />
+    <HeroShader client:only="react" />
+    <Shaderize client:only="react" selector="img.hero__media" mode="ascii" glitch resolution={80} />
   </section>
 
   <section class="section" aria-labelledby="projets-title">
